@@ -1,0 +1,27 @@
+domain: https://www.food-information.com
+spring:
+  profiles:
+    active: dev
+logging:
+  file:
+    name: /logs/aayyoub.log
+  level:
+    org:
+      apache: ERROR
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+        web: ERROR
+      springframework:
+        boot:
+          autoconfigure: ERROR
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n%n'
+server:
+  port: 8080
+  compression:
+    enabled: true
+    mime-types: application/json,text/html,text/plain

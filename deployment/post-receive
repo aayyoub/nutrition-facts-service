@@ -1,0 +1,31 @@
+#!/bin/bash
+
+#clone into applications
+cd /applications/
+unset GIT_DIR
+rm -rf food-information-service
+git clone /applications/food-information-service.git
+echo '✓ Cloned repository'
+
+#install dependencies
+cd /applications/food-information-service
+mvn clean package
+echo '✓ Installed maven dependencies'
+
+#move server deployment scrips and make executable
+cp /applications/food-information-service/deployment/server.sh /deployment/food-information-service/server.sh
+chmod 744 /deployment/food-information-service/server.sh
+echo '✓ Moved deployment scripts to deployment directory'
+
+#create and start server script
+cp /applications/food-information-service/deployment/food-information-service.service /etc/systemd/system/food-information-service.service
+systemctl daemon-reload
+systemctl stop food-information-service
+systemctl start food-information-service
+systemctl enable food-information-service
+echo '✓ Started server script'
+
+#success messages
+figlet food-information-service
+echo '✓ SUCCESS'
+

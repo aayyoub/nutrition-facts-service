@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    username: username
+    password: password
+    url: jdbc:mysql://localhost:3306/nutrient_database
+    driverClassName: com.mysql.cj.jdbc.Driver
+    tomcat:
+      initialSize: 15
+      maxActive: 50
+      maxIdle: 15
+      maxWait: 10000
+      minIdle: 8
+      testOnBorrow: true
+      validationInterval: 30000
+      validationQuery: SELECT 1
+  jpa:
+    database: MYSQL
+    databasePlatform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddlAuto: none

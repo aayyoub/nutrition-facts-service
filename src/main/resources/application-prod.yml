@@ -1,0 +1,30 @@
+spring:
+  datasource:
+    username: username
+    password: password
+    url: jdbc:mysql://localhost:3306/nutrient_database
+    driverClassName: com.mysql.cj.jdbc.Driver
+    tomcat:
+      initialSize: 15
+      maxActive: 50
+      maxIdle: 15
+      maxWait: 10000
+      minIdle: 8
+      testOnBorrow: true
+      validationInterval: 30000
+      validationQuery: SELECT 1
+  jpa:
+    database: MYSQL
+    databasePlatform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddlAuto: none
+#server:
+#  port: 443
+#  ssl:
+#    key-store: /certificates/fis-api-keystore.p12
+#    key-store-password: foodisgood
+#    keyStoreType: PKCS12
+#    keyAlias: fis-api-alias
+#  compression:
+#    enabled: true
+#    mime-types: application/json,text/html,text/plain

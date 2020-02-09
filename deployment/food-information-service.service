@@ -1,0 +1,14 @@
+[Unit]
+Description=Running food-information-service
+After=network-online.target
+Requires=network-online.target
+
+[Service]
+User=root
+Type=simple
+ExecStart=/deployment/food-information-service/server.sh
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=default.target
