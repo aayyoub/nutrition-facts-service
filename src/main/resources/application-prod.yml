@@ -1,7 +1,6 @@
 spring:
   datasource:
     username: root
-    password: password
     url: jdbc:mysql://localhost:3306/nutrient_database
     driverClassName: com.mysql.cj.jdbc.Driver
     tomcat:
