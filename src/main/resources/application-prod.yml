@@ -19,7 +19,7 @@ spring:
     hibernate:
       ddlAuto: none
 server:
-  port: 8080
+  port: 80
   compression:
     enabled: true
     mime-types: application/json,text/html,text/plain
