@@ -1,5 +1,5 @@
 # food-information-service
-This project is a Spring Boot API that searches for and retrieves nutritional data for foods. The relational data is provided by the USDA, and was imported into MySQL (USDA Nutrient Database). Redis is used for caching. ElasticSearch will be used for the API search.
+This project is a Spring Boot API that searches for and retrieves nutritional data for foods. The relational data is provided by the USDA, and was imported into MySQL (USDA Nutrient Database). Redis is used for caching. ElasticSearch is used for API search.
 
 ## Prerequisites
 MySQL database must be running locally.
