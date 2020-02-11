@@ -19,7 +19,7 @@ public class FoodController {
 
     @CrossOrigin
     @GetMapping("/food")
-    @Cacheable(value = "food")
+    @Cacheable(value = "food", key = "#getFoodRequest.foodId")
     public FoodNutritionalDetails getFood(GetFoodRequest getFoodRequest) {
         return foodOrchestrator.getFood(getFoodRequest);
     }
