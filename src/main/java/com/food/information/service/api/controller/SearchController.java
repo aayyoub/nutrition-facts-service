@@ -22,13 +22,7 @@ public class SearchController {
 
     @CrossOrigin
     @GetMapping("/search")
-    public ResponseEntity<Response> searchFood(@RequestParam String searchTerm) {
-        List<SuggestedSearchTerm> suggestedSearchTerms = searchOrchestrator.getSearchTerms(searchTerm);
-
-        Response response = new Response();
-        response.setHttpStatus(HttpStatus.OK);
-        response.setResult(suggestedSearchTerms);
-
-        return new ResponseEntity<>(response, HttpStatus.OK);
+    public List<SuggestedSearchTerm> searchFood(@RequestParam String searchTerm) {
+        return searchOrchestrator.getSearchTerms(searchTerm);
     }
 }
