@@ -1,12 +1,12 @@
 package com.food.information.service.domain.builder.nutrientgroup;
 
-import com.food.information.service.testutils.builder.NutrientBuilder;
 import com.food.information.service.domain.builder.nutrientgroup.grouper.MineralGrouper;
 import com.food.information.service.domain.builder.nutrientgroup.grouper.OtherGrouper;
 import com.food.information.service.domain.builder.nutrientgroup.grouper.OverviewGrouper;
 import com.food.information.service.domain.builder.nutrientgroup.grouper.VitaminGrouper;
 import com.food.information.service.domain.model.Nutrient;
 import com.food.information.service.domain.model.NutrientGroup;
+import com.food.information.service.testutils.builder.NutrientBuilder;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;

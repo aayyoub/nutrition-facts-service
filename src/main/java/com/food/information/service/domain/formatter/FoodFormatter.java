@@ -20,7 +20,8 @@ public class FoodFormatter {
     private final NutrientGroupBuilder nutrientGroupBuilder;
 
     @Autowired
-    public FoodFormatter(DailyValueCalculator dailyValueCalculator, ValueFormatter valueFormatter, DescriptionsFormatter descriptionsFormatter, CalorieFormatter calorieFormatter, NutritionFactsBuilder nutritionFactsBuilder,
+    public FoodFormatter(DailyValueCalculator dailyValueCalculator, ValueFormatter valueFormatter, DescriptionsFormatter descriptionsFormatter, CalorieFormatter calorieFormatter
+            , NutritionFactsBuilder nutritionFactsBuilder,
                          CaloricPyramidCalculator caloricPyramidCalculator, NutrientGroupBuilder nutrientGroupBuilder) {
         this.dailyValueCalculator = dailyValueCalculator;
         this.valueFormatter = valueFormatter;
