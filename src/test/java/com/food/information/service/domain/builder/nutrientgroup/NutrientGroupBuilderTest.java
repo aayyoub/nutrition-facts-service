@@ -6,7 +6,6 @@ import com.food.information.service.domain.builder.nutrientgroup.grouper.Overvie
 import com.food.information.service.domain.builder.nutrientgroup.grouper.VitaminGrouper;
 import com.food.information.service.domain.model.Nutrient;
 import com.food.information.service.domain.model.NutrientGroup;
-import com.food.information.service.testutils.builder.NutrientBuilder;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -33,10 +32,10 @@ public class NutrientGroupBuilderTest {
 
     private void givenNutrients() {
         nutrients = Map.ofEntries(
-                Map.entry("318", NutrientBuilder.aNutrientBuilder().withId("318").withSortOrder(0).withTagname("VITA_IU").build()),
-                Map.entry("203", NutrientBuilder.aNutrientBuilder().withId("203").withSortOrder(1).withTagname("PROCNT").build()),
-                Map.entry("301", NutrientBuilder.aNutrientBuilder().withId("301").withSortOrder(2).withTagname("CA").build()),
-                Map.entry("255", NutrientBuilder.aNutrientBuilder().withId("255").withSortOrder(3).withTagname("WATER").build()));
+                Map.entry("318", Nutrient.builder().id("318").sortOrder(0).percentDailyValue(1.0).tagname("VITA_IU").build()),
+                Map.entry("203", Nutrient.builder().id("203").sortOrder(1).percentDailyValue(2.0).tagname("PROCNT").build()),
+                Map.entry("301", Nutrient.builder().id("301").sortOrder(2).percentDailyValue(3.0).tagname("CA").build()),
+                Map.entry("255", Nutrient.builder().id("255").sortOrder(3).percentDailyValue(4.0).tagname("WATER").build()));
     }
 
     private void givenNutrientBuilder() {
@@ -52,8 +51,8 @@ public class NutrientGroupBuilderTest {
     private void verifyResults() {
         assertThat(results.get(0).getRank()).isEqualTo(1);
         assertThat(results.get(0).getGroupName()).isEqualTo("overview");
-        assertThat(results.get(0).getNutrients().get(0).getId()).isEqualTo("203");
-        assertThat(results.get(0).getNutrients().get(1).getId()).isEqualTo("255");
+        assertThat(results.get(0).getNutrients().get(0).getId()).isEqualTo("255");
+        assertThat(results.get(0).getNutrients().get(1).getId()).isEqualTo("203");
 
         assertThat(results.get(1).getRank()).isEqualTo(2);
         assertThat(results.get(1).getGroupName()).isEqualTo("vitamins");

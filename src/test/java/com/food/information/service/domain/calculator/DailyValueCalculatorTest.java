@@ -1,7 +1,6 @@
 package com.food.information.service.domain.calculator;
 
 import com.food.information.service.domain.model.Nutrient;
-import com.food.information.service.testutils.builder.NutrientBuilder;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -11,12 +10,12 @@ public class DailyValueCalculatorTest {
     @DataProvider
     public Object[][] dailyValueCalculatorDataProvider() {
         return new Object[][]{
-                {NutrientBuilder.aNutrientBuilder().withValue(5.0).withDailyValue(5.0).build(), 100.0},
-                {NutrientBuilder.aNutrientBuilder().withValue(1.0).withDailyValue(4.0).build(), 25.0},
-                {NutrientBuilder.aNutrientBuilder().withValue(0.0).withDailyValue(100.0).build(), 0.0},
-                {NutrientBuilder.aNutrientBuilder().withValue(5.0).withDailyValue(1.0).build(), 500.0},
-                {NutrientBuilder.aNutrientBuilder().withValue(null).withDailyValue(100.0).build(), 0.0},
-                {NutrientBuilder.aNutrientBuilder().withValue(5.0).withDailyValue(null).build(), 0.0},
+                {Nutrient.builder().value(5.0).dailyValue(5.0).build(), 100.0},
+                {Nutrient.builder().value(1.0).dailyValue(4.0).build(), 25.0},
+                {Nutrient.builder().value(0.0).dailyValue(100.0).build(), 0.0},
+                {Nutrient.builder().value(5.0).dailyValue(1.0).build(), 500.0},
+                {Nutrient.builder().value(null).dailyValue(100.0).build(), 0.0},
+                {Nutrient.builder().value(5.0).dailyValue(null).build(), 0.0},
         };
     }
 

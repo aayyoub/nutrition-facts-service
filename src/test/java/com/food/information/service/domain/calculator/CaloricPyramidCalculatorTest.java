@@ -3,7 +3,6 @@ package com.food.information.service.domain.calculator;
 import com.food.information.service.domain.model.CaloricPyramid;
 import com.food.information.service.domain.model.Nutrient;
 import com.food.information.service.domain.util.NutrientExtractor;
-import com.food.information.service.testutils.builder.NutrientBuilder;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -16,21 +15,21 @@ public class CaloricPyramidCalculatorTest {
     public Object[][] caloricPyramidDataProvider() {
         return new Object[][]{
                 {Map.ofEntries(
-                        Map.entry("221", NutrientBuilder.aNutrientBuilder().withId("221").withValue(0.0).withTagname("ALC").build()),
-                        Map.entry("205", NutrientBuilder.aNutrientBuilder().withId("205").withValue(10.0).withTagname("CHOCDF").build()),
-                        Map.entry("204", NutrientBuilder.aNutrientBuilder().withId("204").withValue(10.0).withTagname("FAT").build()),
-                        Map.entry("203", NutrientBuilder.aNutrientBuilder().withId("203").withValue(10.0).withTagname("PROCNT").build())),
+                        Map.entry("221", Nutrient.builder().id("221").value(0.0).tagname("ALC").build()),
+                        Map.entry("205", Nutrient.builder().id("205").value(10.0).tagname("CHOCDF").build()),
+                        Map.entry("204", Nutrient.builder().id("204").value(10.0).tagname("FAT").build()),
+                        Map.entry("203", Nutrient.builder().id("203").value(10.0).tagname("PROCNT").build())),
                         0.0, 24.0, 53.0, 24.0
                 },
                 {Map.ofEntries(
-                        Map.entry("221", NutrientBuilder.aNutrientBuilder().withId("221").withValue(1.0).withTagname("ALC").build()),
-                        Map.entry("205", NutrientBuilder.aNutrientBuilder().withId("205").withValue(0.0).withTagname("CHOCDF").build()),
-                        Map.entry("204", NutrientBuilder.aNutrientBuilder().withId("204").withValue(0.0).withTagname("FAT").build()),
-                        Map.entry("203", NutrientBuilder.aNutrientBuilder().withId("203").withValue(0.0).withTagname("PROCNT").build())),
+                        Map.entry("221", Nutrient.builder().id("221").value(1.0).tagname("ALC").build()),
+                        Map.entry("205", Nutrient.builder().id("205").value(0.0).tagname("CHOCDF").build()),
+                        Map.entry("204", Nutrient.builder().id("204").value(0.0).tagname("FAT").build()),
+                        Map.entry("203", Nutrient.builder().id("203").value(0.0).tagname("PROCNT").build())),
                         100.0, 0.0, 0.0, 0.0
                 },
                 {Map.ofEntries(
-                        Map.entry("221", NutrientBuilder.aNutrientBuilder().withId("221").withValue(1.0).withTagname("ALC").build())),
+                        Map.entry("221", Nutrient.builder().id("221").value(1.0).tagname("ALC").build())),
                         100.0, 0.0, 0.0, 0.0
                 },
                 {null, 0.0, 0.0, 0.0, 0.0
