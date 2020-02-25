@@ -20,7 +20,6 @@ public abstract class AbstractNutrientGrouper implements NutrientGrouper {
                 .stream()
                 .filter(nutrient -> this.getRequiredNutrients().contains(nutrient.getTagname()))
                 .sorted(Comparator.comparingInt(Nutrient::getSortOrder))
-                .sorted(Comparator.comparingDouble(Nutrient::getPercentDailyValue).reversed())
                 .collect(Collectors.toList());
 
         return new NutrientGroup(this.getRank(), this.getGroupName(), filteredNutrients);
