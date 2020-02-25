@@ -29,7 +29,7 @@ public class NutritionFactsBuilder {
         Nutrient protein = nutrientExtractor.extractNutrient(NutrientId.PROTEIN, nutrients);
 
         NutritionFacts nutritionFacts = new NutritionFacts();
-        nutritionFacts.setCaloriesValueFormatted(calories.getValueFormatted());
+        nutritionFacts.setCaloriesValueFormatted(calories.getValueRounded());
         nutritionFacts.setFatValueFormatted(fat.getValueFormatted());
         nutritionFacts.setFatPercentDailyValueFormatted(fat.getPercentDailyValueFormatted());
         nutritionFacts.setSaturatedFatValueFormatted(saturatedFat.getValueFormatted());

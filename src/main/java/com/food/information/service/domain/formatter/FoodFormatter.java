@@ -51,8 +51,9 @@ public class FoodFormatter {
 
     private Food formatNutrientValues(Food food) {
         food.getNutrients().forEach((id, nutrient) -> {
-            nutrient.setValueFormatted(valueFormatter.formatValue(nutrient.getValue(), nutrient.getUnit()));
+            //TODO refactor the below and add unit tests
             nutrient.setValueRounded(decimalFormatter.formatDecimals(nutrient.getValue(), nutrient.getRoundedToDecimal()));
+            nutrient.setValueFormatted(valueFormatter.formatValue(nutrient.getValueRounded(), nutrient.getUnit()));
             nutrient.setPercentDailyValue(percentDailyValueCalculator.calculatePercentDailyValue(nutrient.getValue(), nutrient.getDailyValue()));
             nutrient.setPercentDailyValueFormatted(percentDailyValueCalculator.calculatePercentDailyValueFormatted(nutrient.getValue(), nutrient.getDailyValue()));
         });
