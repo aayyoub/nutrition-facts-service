@@ -14,6 +14,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+//TODO write more in depth tests
 public class NutrientGroupBuilderTest {
     private Map<String, Nutrient> nutrients;
     private NutrientGroupBuilder nutrientGroupBuilder;
