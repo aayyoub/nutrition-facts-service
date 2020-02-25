@@ -4,9 +4,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ValueFormatter {
-    private static final String VALUE_FORMATTED = "%s %s";
+    private static final String VALUE_FORMATTED = "%.0f %s";
 
-    public String formatValue(String value, String unit) {
+    public String formatValue(Double value, String unit) {
         return String.format(VALUE_FORMATTED, value, unit);
     }
 }

@@ -53,7 +53,7 @@ public class FoodFormatter {
         food.getNutrients().forEach((id, nutrient) -> {
             //TODO refactor the below and add unit tests
             nutrient.setValueRounded(decimalFormatter.formatDecimals(nutrient.getValue(), nutrient.getRoundedToDecimal()));
-            nutrient.setValueFormatted(valueFormatter.formatValue(nutrient.getValueRounded(), nutrient.getUnit()));
+            nutrient.setValueFormatted(valueFormatter.formatValue(nutrient.getValue(), nutrient.getUnit()));
             nutrient.setPercentDailyValue(percentDailyValueCalculator.calculatePercentDailyValue(nutrient.getValue(), nutrient.getDailyValue()));
             nutrient.setPercentDailyValueFormatted(percentDailyValueCalculator.calculatePercentDailyValueFormatted(nutrient.getValue(), nutrient.getDailyValue()));
         });
