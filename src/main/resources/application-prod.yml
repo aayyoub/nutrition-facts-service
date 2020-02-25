@@ -18,17 +18,12 @@ spring:
     hibernate:
       ddlAuto: none
 server:
-  port: 80
+  port: 443
+  ssl:
+    key-store: /certificates/fis-api-keystore.p12
+    key-store-password: foodisgood
+    keyStoreType: PKCS12
+    keyAlias: fis-api-alias
   compression:
     enabled: true
     mime-types: application/json,text/html,text/plain
-#server:
-#  port: 443
-#  ssl:
-#    key-store: /certificates/fis-api-keystore.p12
-#    key-store-password: foodisgood
-#    keyStoreType: PKCS12
-#    keyAlias: fis-api-alias
-#  compression:
-#    enabled: true
-#    mime-types: application/json,text/html,text/plain
