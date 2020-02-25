@@ -3,7 +3,7 @@ package com.food.information.service.domain.formatter;
 import com.food.information.service.domain.builder.nutrientgroup.NutrientGroupBuilder;
 import com.food.information.service.domain.builder.nutritionfacts.NutritionFactsBuilder;
 import com.food.information.service.domain.calculator.CaloricPyramidCalculator;
-import com.food.information.service.domain.calculator.DailyValueCalculator;
+import com.food.information.service.domain.calculator.PercentDailyValueCalculator;
 import com.food.information.service.domain.model.Food;
 import com.food.information.service.domain.model.FoodNutritionalDetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +11,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class FoodFormatter {
-    private final DailyValueCalculator dailyValueCalculator;
+    private final PercentDailyValueCalculator percentDailyValueCalculator;
     private final ValueFormatter valueFormatter;
+    private final DecimalFormatter decimalFormatter;
     private final DescriptionsFormatter descriptionsFormatter;
     private final CalorieFormatter calorieFormatter;
     private final NutritionFactsBuilder nutritionFactsBuilder;
@@ -20,11 +21,12 @@ public class FoodFormatter {
     private final NutrientGroupBuilder nutrientGroupBuilder;
 
     @Autowired
-    public FoodFormatter(DailyValueCalculator dailyValueCalculator, ValueFormatter valueFormatter, DescriptionsFormatter descriptionsFormatter, CalorieFormatter calorieFormatter
+    public FoodFormatter(PercentDailyValueCalculator percentDailyValueCalculator, ValueFormatter valueFormatter, DecimalFormatter decimalFormatter, DescriptionsFormatter descriptionsFormatter, CalorieFormatter calorieFormatter
             , NutritionFactsBuilder nutritionFactsBuilder,
                          CaloricPyramidCalculator caloricPyramidCalculator, NutrientGroupBuilder nutrientGroupBuilder) {
-        this.dailyValueCalculator = dailyValueCalculator;
+        this.percentDailyValueCalculator = percentDailyValueCalculator;
         this.valueFormatter = valueFormatter;
+        this.decimalFormatter = decimalFormatter;
         this.descriptionsFormatter = descriptionsFormatter;
         this.calorieFormatter = calorieFormatter;
         this.nutritionFactsBuilder = nutritionFactsBuilder;
@@ -32,7 +34,7 @@ public class FoodFormatter {
         this.nutrientGroupBuilder = nutrientGroupBuilder;
     }
 
-    public FoodNutritionalDetails format(Food food) {
+    public FoodNutritionalDetails formatFood(Food food) {
         formatNutrientValues(food);
 
         FoodNutritionalDetails foodNutritionalDetails = new FoodNutritionalDetails();
@@ -49,8 +51,10 @@ public class FoodFormatter {
 
     private Food formatNutrientValues(Food food) {
         food.getNutrients().forEach((id, nutrient) -> {
-            valueFormatter.formatValue(nutrient);
-            dailyValueCalculator.calculateDailyValue(nutrient);
+            nutrient.setValueFormatted(valueFormatter.formatValue(nutrient.getValue(), nutrient.getUnit()));
+            nutrient.setValueRounded(decimalFormatter.formatDecimals(nutrient.getValue(), nutrient.getRoundedToDecimal()));
+            nutrient.setPercentDailyValue(percentDailyValueCalculator.calculatePercentDailyValue(nutrient.getValue(), nutrient.getDailyValue()));
+            nutrient.setPercentDailyValueFormatted(percentDailyValueCalculator.calculatePercentDailyValueFormatted(nutrient.getValue(), nutrient.getDailyValue()));
         });
 
         return food;

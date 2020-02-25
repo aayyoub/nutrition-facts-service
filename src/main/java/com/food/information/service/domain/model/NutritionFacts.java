@@ -6,7 +6,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class NutritionFacts {
-    String caloriesFormatted;
+    String caloriesValueFormatted;
     String caloriesFromFatFormatted;
     String fatValueFormatted;
     String fatPercentDailyValueFormatted;
