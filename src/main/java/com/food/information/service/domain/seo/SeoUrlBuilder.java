@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SeoUrlBuilder {
-    private static final String PATTERN = "nutrition/%s/%s?searchTerm=%s";
+    private static final String PATTERN = "food/%s/%s";
 
     public String buildUrl(String foodId, String description) {
         String descriptionCleaned = description
@@ -16,6 +16,6 @@ public class SeoUrlBuilder {
                 .replaceAll("[^a-z0-9_-]", "")
                 .replaceAll("-+", "-");
 
-        return String.format(PATTERN, foodId, descriptionCleaned, description);
+        return String.format(PATTERN, foodId, descriptionCleaned);
     }
 }

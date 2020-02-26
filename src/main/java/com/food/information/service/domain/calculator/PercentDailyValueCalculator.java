@@ -16,6 +16,7 @@ public class PercentDailyValueCalculator {
     }
 
     public String calculatePercentDailyValueFormatted(Double value, Double dailyValue) {
+        //TODO fix this value
         return String.format(PERCENT_DAILY_VALUE_FORMATTED, calculatePercentDailyValue(value, dailyValue));
     }
 }

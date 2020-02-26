@@ -36,7 +36,7 @@ public class HibernateFoodRepository implements FoodRepository {
                         "SELECT * FROM food_description " +
                                 "WHERE food_description.long_description LIKE :foodNameBeginsWith OR food_description.long_description LIKE :foodNameAnyMatch " +
                                 "ORDER BY CASE WHEN food_description.long_description LIKE :foodNameBeginsWith THEN 1 ELSE 2 END " +
-                                "LIMIT 0, 15",
+                                "LIMIT 0, 20",
                         SearchTerm.class
                 )
                 .setParameter("foodNameBeginsWith", searchTerm + '%')
