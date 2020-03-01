@@ -50,7 +50,7 @@ public class HibernateFoodRepository implements FoodRepository {
                 .createNativeQuery(
                         "SELECT * FROM food_description " +
                                 "ORDER BY RAND() " +
-                                "LIMIT 0, 20",
+                                "LIMIT 0, 35",
                         ExploreFoodEntity.class
                 )
                 .getResultList();
