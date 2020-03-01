@@ -4,6 +4,7 @@ import com.food.information.service.dataaccess.jpa.entity.FoodDescriptionEntity;
 import com.food.information.service.domain.formatter.DecimalFormatter;
 import com.food.information.service.domain.model.Food;
 import com.food.information.service.domain.model.Nutrient;
+import org.apache.commons.text.WordUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;

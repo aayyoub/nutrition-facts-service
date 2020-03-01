@@ -20,6 +20,6 @@ public class TextFormatter {
             return "";
         }
 
-        return String.format(FORMATTED_DESCRIPTION, WordUtils.capitalizeFully(longDescription));
+        return String.format(FORMATTED_DESCRIPTION, longDescription.toLowerCase());
     }
 }
