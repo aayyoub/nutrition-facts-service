@@ -12,7 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "food_description", schema = "nutrient_database")
-public class FoodDescription {
+public class FoodDescriptionEntity {
     private String foodDescriptionId;
     private String foodGroupCode;
     private String longDescription;
@@ -27,7 +27,7 @@ public class FoodDescription {
     private Double proFactor;
     private Double fatFactor;
     private Double choFactor;
-    private List<NutrientData> nutrientData;
+    private List<NutrientDataEntity> nutrientDatumEntities;
 
     @Id
     @Column(name = "food_description_id", nullable = false, length = 5)
@@ -171,11 +171,11 @@ public class FoodDescription {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "nutrient_data_id")
-    public List<NutrientData> getNutrientData() {
-        return nutrientData;
+    public List<NutrientDataEntity> getNutrientDatumEntities() {
+        return nutrientDatumEntities;
     }
 
-    public void setNutrientData(List<NutrientData> nutrientData) {
-        this.nutrientData = nutrientData;
+    public void setNutrientDatumEntities(List<NutrientDataEntity> nutrientDatumEntities) {
+        this.nutrientDatumEntities = nutrientDatumEntities;
     }
 }

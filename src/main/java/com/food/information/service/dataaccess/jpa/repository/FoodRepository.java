@@ -1,12 +1,15 @@
 package com.food.information.service.dataaccess.jpa.repository;
 
-import com.food.information.service.dataaccess.jpa.entity.FoodDescription;
-import com.food.information.service.dataaccess.jpa.entity.SearchTerm;
+import com.food.information.service.dataaccess.jpa.entity.ExploreFoodEntity;
+import com.food.information.service.dataaccess.jpa.entity.FoodDescriptionEntity;
+import com.food.information.service.dataaccess.jpa.entity.SearchTermEntity;
 
 import java.util.List;
 
 public interface FoodRepository {
-    FoodDescription getFood(String foodId);
+    FoodDescriptionEntity getFood(String foodId);
 
-    List<SearchTerm> getSearchTerms(String searchTerm);
+    List<SearchTermEntity> getSearchTerms(String searchTerm);
+
+    List<ExploreFoodEntity> getExploreFood();
 }

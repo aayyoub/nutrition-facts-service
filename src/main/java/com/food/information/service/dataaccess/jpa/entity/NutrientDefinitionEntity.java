@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "nutrient_definition", schema = "nutrient_database")
-public class NutrientDefinition {
+public class NutrientDefinitionEntity {
     private String nutrientNumber;
     private String units;
     private String tagname;

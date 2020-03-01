@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "food_description", schema = "nutrient_database")
-public class SearchTerm {
+public class SearchTermEntity {
     private String foodDescriptionId;
     private String longDescription;
 

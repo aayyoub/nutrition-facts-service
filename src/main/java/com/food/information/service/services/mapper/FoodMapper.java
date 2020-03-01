@@ -1,6 +1,6 @@
 package com.food.information.service.services.mapper;
 
-import com.food.information.service.dataaccess.jpa.entity.FoodDescription;
+import com.food.information.service.dataaccess.jpa.entity.FoodDescriptionEntity;
 import com.food.information.service.domain.formatter.DecimalFormatter;
 import com.food.information.service.domain.model.Food;
 import com.food.information.service.domain.model.Nutrient;
@@ -18,24 +18,24 @@ public class FoodMapper {
         this.decimalFormatter = decimalFormatter;
     }
 
-    public Food mapFood(FoodDescription foodDescription) {
+    public Food mapFood(FoodDescriptionEntity foodDescriptionEntity) {
         Food food = new Food();
-        food.setFoodId(foodDescription.getFoodDescriptionId());
-        food.setShortDescription(foodDescription.getShortDescription());
-        food.setLongDescription(foodDescription.getLongDescription());
+        food.setFoodId(foodDescriptionEntity.getFoodDescriptionId());
+        food.setShortDescription(foodDescriptionEntity.getShortDescription());
+        food.setLongDescription(foodDescriptionEntity.getLongDescription());
 
-        Map<String, Nutrient> nutrients = foodDescription.getNutrientData()
+        Map<String, Nutrient> nutrients = foodDescriptionEntity.getNutrientDatumEntities()
                 .stream()
                 .map(nutrientData -> {
                     Nutrient nutrient = new Nutrient();
                     nutrient.setId(nutrientData.getNutrientNumber());
                     nutrient.setValue(nutrientData.getNutrientValue());
-                    nutrient.setUnit(nutrientData.getNutrientDefinition().getUnits());
-                    nutrient.setRoundedToDecimal(Integer.valueOf(nutrientData.getNutrientDefinition().getRoundedToDecimal()));
-                    nutrient.setDescription(nutrientData.getNutrientDefinition().getNutrientDescription());
-                    nutrient.setTagname(nutrientData.getNutrientDefinition().getTagname());
-                    nutrient.setDailyValue(nutrientData.getNutrientDefinition().getNutrientDailyValue());
-                    nutrient.setSortOrder(nutrientData.getNutrientDefinition().getSortOrder());
+                    nutrient.setUnit(nutrientData.getNutrientDefinitionEntity().getUnits());
+                    nutrient.setRoundedToDecimal(Integer.valueOf(nutrientData.getNutrientDefinitionEntity().getRoundedToDecimal()));
+                    nutrient.setDescription(nutrientData.getNutrientDefinitionEntity().getNutrientDescription());
+                    nutrient.setTagname(nutrientData.getNutrientDefinitionEntity().getTagname());
+                    nutrient.setDailyValue(nutrientData.getNutrientDefinitionEntity().getNutrientDailyValue());
+                    nutrient.setSortOrder(nutrientData.getNutrientDefinitionEntity().getSortOrder());
 
                     return nutrient;
                 })

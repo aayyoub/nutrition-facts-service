@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "nutrient_data", schema = "nutrient_database")
-public class NutrientData {
+public class NutrientDataEntity {
     private String nutrientDataId;
     private String nutrientNumber;
     private Double nutrientValue;
@@ -29,7 +29,7 @@ public class NutrientData {
     private String statisticalComments;
     private String addedModifiedDate;
     private String confidenceCode;
-    private NutrientDefinition nutrientDefinition;
+    private NutrientDefinitionEntity nutrientDefinitionEntity;
 
     @Column(name = "nutrient_data_id", length = 5)
     public String getNutrientDataId() {
@@ -196,11 +196,11 @@ public class NutrientData {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "nutrient_number", insertable = false, updatable = false)
-    public NutrientDefinition getNutrientDefinition() {
-        return nutrientDefinition;
+    public NutrientDefinitionEntity getNutrientDefinitionEntity() {
+        return nutrientDefinitionEntity;
     }
 
-    public void setNutrientDefinition(NutrientDefinition nutrientDefinition) {
-        this.nutrientDefinition = nutrientDefinition;
+    public void setNutrientDefinitionEntity(NutrientDefinitionEntity nutrientDefinitionEntity) {
+        this.nutrientDefinitionEntity = nutrientDefinitionEntity;
     }
 }

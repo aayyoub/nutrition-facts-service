@@ -21,7 +21,8 @@ public class FoodFormatter {
     private final NutrientGroupBuilder nutrientGroupBuilder;
 
     @Autowired
-    public FoodFormatter(PercentDailyValueCalculator percentDailyValueCalculator, ValueFormatter valueFormatter, DecimalFormatter decimalFormatter, DescriptionsFormatter descriptionsFormatter, CalorieFormatter calorieFormatter
+    public FoodFormatter(PercentDailyValueCalculator percentDailyValueCalculator, ValueFormatter valueFormatter, DecimalFormatter decimalFormatter,
+                         DescriptionsFormatter descriptionsFormatter, CalorieFormatter calorieFormatter
             , NutritionFactsBuilder nutritionFactsBuilder,
                          CaloricPyramidCalculator caloricPyramidCalculator, NutrientGroupBuilder nutrientGroupBuilder) {
         this.percentDailyValueCalculator = percentDailyValueCalculator;

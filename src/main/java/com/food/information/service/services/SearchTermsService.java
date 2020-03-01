@@ -1,6 +1,6 @@
 package com.food.information.service.services;
 
-import com.food.information.service.dataaccess.jpa.entity.SearchTerm;
+import com.food.information.service.dataaccess.jpa.entity.SearchTermEntity;
 import com.food.information.service.dataaccess.jpa.repository.FoodRepository;
 import com.food.information.service.domain.model.SuggestedSearchTerm;
 import org.springframework.stereotype.Component;
@@ -9,26 +9,26 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class GetSearchTermsService {
+public class SearchTermsService {
     private final FoodRepository foodRepository;
 
-    public GetSearchTermsService(FoodRepository foodRepository) {
+    public SearchTermsService(FoodRepository foodRepository) {
         this.foodRepository = foodRepository;
     }
 
     public List<SuggestedSearchTerm> getSearchTerms(String foodName) {
-        List<SearchTerm> searchTermList = foodRepository.getSearchTerms(foodName);
+        List<SearchTermEntity> searchTermEntityList = foodRepository.getSearchTerms(foodName);
 
-        return searchTermList
+        return searchTermEntityList
                 .stream()
                 .map(this::buildSuggestedSearchTerm)
                 .collect(Collectors.toList());
     }
 
-    private SuggestedSearchTerm buildSuggestedSearchTerm(SearchTerm searchTerm) {
+    private SuggestedSearchTerm buildSuggestedSearchTerm(SearchTermEntity searchTermEntity) {
         SuggestedSearchTerm suggestedSearchTerm = new SuggestedSearchTerm();
-        suggestedSearchTerm.setSearchTerm(searchTerm.getLongDescription().toLowerCase());
-        suggestedSearchTerm.setValue(searchTerm.getFoodDescriptionId());
+        suggestedSearchTerm.setSearchTerm(searchTermEntity.getLongDescription().toLowerCase());
+        suggestedSearchTerm.setValue(searchTermEntity.getFoodDescriptionId());
 
         return suggestedSearchTerm;
     }
