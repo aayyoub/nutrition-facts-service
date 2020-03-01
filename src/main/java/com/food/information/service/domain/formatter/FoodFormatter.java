@@ -14,7 +14,7 @@ public class FoodFormatter {
     private final PercentDailyValueCalculator percentDailyValueCalculator;
     private final ValueFormatter valueFormatter;
     private final DecimalFormatter decimalFormatter;
-    private final DescriptionsFormatter descriptionsFormatter;
+    private final TextFormatter textFormatter;
     private final CalorieFormatter calorieFormatter;
     private final NutritionFactsBuilder nutritionFactsBuilder;
     private final CaloricPyramidCalculator caloricPyramidCalculator;
@@ -22,13 +22,13 @@ public class FoodFormatter {
 
     @Autowired
     public FoodFormatter(PercentDailyValueCalculator percentDailyValueCalculator, ValueFormatter valueFormatter, DecimalFormatter decimalFormatter,
-                         DescriptionsFormatter descriptionsFormatter, CalorieFormatter calorieFormatter
+                         TextFormatter textFormatter, CalorieFormatter calorieFormatter
             , NutritionFactsBuilder nutritionFactsBuilder,
                          CaloricPyramidCalculator caloricPyramidCalculator, NutrientGroupBuilder nutrientGroupBuilder) {
         this.percentDailyValueCalculator = percentDailyValueCalculator;
         this.valueFormatter = valueFormatter;
         this.decimalFormatter = decimalFormatter;
-        this.descriptionsFormatter = descriptionsFormatter;
+        this.textFormatter = textFormatter;
         this.calorieFormatter = calorieFormatter;
         this.nutritionFactsBuilder = nutritionFactsBuilder;
         this.caloricPyramidCalculator = caloricPyramidCalculator;
@@ -40,8 +40,8 @@ public class FoodFormatter {
 
         FoodNutritionalDetails foodNutritionalDetails = new FoodNutritionalDetails();
         foodNutritionalDetails.setShortDescription(food.getShortDescription());
-        foodNutritionalDetails.setLongDescription(food.getLongDescription());
-        foodNutritionalDetails.setFormattedDescription(descriptionsFormatter.format(food.getLongDescription()));
+        foodNutritionalDetails.setLongDescription(textFormatter.formatTitle(food.getLongDescription()));
+        foodNutritionalDetails.setFormattedDescription(textFormatter.formatDescription(food.getLongDescription()));
         foodNutritionalDetails.setFormattedCalories(calorieFormatter.format(food.getNutrients()));
         foodNutritionalDetails.setNutritionFacts(nutritionFactsBuilder.buildNutritionFacts(food.getNutrients()));
         foodNutritionalDetails.setCaloricPyramid(caloricPyramidCalculator.calculateCaloricPyramid(food.getNutrients()));
