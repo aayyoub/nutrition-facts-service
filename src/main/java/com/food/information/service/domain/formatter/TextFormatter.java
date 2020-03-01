@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component;
 public class TextFormatter {
     private static final String FORMATTED_DESCRIPTION = "Nutritional facts for %s (per 100 grams)";
 
-    public String formatTitle(String longDescription) {
-        if (longDescription == null || longDescription.length() == 0) {
+    public String formatTitle(String title) {
+        if (title == null || title.length() == 0) {
             return "";
         }
 
-        return String.format(FORMATTED_DESCRIPTION, WordUtils.capitalizeFully(longDescription));
+        return WordUtils.capitalizeFully(title);
     }
 
     public String formatDescription(String longDescription) {
