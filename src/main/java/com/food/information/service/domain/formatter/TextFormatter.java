@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TextFormatter {
-    private static final String FORMATTED_DESCRIPTION = "Nutritional facts for %s (per 100 grams)";
+    private static final String FORMATTED_DESCRIPTION = "Nutrition facts for %s (per 100 grams)";
 
     public String formatTitle(String title) {
         if (title == null || title.length() == 0) {
