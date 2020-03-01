@@ -3,10 +3,10 @@ This project is a Spring Boot API that searches for and retrieves nutritional da
 
 ## Rest API endpoints
 Search API
-http://api.food-information.com/search?searchTerm=chocolate
+https://api.nutritionfacts.io/search?searchTerm=chocolate
 
 Get Food API
-http://api.food-information.com/food?foodId=19125
+https://api.nutritionfacts.io/food?foodId=19125
 
 ## Prerequisites
 MySQL database must be running locally.
