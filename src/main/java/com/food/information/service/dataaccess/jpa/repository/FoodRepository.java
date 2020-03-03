@@ -12,4 +12,6 @@ public interface FoodRepository {
     List<SearchTermEntity> getSearchTerms(String searchTerm);
 
     List<ExploreFoodEntity> getExploreFood();
+
+    List<SearchTermEntity> getAllLinks();
 }

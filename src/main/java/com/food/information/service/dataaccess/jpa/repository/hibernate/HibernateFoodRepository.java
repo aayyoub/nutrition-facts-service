@@ -55,5 +55,15 @@ public class HibernateFoodRepository implements FoodRepository {
                 )
                 .getResultList();
     }
+
+    @Override
+    public List<SearchTermEntity> getAllLinks() {
+        return (List<SearchTermEntity>) entityManager
+                .createNativeQuery(
+                        "SELECT * FROM food_description ",
+                        SearchTermEntity.class
+                )
+                .getResultList();
+    }
 }
 
