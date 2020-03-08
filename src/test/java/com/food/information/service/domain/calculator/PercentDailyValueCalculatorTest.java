@@ -11,10 +11,10 @@ public class PercentDailyValueCalculatorTest {
         return new Object[][]{
                 {5.0, 5.0, "100%"},
                 {1.0, 4.0, "25%"},
-                {0.0, 100.0, "0%"},
+                {0.0, 100.0, ""},
                 {5.0, 1.0, "500%"},
-                {null, 100.0, "0%"},
-                {5.0, null, "0%"},
+                {null, 100.0, ""},
+                {5.0, null, ""},
         };
     }
 
