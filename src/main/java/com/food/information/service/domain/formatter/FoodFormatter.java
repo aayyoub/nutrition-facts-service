@@ -21,9 +21,9 @@ public class FoodFormatter {
     private final NutrientGroupBuilder nutrientGroupBuilder;
 
     @Autowired
-    public FoodFormatter(PercentDailyValueCalculator percentDailyValueCalculator, ValueFormatter valueFormatter, DecimalFormatter decimalFormatter,
-                         TextFormatter textFormatter, CalorieFormatter calorieFormatter
-            , NutritionFactsBuilder nutritionFactsBuilder,
+    public FoodFormatter(PercentDailyValueCalculator percentDailyValueCalculator, ValueFormatter valueFormatter,
+                         DecimalFormatter decimalFormatter, TextFormatter textFormatter,
+                         CalorieFormatter calorieFormatter, NutritionFactsBuilder nutritionFactsBuilder,
                          CaloricPyramidCalculator caloricPyramidCalculator, NutrientGroupBuilder nutrientGroupBuilder) {
         this.percentDailyValueCalculator = percentDailyValueCalculator;
         this.valueFormatter = valueFormatter;
@@ -36,16 +36,16 @@ public class FoodFormatter {
     }
 
     public FoodNutritionalDetails formatFood(Food food) {
-        formatNutrientValues(food);
+        Food formattedFood = formatNutrientValues(food);
 
         FoodNutritionalDetails foodNutritionalDetails = new FoodNutritionalDetails();
-        foodNutritionalDetails.setShortDescription(food.getShortDescription());
-        foodNutritionalDetails.setLongDescription(textFormatter.formatTitle(food.getLongDescription()));
-        foodNutritionalDetails.setFormattedDescription(textFormatter.formatDescription(food.getLongDescription()));
-        foodNutritionalDetails.setFormattedCalories(calorieFormatter.format(food.getNutrients()));
-        foodNutritionalDetails.setNutritionFacts(nutritionFactsBuilder.buildNutritionFacts(food.getNutrients()));
-        foodNutritionalDetails.setCaloricPyramid(caloricPyramidCalculator.calculateCaloricPyramid(food.getNutrients()));
-        foodNutritionalDetails.setNutrientGroups(nutrientGroupBuilder.buildNutrientGroups(food.getNutrients()));
+        foodNutritionalDetails.setShortDescription(formattedFood.getShortDescription());
+        foodNutritionalDetails.setLongDescription(textFormatter.formatTitle(formattedFood.getLongDescription()));
+        foodNutritionalDetails.setFormattedDescription(textFormatter.formatDescription(formattedFood.getLongDescription()));
+        foodNutritionalDetails.setFormattedCalories(calorieFormatter.format(formattedFood.getNutrients()));
+        foodNutritionalDetails.setNutritionFacts(nutritionFactsBuilder.buildNutritionFacts(formattedFood.getNutrients()));
+        foodNutritionalDetails.setCaloricPyramid(caloricPyramidCalculator.calculateCaloricPyramid(formattedFood.getNutrients()));
+        foodNutritionalDetails.setNutrientGroups(nutrientGroupBuilder.buildNutrientGroups(formattedFood.getNutrients()));
 
         return foodNutritionalDetails;
     }
@@ -53,9 +53,14 @@ public class FoodFormatter {
     private Food formatNutrientValues(Food food) {
         food.getNutrients().forEach((id, nutrient) -> {
             //TODO refactor the below and add unit tests
-            nutrient.setValueRounded(decimalFormatter.formatDecimals(nutrient.getValue(), nutrient.getRoundedToDecimal()));
+            nutrient.setValueRounded(decimalFormatter.formatDecimals(nutrient.getValue(),
+                    nutrient.getRoundedToDecimal()));
+
             nutrient.setValueFormatted(valueFormatter.formatValue(nutrient.getValue(), nutrient.getUnit()));
-            nutrient.setPercentDailyValue(percentDailyValueCalculator.calculatePercentDailyValue(nutrient.getValue(), nutrient.getDailyValue()));
+
+            nutrient.setPercentDailyValue(percentDailyValueCalculator.calculatePercentDailyValue(nutrient.getValue(),
+                            nutrient.getDailyValue()));
+
             nutrient.setPercentDailyValueFormatted(percentDailyValueCalculator.calculatePercentDailyValueFormatted(nutrient.getValue(), nutrient.getDailyValue()));
         });
 

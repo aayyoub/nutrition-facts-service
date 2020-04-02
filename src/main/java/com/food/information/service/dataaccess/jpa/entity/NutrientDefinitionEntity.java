@@ -3,7 +3,10 @@ package com.food.information.service.dataaccess.jpa.entity;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -14,8 +17,8 @@ public class NutrientDefinitionEntity {
     private String tagname;
     private String nutrientDescription;
     private String roundedToDecimal;
-    private Double nutrientDailyValue;
     private Integer sortOrder;
+    private NutrientExtraInformationEntity nutrientExtraInformationEntity;
 
     @Id
     @Column(name = "nutrient_number", nullable = false, length = 3)
@@ -68,16 +71,6 @@ public class NutrientDefinitionEntity {
     }
 
     @Basic
-    @Column(name = "nutrient_daily_value", precision = 3)
-    public Double getNutrientDailyValue() {
-        return nutrientDailyValue;
-    }
-
-    public void setNutrientDailyValue(Double nutrientDailyValue) {
-        this.nutrientDailyValue = nutrientDailyValue;
-    }
-
-    @Basic
     @Column(name = "sort_order", length = 6)
     public Integer getSortOrder() {
         return sortOrder;
@@ -85,5 +78,15 @@ public class NutrientDefinitionEntity {
 
     public void setSortOrder(Integer sortOrder) {
         this.sortOrder = sortOrder;
+    }
+
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "nutrient_number", insertable = false, updatable = false)
+    public NutrientExtraInformationEntity getNutrientExtraInformationEntity() {
+        return nutrientExtraInformationEntity;
+    }
+
+    public void setNutrientExtraInformationEntity(NutrientExtraInformationEntity nutrientExtraInformationEntity) {
+        this.nutrientExtraInformationEntity = nutrientExtraInformationEntity;
     }
 }

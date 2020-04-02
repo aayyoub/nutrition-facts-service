@@ -23,6 +23,7 @@ public class HibernateFoodRepository implements FoodRepository {
                         "SELECT * FROM food_description " +
                                 "JOIN nutrient_data ON food_description.food_description_id = nutrient_data.nutrient_data_id " +
                                 "JOIN nutrient_definition ON nutrient_data.nutrient_number = nutrient_definition.nutrient_number " +
+                                "JOIN nutrient_extra_information ON nutrient_definition.nutrient_number = nutrient_extra_information.nutrient_number " +
                                 "WHERE food_description.food_description_id = :foodDescriptionId " +
                                 "ORDER BY sort_order DESC",
                         FoodDescriptionEntity.class
