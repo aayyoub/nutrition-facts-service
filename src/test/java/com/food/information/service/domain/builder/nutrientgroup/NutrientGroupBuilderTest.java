@@ -2,7 +2,6 @@ package com.food.information.service.domain.builder.nutrientgroup;
 
 import com.food.information.service.domain.builder.nutrientgroup.grouper.MineralGrouper;
 import com.food.information.service.domain.builder.nutrientgroup.grouper.OtherGrouper;
-import com.food.information.service.domain.builder.nutrientgroup.grouper.OverviewGrouper;
 import com.food.information.service.domain.builder.nutrientgroup.grouper.VitaminGrouper;
 import com.food.information.service.domain.model.Nutrient;
 import com.food.information.service.domain.model.NutrientGroup;
@@ -40,7 +39,7 @@ public class NutrientGroupBuilderTest {
     }
 
     private void givenNutrientBuilder() {
-        List<NutrientGrouper> nutrientGroupers = Arrays.asList(new OverviewGrouper(), new VitaminGrouper(), new MineralGrouper(), new OtherGrouper());
+        List<NutrientGrouper> nutrientGroupers = Arrays.asList(new VitaminGrouper(), new MineralGrouper(), new OtherGrouper());
 
         nutrientGroupBuilder = new NutrientGroupBuilder(nutrientGroupers);
     }

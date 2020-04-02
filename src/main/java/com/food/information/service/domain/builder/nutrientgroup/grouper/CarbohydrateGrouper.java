@@ -8,15 +8,13 @@ import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class MineralGrouper extends AbstractNutrientGrouper {
-    private static final Integer RANK = 2;
-    private static final String GROUP_NAME = "minerals";
+public class CarbohydrateGrouper extends AbstractNutrientGrouper {
+    private static final Integer RANK = 4;
+    private static final String GROUP_NAME = "carbohydrates";
 
     @Override
     protected List<String> getRequiredNutrients() {
-        return Arrays.asList(NutrientId.CALCIUM, NutrientId.IRON, NutrientId.MAGNESIUM, NutrientId.PHOSPHORUS,
-                NutrientId.POTASSIUM, NutrientId.SODIUM, NutrientId.ZINC, NutrientId.COPPER, NutrientId.MANGANESE,
-                NutrientId.SELENIUM, NutrientId.FLUORIDE);
+        return Arrays.asList(NutrientId.CARBOHYDRATE, NutrientId.FIBER, NutrientId.STARCH, NutrientId.TOTAL_SUGAR);
     }
 
     @Override

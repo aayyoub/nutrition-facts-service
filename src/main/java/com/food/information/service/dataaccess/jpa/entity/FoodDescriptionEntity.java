@@ -27,7 +27,7 @@ public class FoodDescriptionEntity {
     private Double proFactor;
     private Double fatFactor;
     private Double choFactor;
-    private List<NutrientDataEntity> nutrientDatumEntities;
+    private List<NutrientDataEntity> nutrientDataEntities;
 
     @Id
     @Column(name = "food_description_id", nullable = false, length = 5)
@@ -171,11 +171,11 @@ public class FoodDescriptionEntity {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "nutrient_data_id")
-    public List<NutrientDataEntity> getNutrientDatumEntities() {
-        return nutrientDatumEntities;
+    public List<NutrientDataEntity> getNutrientDataEntities() {
+        return nutrientDataEntities;
     }
 
-    public void setNutrientDatumEntities(List<NutrientDataEntity> nutrientDatumEntities) {
-        this.nutrientDatumEntities = nutrientDatumEntities;
+    public void setNutrientDataEntities(List<NutrientDataEntity> nutrientDataEntities) {
+        this.nutrientDataEntities = nutrientDataEntities;
     }
 }

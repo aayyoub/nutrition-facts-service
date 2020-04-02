@@ -1,19 +1,20 @@
 package com.food.information.service.domain.builder.nutrientgroup.grouper;
 
 import com.food.information.service.domain.builder.nutrientgroup.AbstractNutrientGrouper;
+import com.food.information.service.domain.util.NutrientId;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class OverviewGrouper extends AbstractNutrientGrouper {
-    private static final Integer RANK = 1;
-    private static final String GROUP_NAME = "overview";
+public class SterolGrouper extends AbstractNutrientGrouper {
+    private static final Integer RANK = 6;
+    private static final String GROUP_NAME = "sterols";
 
     @Override
     protected List<String> getRequiredNutrients() {
-        return Arrays.asList("WATER", "ENERC_KCAL", "ENERC_KJ", "ASH", "PROCNT", "FAT", "CHOCDF", "FIBTG", "SUGAR");
+        return Arrays.asList(NutrientId.CHOLESTEROL, NutrientId.PHYTOSTEROLS);
     }
 
     @Override

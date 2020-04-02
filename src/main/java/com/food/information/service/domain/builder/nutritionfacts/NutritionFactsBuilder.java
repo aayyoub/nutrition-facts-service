@@ -18,15 +18,15 @@ public class NutritionFactsBuilder {
 
     public NutritionFacts buildNutritionFacts(Map<String, Nutrient> nutrients) {
         Nutrient calories = nutrientExtractor.extractNutrient(NutrientId.ENERGY_KCAL, nutrients);
-        Nutrient fat = nutrientExtractor.extractNutrient(NutrientId.FAT, nutrients);
-        Nutrient saturatedFat = nutrientExtractor.extractNutrient(NutrientId.SATURATED_FAT, nutrients);
-        Nutrient transFat = nutrientExtractor.extractNutrient(NutrientId.TRANS_FAT, nutrients);
+        Nutrient fat = nutrientExtractor.extractNutrient(NutrientId.TOTAL_FAT, nutrients);
+        Nutrient saturatedFat = nutrientExtractor.extractNutrient(NutrientId.TOTAL_SATURATED_FATTY_ACIDS, nutrients);
+        Nutrient transFat = nutrientExtractor.extractNutrient(NutrientId.TOTAL_TRANS_FATTY_ACIDS, nutrients);
         Nutrient cholesterol = nutrientExtractor.extractNutrient(NutrientId.CHOLESTEROL, nutrients);
         Nutrient sodium = nutrientExtractor.extractNutrient(NutrientId.SODIUM, nutrients);
         Nutrient totalCarbohydrate = nutrientExtractor.extractNutrient(NutrientId.CARBOHYDRATE, nutrients);
         Nutrient dietaryFiber = nutrientExtractor.extractNutrient(NutrientId.FIBER, nutrients);
-        Nutrient sugar = nutrientExtractor.extractNutrient(NutrientId.SUGARS, nutrients);
-        Nutrient protein = nutrientExtractor.extractNutrient(NutrientId.PROTEIN, nutrients);
+        Nutrient sugar = nutrientExtractor.extractNutrient(NutrientId.TOTAL_SUGAR, nutrients);
+        Nutrient protein = nutrientExtractor.extractNutrient(NutrientId.TOTAL_PROTEIN, nutrients);
 
         NutritionFacts nutritionFacts = new NutritionFacts();
         nutritionFacts.setCaloriesValueFormatted(calories.getValueRounded());

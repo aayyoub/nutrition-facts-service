@@ -24,8 +24,9 @@ public class Nutrient {
     private Double percentDailyValue;
     private String percentDailyValueFormatted;
     private Integer sortOrder;
+    private Boolean displayTop;
 
     public static Nutrient empty() {
-        return new Nutrient("0", 0.0, "", "", "", 0, "", "", 0.0, 0.0, "", 0);
+        return new Nutrient("0", 0.0, "", "", "", 0, "", "", 0.0, 0.0, "", 0, false);
     }
 }

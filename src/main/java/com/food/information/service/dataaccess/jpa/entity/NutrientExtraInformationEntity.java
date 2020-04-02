@@ -14,6 +14,7 @@ public class NutrientExtraInformationEntity {
     private String nutrientNumber;
     private String nutrientInformation;
     private Double nutrientDailyValue;
+    private Boolean displayTop;
 
     @Id
     @Column(name = "nutrient_number", nullable = false, length = 3)
@@ -43,5 +44,15 @@ public class NutrientExtraInformationEntity {
 
     public void setNutrientDailyValue(Double nutrientDailyValue) {
         this.nutrientDailyValue = nutrientDailyValue;
+    }
+
+    @Basic
+    @Column(name = "display_top", length = 1)
+    public Boolean getDisplayTop() {
+        return displayTop;
+    }
+
+    public void setDisplayTop(Boolean displayTop) {
+        this.displayTop = displayTop;
     }
 }

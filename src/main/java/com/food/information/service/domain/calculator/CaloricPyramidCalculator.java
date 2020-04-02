@@ -24,8 +24,8 @@ public class CaloricPyramidCalculator {
     public CaloricPyramid calculateCaloricPyramid(Map<String, Nutrient> nutrients) {
         Nutrient alcohol = nutrientExtractor.extractNutrient(NutrientId.ALCOHOL, nutrients);
         Nutrient carbohydrate = nutrientExtractor.extractNutrient(NutrientId.CARBOHYDRATE, nutrients);
-        Nutrient fat = nutrientExtractor.extractNutrient(NutrientId.FAT, nutrients);
-        Nutrient protein = nutrientExtractor.extractNutrient(NutrientId.PROTEIN, nutrients);
+        Nutrient fat = nutrientExtractor.extractNutrient(NutrientId.TOTAL_FAT, nutrients);
+        Nutrient protein = nutrientExtractor.extractNutrient(NutrientId.TOTAL_PROTEIN, nutrients);
 
         double gramsOfAlcohol = alcohol.getValue();
         double gramsOfCarbohydrate = carbohydrate.getValue();

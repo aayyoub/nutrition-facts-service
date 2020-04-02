@@ -2,7 +2,6 @@ package com.food.information.service.services.mapper;
 
 import com.food.information.service.dataaccess.jpa.entity.FoodDescriptionEntity;
 import com.food.information.service.dataaccess.jpa.entity.NutrientDataEntity;
-import com.food.information.service.domain.formatter.DecimalFormatter;
 import com.food.information.service.domain.model.Food;
 import com.food.information.service.domain.model.Nutrient;
 import org.springframework.stereotype.Component;
@@ -19,7 +18,7 @@ public class FoodMapper {
         food.setShortDescription(foodDescriptionEntity.getShortDescription());
         food.setLongDescription(foodDescriptionEntity.getLongDescription());
 
-        Map<String, Nutrient> nutrients = foodDescriptionEntity.getNutrientDatumEntities()
+        Map<String, Nutrient> nutrients = foodDescriptionEntity.getNutrientDataEntities()
                 .stream()
                 .map(this::buildNutrient)
                 .collect(Collectors.toMap(Nutrient::getId, Function.identity()));
@@ -39,6 +38,7 @@ public class FoodMapper {
         nutrient.setTagname(nutrientDataEntity.getNutrientDefinitionEntity().getTagname());
         nutrient.setDailyValue(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getNutrientDailyValue());
         nutrient.setSortOrder(nutrientDataEntity.getNutrientDefinitionEntity().getSortOrder());
+        nutrient.setDisplayTop(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getDisplayTop());
 
         return nutrient;
     }
