@@ -7,10 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "nutrient_data", schema = "nutrient_database")
-public class NutrientDataEntity {
+public class NutrientDataEntity implements Serializable {
     private String nutrientDataId;
     private String nutrientNumber;
     private Double nutrientValue;
@@ -31,6 +32,7 @@ public class NutrientDataEntity {
     private String confidenceCode;
     private NutrientDefinitionEntity nutrientDefinitionEntity;
 
+    @Id
     @Column(name = "nutrient_data_id", length = 5)
     public String getNutrientDataId() {
         return nutrientDataId;

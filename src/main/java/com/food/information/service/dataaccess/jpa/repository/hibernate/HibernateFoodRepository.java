@@ -20,12 +20,8 @@ public class HibernateFoodRepository implements FoodRepository {
     public FoodDescriptionEntity getFood(String foodId) {
         return (FoodDescriptionEntity) entityManager
                 .createNativeQuery(
-                        "SELECT * FROM food_description " +
-                                "JOIN nutrient_data ON food_description.food_description_id = nutrient_data.nutrient_data_id " +
-                                "JOIN nutrient_definition ON nutrient_data.nutrient_number = nutrient_definition.nutrient_number " +
-                                "JOIN nutrient_extra_information ON nutrient_definition.nutrient_number = nutrient_extra_information.nutrient_number " +
-                                "WHERE food_description.food_description_id = :foodDescriptionId " +
-                                "ORDER BY sort_order DESC",
+                        "SELECT * FROM food_description WHERE food_description.food_description_id = " +
+                                ":foodDescriptionId",
                         FoodDescriptionEntity.class
                 )
                 .setParameter("foodDescriptionId", foodId)
@@ -36,8 +32,10 @@ public class HibernateFoodRepository implements FoodRepository {
         return (List<SearchTermEntity>) entityManager
                 .createNativeQuery(
                         "SELECT * FROM food_description " +
-                                "WHERE food_description.long_description LIKE :foodNameBeginsWith OR food_description.long_description LIKE :foodNameAnyMatch " +
-                                "ORDER BY CASE WHEN food_description.long_description LIKE :foodNameBeginsWith THEN 1 ELSE 2 END " +
+                                "WHERE food_description.long_description LIKE :foodNameBeginsWith OR food_description" +
+                                ".long_description LIKE :foodNameAnyMatch " +
+                                "ORDER BY CASE WHEN food_description.long_description LIKE :foodNameBeginsWith THEN 1" +
+                                " ELSE 2 END " +
                                 "LIMIT 0, 20",
                         SearchTermEntity.class
                 )

@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "food_description", schema = "nutrient_database")
@@ -27,7 +27,8 @@ public class FoodDescriptionEntity {
     private Double proFactor;
     private Double fatFactor;
     private Double choFactor;
-    private List<NutrientDataEntity> nutrientDataEntities;
+    private Set<WeightEntity> weightEntities;
+    private Set<NutrientDataEntity> nutrientDataEntities;
 
     @Id
     @Column(name = "food_description_id", nullable = false, length = 5)
@@ -170,12 +171,22 @@ public class FoodDescriptionEntity {
     }
 
     @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "weight_id")
+    public Set<WeightEntity> getWeightEntities() {
+        return weightEntities;
+    }
+
+    public void setWeightEntities(Set<WeightEntity> weightEntities) {
+        this.weightEntities = weightEntities;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "nutrient_data_id")
-    public List<NutrientDataEntity> getNutrientDataEntities() {
+    public Set<NutrientDataEntity> getNutrientDataEntities() {
         return nutrientDataEntities;
     }
 
-    public void setNutrientDataEntities(List<NutrientDataEntity> nutrientDataEntities) {
+    public void setNutrientDataEntities(Set<NutrientDataEntity> nutrientDataEntities) {
         this.nutrientDataEntities = nutrientDataEntities;
     }
 }

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -15,4 +16,5 @@ public class FoodNutritionalDetails {
     private NutritionFacts nutritionFacts;
     private CaloricPyramid caloricPyramid;
     private List<NutrientGroup> nutrientGroups;
+    private Set<ServingSize> servingSizes;
 }

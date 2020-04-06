@@ -46,6 +46,7 @@ public class FoodFormatter {
         foodNutritionalDetails.setNutritionFacts(nutritionFactsBuilder.buildNutritionFacts(formattedFood.getNutrients()));
         foodNutritionalDetails.setCaloricPyramid(caloricPyramidCalculator.calculateCaloricPyramid(formattedFood.getNutrients()));
         foodNutritionalDetails.setNutrientGroups(nutrientGroupBuilder.buildNutrientGroups(formattedFood.getNutrients()));
+        foodNutritionalDetails.setServingSizes(food.getServingSizes());
 
         return foodNutritionalDetails;
     }
