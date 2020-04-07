@@ -24,9 +24,10 @@ public class Nutrient {
     private Double percentDailyValue;
     private String percentDailyValueFormatted;
     private Integer sortOrder;
-    private Boolean displayTop;
+    private Boolean macronutrient;
+    private Boolean subcomponent;
 
     public static Nutrient empty() {
-        return new Nutrient("0", 0.0, "", "", "", 0, "", "", 0.0, 0.0, "", 0, false);
+        return Nutrient.builder().id("00000").value(0.0).valueRounded("").valueFormatted("").unit("").roundedToDecimal(0).description("").tagname("").dailyValue(0.0).percentDailyValue(0.0).percentDailyValueFormatted("").sortOrder(0).macronutrient(false).subcomponent(false).build();
     }
 }

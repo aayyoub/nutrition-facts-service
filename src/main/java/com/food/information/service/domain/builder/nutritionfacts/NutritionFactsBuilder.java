@@ -19,8 +19,8 @@ public class NutritionFactsBuilder {
     public NutritionFacts buildNutritionFacts(Map<String, Nutrient> nutrients) {
         Nutrient calories = nutrientExtractor.extractNutrient(NutrientId.ENERGY_KCAL, nutrients);
         Nutrient fat = nutrientExtractor.extractNutrient(NutrientId.TOTAL_FAT, nutrients);
-        Nutrient saturatedFat = nutrientExtractor.extractNutrient(NutrientId.TOTAL_SATURATED_FATTY_ACIDS, nutrients);
-        Nutrient transFat = nutrientExtractor.extractNutrient(NutrientId.TOTAL_TRANS_FATTY_ACIDS, nutrients);
+        Nutrient saturatedFat = nutrientExtractor.extractNutrient(NutrientId.FATTY_ACIDS_TOTAL_SATURATED, nutrients);
+        Nutrient transFat = nutrientExtractor.extractNutrient(NutrientId.FATTY_ACIDS_TOTAL_TRANS, nutrients);
         Nutrient cholesterol = nutrientExtractor.extractNutrient(NutrientId.CHOLESTEROL, nutrients);
         Nutrient sodium = nutrientExtractor.extractNutrient(NutrientId.SODIUM, nutrients);
         Nutrient totalCarbohydrate = nutrientExtractor.extractNutrient(NutrientId.CARBOHYDRATE, nutrients);

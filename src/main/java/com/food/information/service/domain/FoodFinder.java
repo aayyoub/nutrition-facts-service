@@ -16,9 +16,9 @@ public class FoodFinder {
         this.foodFormatter = foodFormatter;
     }
 
-    public FoodNutritionalDetails findFood(String foodId) {
+    public FoodNutritionalDetails findFood(String foodId, Integer servingSize) {
         Food food = foodService.getFood(foodId);
 
-        return foodFormatter.formatFood(food);
+        return foodFormatter.formatFood(food, servingSize);
     }
 }

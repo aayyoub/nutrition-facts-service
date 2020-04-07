@@ -14,11 +14,27 @@ public class ProteinGrouper extends AbstractNutrientGrouper {
 
     @Override
     protected List<String> getRequiredNutrients() {
-        return Arrays.asList(NutrientId.TOTAL_PROTEIN, NutrientId.ALANINE, NutrientId.ARGININE, NutrientId.ASPARTIC_ACID,
-                NutrientId.CYSTINE, NutrientId.GLUTAMIC_ACID, NutrientId.GLYCINE, NutrientId.HISTIDINE,
-                NutrientId.ISOLEUCINE, NutrientId.LEUCINE, NutrientId.LYSINE, NutrientId.METHIONINE,
-                NutrientId.PHENYLALANINE, NutrientId.PROLINE, NutrientId.SERINE, NutrientId.THREONINE, NutrientId.TRYPTOPHAN,
-                NutrientId.TYROSINE, NutrientId.VALINE, NutrientId.HYDROXYPROLINE);
+        return Arrays.asList(
+                NutrientId.TOTAL_PROTEIN,
+                NutrientId.ALANINE,
+                NutrientId.ARGININE,
+                NutrientId.ASPARTIC_ACID,
+                NutrientId.CYSTINE,
+                NutrientId.GLUTAMIC_ACID,
+                NutrientId.GLYCINE,
+                NutrientId.HISTIDINE,
+                NutrientId.ISOLEUCINE,
+                NutrientId.LEUCINE,
+                NutrientId.LYSINE,
+                NutrientId.METHIONINE,
+                NutrientId.PHENYLALANINE,
+                NutrientId.PROLINE,
+                NutrientId.SERINE,
+                NutrientId.THREONINE,
+                NutrientId.TRYPTOPHAN,
+                NutrientId.TYROSINE,
+                NutrientId.VALINE,
+                NutrientId.HYDROXYPROLINE);
     }
 
     @Override

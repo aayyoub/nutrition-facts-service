@@ -14,7 +14,8 @@ public class NutrientExtraInformationEntity {
     private String nutrientNumber;
     private String nutrientInformation;
     private Double nutrientDailyValue;
-    private Boolean displayTop;
+    private Boolean isMacronutrient;
+    private Boolean isSubcomponent;
 
     @Id
     @Column(name = "nutrient_number", nullable = false, length = 3)
@@ -47,12 +48,22 @@ public class NutrientExtraInformationEntity {
     }
 
     @Basic
-    @Column(name = "display_top", length = 1)
-    public Boolean getDisplayTop() {
-        return displayTop;
+    @Column(name = "is_macronutrient", length = 1)
+    public Boolean getMacronutrient() {
+        return isMacronutrient;
     }
 
-    public void setDisplayTop(Boolean displayTop) {
-        this.displayTop = displayTop;
+    public void setMacronutrient(Boolean macronutrient) {
+        isMacronutrient = macronutrient;
+    }
+
+    @Basic
+    @Column(name = "is_subcomponent", length = 1)
+    public Boolean getSubcomponent() {
+        return isSubcomponent;
+    }
+
+    public void setSubcomponent(Boolean subcomponent) {
+        isSubcomponent = subcomponent;
     }
 }

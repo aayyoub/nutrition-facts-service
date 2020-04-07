@@ -14,9 +14,18 @@ public class MineralGrouper extends AbstractNutrientGrouper {
 
     @Override
     protected List<String> getRequiredNutrients() {
-        return Arrays.asList(NutrientId.CALCIUM, NutrientId.IRON, NutrientId.MAGNESIUM, NutrientId.PHOSPHORUS,
-                NutrientId.POTASSIUM, NutrientId.SODIUM, NutrientId.ZINC, NutrientId.COPPER, NutrientId.MANGANESE,
-                NutrientId.SELENIUM, NutrientId.FLUORIDE);
+        return Arrays.asList(
+                NutrientId.CALCIUM,
+                NutrientId.IRON,
+                NutrientId.MAGNESIUM,
+                NutrientId.PHOSPHORUS,
+                NutrientId.POTASSIUM,
+                NutrientId.SODIUM,
+                NutrientId.ZINC,
+                NutrientId.COPPER,
+                NutrientId.MANGANESE,
+                NutrientId.SELENIUM,
+                NutrientId.FLUORIDE);
     }
 
     @Override

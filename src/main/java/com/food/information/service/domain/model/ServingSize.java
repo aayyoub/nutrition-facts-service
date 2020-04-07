@@ -12,7 +12,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 public class ServingSize {
-    private String order;
+    private Integer order;
     private String description;
     private Double gramWeight;
+
+    public static ServingSize empty() {
+        return new ServingSize(0, "", 1.0);
+    }
 }

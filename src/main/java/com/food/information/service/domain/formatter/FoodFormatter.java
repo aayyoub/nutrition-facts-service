@@ -4,13 +4,16 @@ import com.food.information.service.domain.builder.nutrientgroup.NutrientGroupBu
 import com.food.information.service.domain.builder.nutritionfacts.NutritionFactsBuilder;
 import com.food.information.service.domain.calculator.CaloricPyramidCalculator;
 import com.food.information.service.domain.calculator.PercentDailyValueCalculator;
+import com.food.information.service.domain.calculator.ServingSizeCalculator;
 import com.food.information.service.domain.model.Food;
 import com.food.information.service.domain.model.FoodNutritionalDetails;
+import com.food.information.service.domain.model.ServingSize;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class FoodFormatter {
+    private final ServingSizeCalculator servingSizeCalculator;
     private final PercentDailyValueCalculator percentDailyValueCalculator;
     private final ValueFormatter valueFormatter;
     private final DecimalFormatter decimalFormatter;
@@ -21,10 +24,11 @@ public class FoodFormatter {
     private final NutrientGroupBuilder nutrientGroupBuilder;
 
     @Autowired
-    public FoodFormatter(PercentDailyValueCalculator percentDailyValueCalculator, ValueFormatter valueFormatter,
+    public FoodFormatter(ServingSizeCalculator servingSizeCalculator, PercentDailyValueCalculator percentDailyValueCalculator, ValueFormatter valueFormatter,
                          DecimalFormatter decimalFormatter, TextFormatter textFormatter,
                          CalorieFormatter calorieFormatter, NutritionFactsBuilder nutritionFactsBuilder,
                          CaloricPyramidCalculator caloricPyramidCalculator, NutrientGroupBuilder nutrientGroupBuilder) {
+        this.servingSizeCalculator = servingSizeCalculator;
         this.percentDailyValueCalculator = percentDailyValueCalculator;
         this.valueFormatter = valueFormatter;
         this.decimalFormatter = decimalFormatter;
@@ -35,8 +39,8 @@ public class FoodFormatter {
         this.nutrientGroupBuilder = nutrientGroupBuilder;
     }
 
-    public FoodNutritionalDetails formatFood(Food food) {
-        Food formattedFood = formatNutrientValues(food);
+    public FoodNutritionalDetails formatFood(Food food, Integer servingSize) {
+        Food formattedFood = formatNutrientValues(food, servingSize);
 
         FoodNutritionalDetails foodNutritionalDetails = new FoodNutritionalDetails();
         foodNutritionalDetails.setShortDescription(formattedFood.getShortDescription());
@@ -51,9 +55,16 @@ public class FoodFormatter {
         return foodNutritionalDetails;
     }
 
-    private Food formatNutrientValues(Food food) {
+    private Food formatNutrientValues(Food food, Integer servingSize) {
         food.getNutrients().forEach((id, nutrient) -> {
-            //TODO refactor the below and add unit tests
+            ServingSize selectedServingSize = food.getServingSizes()
+                    .stream()
+                    .filter(serving -> serving.getOrder().equals(servingSize))
+                    .findAny()
+                    .orElse(ServingSize.empty());
+
+            nutrient.setValue(servingSizeCalculator.calculateValue(nutrient, selectedServingSize));
+
             nutrient.setValueRounded(decimalFormatter.formatDecimals(nutrient.getValue(),
                     nutrient.getRoundedToDecimal()));
 

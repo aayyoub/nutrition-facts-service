@@ -8,10 +8,10 @@ import com.food.information.service.domain.model.Nutrient;
 import com.food.information.service.domain.model.ServingSize;
 import org.springframework.stereotype.Component;
 
+import java.util.Comparator;
+import java.util.LinkedHashSet;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.toSet;
 
 @Component
 public class FoodMapper {
@@ -20,10 +20,13 @@ public class FoodMapper {
         food.setFoodId(foodDescriptionEntity.getFoodDescriptionId());
         food.setShortDescription(foodDescriptionEntity.getShortDescription());
         food.setLongDescription(foodDescriptionEntity.getLongDescription());
+
         food.setServingSizes(foodDescriptionEntity.getWeightEntities()
                 .stream()
                 .map(this::buildServingSize)
-                .collect(toSet()));
+                .sorted(Comparator.comparing(ServingSize::getOrder))
+                .collect(Collectors.toCollection(LinkedHashSet::new)));
+
         food.setNutrients(foodDescriptionEntity.getNutrientDataEntities()
                 .stream()
                 .map(this::buildNutrient)
@@ -42,7 +45,8 @@ public class FoodMapper {
         nutrient.setTagname(nutrientDataEntity.getNutrientDefinitionEntity().getTagname());
         nutrient.setDailyValue(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getNutrientDailyValue());
         nutrient.setSortOrder(nutrientDataEntity.getNutrientDefinitionEntity().getSortOrder());
-        nutrient.setDisplayTop(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getDisplayTop());
+        nutrient.setMacronutrient(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getMacronutrient());
+        nutrient.setSubcomponent(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getSubcomponent());
 
         return nutrient;
     }
@@ -51,7 +55,7 @@ public class FoodMapper {
         ServingSize servingSize = new ServingSize();
         servingSize.setDescription(weightEntity.getAmount() + " " + weightEntity.getMeasurementDescription());
         servingSize.setGramWeight(weightEntity.getGramWeight());
-        servingSize.setOrder(weightEntity.getSequenceNumber());
+        servingSize.setOrder(Integer.valueOf(weightEntity.getSequenceNumber()));
 
         return servingSize;
     }

@@ -15,7 +15,8 @@ public class FoodOrchestrator {
 
     public FoodNutritionalDetails getFood(GetFoodRequest getFoodRequest) {
         String foodId = getFoodRequest.getFoodId();
+        Integer servingSize = getFoodRequest.getServingSize();
 
-        return foodFinder.findFood(foodId);
+        return foodFinder.findFood(foodId, servingSize);
     }
 }

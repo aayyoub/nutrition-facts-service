@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Map;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -17,4 +18,5 @@ public class Food {
     private String shortDescription;
     private String longDescription;
     private Map<String, Nutrient> nutrients;
+    private Set<ServingSize> servingSizes;
 }

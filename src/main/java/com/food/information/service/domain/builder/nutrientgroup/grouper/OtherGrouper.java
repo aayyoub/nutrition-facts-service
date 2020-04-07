@@ -14,7 +14,11 @@ public class OtherGrouper extends AbstractNutrientGrouper {
 
     @Override
     protected List<String> getRequiredNutrients() {
-        return Arrays.asList(NutrientId.ALCOHOL, NutrientId.WATER, NutrientId.ASH, NutrientId.CAFFEINE,
+        return Arrays.asList(
+                NutrientId.WATER,
+                NutrientId.ASH,
+                NutrientId.ALCOHOL,
+                NutrientId.CAFFEINE,
                 NutrientId.THEOBROMINE);
     }
 

@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Component
 public class CalorieFormatter {
-    private static final String FORMATTED_CALORIES = "%.0f calories (per 100 grams)";
+    private static final String FORMATTED_CALORIES = "%.0f calories";
 
     public String format(Map<String, Nutrient> nutrients) {
         Double calories = nutrients.get(NutrientId.ENERGY_KCAL).getValue();

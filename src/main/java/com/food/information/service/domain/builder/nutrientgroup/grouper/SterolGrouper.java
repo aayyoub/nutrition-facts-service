@@ -1,6 +1,7 @@
 package com.food.information.service.domain.builder.nutrientgroup.grouper;
 
 import com.food.information.service.domain.builder.nutrientgroup.AbstractNutrientGrouper;
+import com.food.information.service.domain.model.Nutrient;
 import com.food.information.service.domain.util.NutrientId;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,13 @@ public class SterolGrouper extends AbstractNutrientGrouper {
 
     @Override
     protected List<String> getRequiredNutrients() {
-        return Arrays.asList(NutrientId.CHOLESTEROL, NutrientId.PHYTOSTEROLS);
+        return Arrays.asList(
+                NutrientId.CHOLESTEROL,
+                NutrientId.PHYTOSTEROLS,
+                NutrientId.STIGMASTEROL,
+                NutrientId.CAMPESTEROL,
+                NutrientId.BETASITOSTEROL
+        );
     }
 
     @Override

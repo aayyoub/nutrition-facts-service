@@ -14,7 +14,7 @@ public class CarbohydrateGrouper extends AbstractNutrientGrouper {
 
     @Override
     protected List<String> getRequiredNutrients() {
-        return Arrays.asList(NutrientId.CARBOHYDRATE, NutrientId.FIBER, NutrientId.STARCH, NutrientId.TOTAL_SUGAR);
+        return Arrays.asList(NutrientId.CARBOHYDRATE, NutrientId.FIBER, NutrientId.STARCH, NutrientId.TOTAL_SUGAR, NutrientId.SUCROSE, NutrientId.GLUCOSE, NutrientId.FRUCTOSE, NutrientId.LACTOSE, NutrientId.MALTOSE, NutrientId.GALACTOSE);
     }
 
     @Override
