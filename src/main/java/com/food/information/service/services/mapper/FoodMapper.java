@@ -17,16 +17,13 @@ import java.util.stream.Collectors;
 public class FoodMapper {
     public Food mapFood(FoodDescriptionEntity foodDescriptionEntity) {
         Food food = new Food();
-        food.setFoodId(foodDescriptionEntity.getFoodDescriptionId());
-        food.setShortDescription(foodDescriptionEntity.getShortDescription());
-        food.setLongDescription(foodDescriptionEntity.getLongDescription());
-
+        food.setId(foodDescriptionEntity.getFoodDescriptionId());
+        food.setName(foodDescriptionEntity.getLongDescription());
         food.setServingSizes(foodDescriptionEntity.getWeightEntities()
                 .stream()
                 .map(this::buildServingSize)
                 .sorted(Comparator.comparing(ServingSize::getOrder))
                 .collect(Collectors.toCollection(LinkedHashSet::new)));
-
         food.setNutrients(foodDescriptionEntity.getNutrientDataEntities()
                 .stream()
                 .map(this::buildNutrient)

@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TextFormatterTest {
+public class DescriptionFormatterTest {
     @DataProvider
     public Object[][] descriptionsFormatterDataProvider() {
         return new Object[][]{
@@ -18,8 +18,8 @@ public class TextFormatterTest {
 
     @Test(dataProvider = "descriptionsFormatterDataProvider")
     public void testDescriptionsFormatter(String longDescription, String expectedResult) {
-        TextFormatter textFormatter = new TextFormatter();
-        String actualResult = textFormatter.formatDescription(longDescription);
+        DescriptionFormatter descriptionFormatter = new DescriptionFormatter();
+        String actualResult = descriptionFormatter.formatDescription(longDescription);
 
         assertThat(actualResult).isEqualTo(expectedResult);
     }
