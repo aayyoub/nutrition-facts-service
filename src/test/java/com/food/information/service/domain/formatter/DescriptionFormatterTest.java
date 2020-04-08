@@ -9,8 +9,8 @@ public class DescriptionFormatterTest {
     @DataProvider
     public Object[][] descriptionsFormatterDataProvider() {
         return new Object[][]{
-                {"Orange juice", "Nutrition facts for orange juice (per 100 grams)"},
-                {"ApPlE", "Nutrition facts for apple (per 100 grams)"},
+                {"Orange juice", "Nutrition facts for orange juice"},
+                {"ApPlE", "Nutrition facts for apple"},
                 {"", ""},
                 {null, ""},
         };

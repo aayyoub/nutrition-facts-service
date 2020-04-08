@@ -1,39 +1,48 @@
-//package com.food.information.service.domain.formatter;
-//
-//import com.food.information.service.domain.model.Nutrient;
-//import org.testng.annotations.DataProvider;
-//import org.testng.annotations.Test;
-//
-//import java.util.Arrays;
-//import java.util.Collections;
-//import java.util.List;
-//
-//import static org.assertj.core.api.Assertions.assertThat;
-//
-//public class CalorieFormatterTest {
-//    @DataProvider
-//    public Object[][] calorieFormatterDataProvider() {
-//        return new Object[][]{
-//                {Collections.singletonList(new Nutrient(150.0, "g", "Energy", "ENERC_KCAL", null, null, null, 1)),
-//                        "150 calories (per 100 grams)"},
-//                {Collections.singletonList(new Nutrient(150.2, "g", "Energy", "ENERC_KCAL", null, null, null, 1)),
-//                        "150 calories (per 100 grams)"},
-//                {Arrays.asList(
-//                        new Nutrient(4.0, "g", "Protein", "PROCNT", null, null, null, 1),
-//                        new Nutrient(5.0, "g", "Total lipid (fat)", "FAT", null, null, null, 2),
-//                        new Nutrient(52.5, "g", "Energy", "ENERC_KCAL", null, null, null, 3)),
-//                        "53 calories (per 100 grams)"},
-//                {Collections.singletonList(
-//                        new Nutrient(4.0, "g", "Protein", "PROCNT", null, null, null, 1)),
-//                        ""}
-//        };
-//    }
-//
-//    @Test(dataProvider = "calorieFormatterDataProvider")
-//    public void testCalorieFormatter(List<Nutrient> nutrients, String expectedResult) {
-//        CalorieFormatter calorieFormatter = new CalorieFormatter();
-//        String actualResult = calorieFormatter.format(nutrients);
-//
-//        assertThat(actualResult).isEqualTo(expectedResult);
-//    }
-//}
+package com.food.information.service.domain.formatter;
+
+import com.food.information.service.domain.model.Nutrient;
+import com.food.information.service.domain.util.NutrientExtractor;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class CalorieFormatterTest {
+    @DataProvider
+    public Object[][] calorieFormatterDataProvider() {
+        return new Object[][]{
+                {
+                        Map.ofEntries(
+                                Map.entry("208", Nutrient.builder().id("208").description("Energy").value(150.0).build())
+                        ), "150 calories"
+                },
+                {
+                        Map.ofEntries(
+                                Map.entry("208", Nutrient.builder().id("208").description("Energy").value(150.2).build())
+                        ), "150 calories"
+                },
+                {
+                        Map.ofEntries(
+                                Map.entry("203", Nutrient.builder().id("203").description("Protein").value(4.0).build()),
+                                Map.entry("204", Nutrient.builder().id("204").description("Total lipid (fat)").value(5.0).build()),
+                                Map.entry("208", Nutrient.builder().id("208").description("Energy").value(52.5).build())
+                        ), "53 calories"
+                },
+                {
+                        Map.ofEntries(
+                                Map.entry("203", Nutrient.builder().id("203").description("Protein").value(4.0).build())
+                        ), "0 calories",
+                },
+        };
+    }
+
+    @Test(dataProvider = "calorieFormatterDataProvider")
+    public void testCalorieFormatter(Map<String, Nutrient> nutrients, String expectedResult) {
+        CalorieFormatter calorieFormatter = new CalorieFormatter(new NutrientExtractor());
+        String actualResult = calorieFormatter.format(nutrients);
+
+        assertThat(actualResult).isEqualTo(expectedResult);
+    }
+}
