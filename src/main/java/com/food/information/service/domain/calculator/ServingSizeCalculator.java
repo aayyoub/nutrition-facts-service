@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ServingSizeCalculator {
     public Double calculateValue(Nutrient nutrient, ServingSize servingSize) {
-        if (servingSize.getOrder() > 0) {
+        if (servingSize.getOrder() != null && servingSize.getOrder() > 0) {
             return nutrient.getValue() * servingSize.getGramWeight() / 100;
         }
 
