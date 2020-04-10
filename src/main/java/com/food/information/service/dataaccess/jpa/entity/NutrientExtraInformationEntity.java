@@ -1,19 +1,21 @@
 package com.food.information.service.dataaccess.jpa.entity;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "nutrient_extra_information", schema = "nutrient_database")
-@DiscriminatorValue("NutrientExtraInformation")
 public class NutrientExtraInformationEntity {
     private String nutrientNumber;
-    private String nutrientInformation;
     private Double nutrientDailyValue;
+    private String externalLink;
+    private String goodFor;
+    private String badFor;
     private Boolean isMacronutrient;
     private Boolean isSubcomponent;
 
@@ -28,13 +30,33 @@ public class NutrientExtraInformationEntity {
     }
 
     @Basic
-    @Column(name = "nutrient_information", length = 3000)
-    public String getNutrientInformation() {
-        return nutrientInformation;
+    @Column(name = "external_link", length = 2048)
+    public String getExternalLink() {
+        return externalLink;
     }
 
-    public void setNutrientInformation(String nutrientInformation) {
-        this.nutrientInformation = nutrientInformation;
+    public void setExternalLink(String externalLink) {
+        this.externalLink = externalLink;
+    }
+
+    @Basic
+    @Column(name = "good_for", length = 400)
+    public String getGoodFor() {
+        return goodFor;
+    }
+
+    public void setGoodFor(String goodFor) {
+        this.goodFor = goodFor;
+    }
+
+    @Basic
+    @Column(name = "bad_for", length = 400)
+    public String getBadFor() {
+        return badFor;
+    }
+
+    public void setBadFor(String badFor) {
+        this.badFor = badFor;
     }
 
     @Basic

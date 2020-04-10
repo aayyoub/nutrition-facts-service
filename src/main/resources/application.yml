@@ -25,3 +25,13 @@ server:
   compression:
     enabled: true
     mime-types: application/json,text/html,text/plain
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    enabled-by-default: true
+  endpoint:
+    metrics:
+      enabled: true

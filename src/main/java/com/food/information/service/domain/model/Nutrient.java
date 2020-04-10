@@ -1,5 +1,6 @@
 package com.food.information.service.domain.model;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,6 +25,9 @@ public class Nutrient {
     private Double percentDailyValue;
     private String percentDailyValueFormatted;
     private Integer sortOrder;
+    private String externalLink;
+    private JsonNode goodFor;
+    private JsonNode badFor;
     private Boolean macronutrient;
     private Boolean subcomponent;
 
