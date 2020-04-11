@@ -12,6 +12,7 @@ import javax.persistence.Table;
 @Table(name = "nutrient_extra_information", schema = "nutrient_database")
 public class NutrientExtraInformationEntity {
     private String nutrientNumber;
+    private String commonName;
     private Double nutrientDailyValue;
     private String externalLink;
     private String goodFor;
@@ -27,6 +28,16 @@ public class NutrientExtraInformationEntity {
 
     public void setNutrientNumber(String nutrientNumber) {
         this.nutrientNumber = nutrientNumber;
+    }
+
+    @Basic
+    @Column(name = "common_name", length = 60)
+    public String getCommonName() {
+        return commonName;
+    }
+
+    public void setCommonName(String commonName) {
+        this.commonName = commonName;
     }
 
     @Basic

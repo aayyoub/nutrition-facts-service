@@ -72,7 +72,8 @@ public class FatGrouper extends AbstractNutrientGrouper {
                 NutrientId.F22_6_N_3_DHA,
                 NutrientId.FATTY_ACIDS_TOTAL_TRANS,
                 NutrientId.FATTY_ACIDS_TOTAL_TRANSMONOENOIC,
-                NutrientId.FATTY_ACIDS_TOTAL_TRANSPOLYENOIC);
+                NutrientId.FATTY_ACIDS_TOTAL_TRANSPOLYENOIC
+        );
     }
 
     @Override

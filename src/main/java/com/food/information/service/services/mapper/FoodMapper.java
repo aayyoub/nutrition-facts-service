@@ -42,6 +42,7 @@ public class FoodMapper {
         nutrient.setUnit(nutrientDataEntity.getNutrientDefinitionEntity().getUnits());
         nutrient.setRoundedToDecimal(Integer.valueOf(nutrientDataEntity.getNutrientDefinitionEntity().getRoundedToDecimal()));
         nutrient.setDescription(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientDescription());
+        nutrient.setCommonName(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getCommonName());
         nutrient.setTagname(nutrientDataEntity.getNutrientDefinitionEntity().getTagname());
         nutrient.setDailyValue(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getNutrientDailyValue());
         nutrient.setSortOrder(nutrientDataEntity.getNutrientDefinitionEntity().getSortOrder());

@@ -20,6 +20,7 @@ public class Nutrient {
     private String unit;
     private Integer roundedToDecimal;
     private String description;
+    private String commonName;
     private String tagname;
     private Double dailyValue;
     private Double percentDailyValue;
