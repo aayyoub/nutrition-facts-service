@@ -6,5 +6,5 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
 public interface SearchTermRepository extends ElasticsearchRepository<SearchTermEntity, String> {
-    Page<SearchTermEntity> findTop50BySearchTerm(String searchTerm, Pageable pageable);
+    Page<SearchTermEntity> findTop25BySearchTerm(String searchTerm, Pageable pageable);
 }
