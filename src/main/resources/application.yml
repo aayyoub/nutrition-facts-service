@@ -7,7 +7,8 @@ logging:
     name: /logs/aayyoub.log
   level:
     org:
-      apache: ERROR
+      apache:
+        http: TRACE
       hibernate:
         SQL: DEBUG
         type:
@@ -18,6 +19,8 @@ logging:
       springframework:
         boot:
           autoconfigure: ERROR
+      elasticsearch:
+        client: TRACE
   pattern:
     file: '%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n%n'
 server:
@@ -25,13 +28,3 @@ server:
   compression:
     enabled: true
     mime-types: application/json,text/html,text/plain
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-    enabled-by-default: true
-  endpoint:
-    metrics:
-      enabled: true

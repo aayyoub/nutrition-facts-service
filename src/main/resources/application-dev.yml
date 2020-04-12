@@ -1,4 +1,8 @@
 spring:
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
   datasource:
     username: root
     url: jdbc:mysql://localhost:3306/nutrient_database?serverTimezone=UTC
@@ -17,3 +21,4 @@ spring:
     databasePlatform: org.hibernate.dialect.MySQL5Dialect
     hibernate:
       ddlAuto: none
+elasticsearch.host: localhost:9200

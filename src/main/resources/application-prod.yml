@@ -27,3 +27,4 @@ server:
   compression:
     enabled: true
     mime-types: application/json,text/html,text/plain
+elasticsearch.host: localhost:9200

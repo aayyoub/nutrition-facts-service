@@ -1,4 +1,4 @@
-package com.food.information.service.api.controller;
+package com.food.information.service.api.controller.dev;
 
 import com.food.information.service.dataaccess.jpa.entity.SearchTermEntity;
 import com.food.information.service.dataaccess.jpa.repository.FoodRepository;
@@ -38,8 +38,8 @@ public class SitemapController {
     }
 
     @CrossOrigin
-    @GetMapping("/createSitemap")
-    public String createSitemap() throws Exception {
+    @GetMapping("/buildSitemap")
+    public String buildSitemap() throws Exception {
         List<SearchTermEntity> allLinks = foodRepository.getAllLinks();
 
         Writer fileWriter = new FileWriter("sitemap.xml");
