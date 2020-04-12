@@ -1,0 +1,5 @@
+curl -X DELETE 127.0.0.1:9200/search
+
+curl -X PUT 127.0.0.1:9200/search -H 'Content-Type: application/json' -d '{"settings":{"analysis":{"filter":{"autocomplete_filter":{"type":"edge_ngram","min_gram":1,"max_gram":20}},"analyzer":{"autocomplete":{"type": "custom","tokenizer":"standard","filter":["lowercase","autocomplete_filter"]}}}}}'
+
+curl -X PUT 127.0.0.1:9200/search/_mapping/search_term -H 'Content-Type: application/json' -d'{"properties":{"id":{"type":"text"},"searchTerm":{"type":"text","analyzer":"autocomplete"}}}'
