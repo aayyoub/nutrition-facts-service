@@ -12,33 +12,29 @@ import java.util.Map;
 import java.util.Optional;
 
 @Component
-public class TotalSugarAnalyzer implements NutrientAnalyzer {
+public class SodiumAnalyzer implements NutrientAnalyzer {
     private final NutrientExtractor nutrientExtractor;
     private final Translator translator;
 
-    public TotalSugarAnalyzer(NutrientExtractor nutrientExtractor, Translator translator) {
+    public SodiumAnalyzer(NutrientExtractor nutrientExtractor, Translator translator) {
         this.nutrientExtractor = nutrientExtractor;
         this.translator = translator;
     }
 
     @Override
     public Optional<NutritionalStatement> getNutritionalStatement(Map<String, Nutrient> nutrients) {
-        Nutrient nutrient = nutrientExtractor.extractNutrient(NutrientId.TOTAL_SUGAR, nutrients);
+        Nutrient nutrient = nutrientExtractor.extractNutrient(NutrientId.SODIUM, nutrients);
 
-        if (nutrient.getValue() == 0.0) {
+        if (nutrient.getValue() <= 300) {
             return Optional.ofNullable(NutritionalStatement.builder()
                                                            .isBeneficial(true)
-                                                           .analysisStatement(translator.getMessage("nutritional.statements.zero.sugar"))
+                                                           .analysisStatement(translator.getMessage("nutritional.statements.low.sodium"))
                                                            .build());
-        } else if (nutrient.getValue() <= 5) {
-            return Optional.ofNullable(NutritionalStatement.builder()
-                                                           .isBeneficial(true)
-                                                           .analysisStatement(translator.getMessage("nutritional.statements.low.sugar"))
-                                                           .build());
-        } else if (nutrient.getValue() > 22.5) {
+        } else if (nutrient.getValue() > 1500) {
             return Optional.ofNullable(NutritionalStatement.builder()
                                                            .isBeneficial(false)
-                                                           .analysisStatement(translator.getMessage("nutritional.statements.high.sugar", List.of(nutrient.getValueFormattedWithoutSpaces())))
+                                                           .analysisStatement(translator.getMessage("nutritional.statements.high.sodium",
+                                                                   List.of(nutrient.getValueFormattedWithoutSpaces())))
                                                            .build());
         }
 
@@ -47,6 +43,6 @@ public class TotalSugarAnalyzer implements NutrientAnalyzer {
 
     @Override
     public boolean matches(Map<String, Nutrient> nutrients) {
-        return nutrientExtractor.containsNutrient(NutrientId.TOTAL_SUGAR, nutrients);
+        return nutrientExtractor.containsNutrient(NutrientId.SODIUM, nutrients);
     }
 }

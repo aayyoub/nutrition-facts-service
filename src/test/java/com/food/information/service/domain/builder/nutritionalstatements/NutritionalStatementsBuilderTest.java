@@ -22,8 +22,12 @@ public class NutritionalStatementsBuilderTest extends AbstractTestNGSpringContex
     public Object[][] nutritionalStatementDataProvider() {
         return new Object[][]{
                 {
-                        Map.ofEntries(Map.entry("269", Nutrient.builder().id("269").value(11.0).valueFormattedWithoutSpaces("11g").build())),
-                        NutritionalStatement.builder().isBeneficial(false).analysisStatement("Contains 11g of total sugar").build()
+                        Map.ofEntries(Map.entry("269", Nutrient.builder().id("269").value(23.0).valueFormattedWithoutSpaces("23g").build())),
+                        NutritionalStatement.builder().isBeneficial(false).analysisStatement("Contains 23g of total sugar").build()
+                },
+                {
+                        Map.ofEntries(Map.entry("269", Nutrient.builder().id("269").value(4.0).valueFormattedWithoutSpaces("4g").build())),
+                        NutritionalStatement.builder().isBeneficial(true).analysisStatement("Low sugar").build()
                 },
                 {
                         Map.ofEntries(Map.entry("269", Nutrient.builder().id("269").value(0.0).valueFormattedWithoutSpaces("0g").build())),
@@ -36,6 +40,18 @@ public class NutritionalStatementsBuilderTest extends AbstractTestNGSpringContex
                 {
                         Map.ofEntries(Map.entry("204", Nutrient.builder().id("204").value(2.9).valueFormattedWithoutSpaces("2g").build())),
                         NutritionalStatement.builder().isBeneficial(true).analysisStatement("Low total fat").build()
+                },
+                {
+                        Map.ofEntries(Map.entry("606", Nutrient.builder().id("606").value(5.1).valueFormattedWithoutSpaces("5g").build())),
+                        NutritionalStatement.builder().isBeneficial(false).analysisStatement("Contains 5g of saturated fat").build()
+                },
+                {
+                        Map.ofEntries(Map.entry("307", Nutrient.builder().id("307").value(250.0).valueFormattedWithoutSpaces("250mg").build())),
+                        NutritionalStatement.builder().isBeneficial(true).analysisStatement("Low sodium").build()
+                },
+                {
+                        Map.ofEntries(Map.entry("307", Nutrient.builder().id("307").value(1600.0).valueFormattedWithoutSpaces("1600g").build())),
+                        NutritionalStatement.builder().isBeneficial(false).analysisStatement("Contains 1600g of sodium").build()
                 },
         };
     }
