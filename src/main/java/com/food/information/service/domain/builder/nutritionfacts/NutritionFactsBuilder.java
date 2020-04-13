@@ -30,21 +30,21 @@ public class NutritionFactsBuilder {
 
         NutritionFacts nutritionFacts = new NutritionFacts();
         nutritionFacts.setCaloriesValueFormatted(calories.getValueRounded());
-        nutritionFacts.setFatValueFormatted(fat.getValueFormatted());
+        nutritionFacts.setFatValueFormatted(fat.getValueFormattedWithoutSpaces());
         nutritionFacts.setFatPercentDailyValueFormatted(fat.getPercentDailyValueFormatted());
-        nutritionFacts.setSaturatedFatValueFormatted(saturatedFat.getValueFormatted());
+        nutritionFacts.setSaturatedFatValueFormatted(saturatedFat.getValueFormattedWithoutSpaces());
         nutritionFacts.setSaturatedFatPercentDailyValueFormatted(saturatedFat.getPercentDailyValueFormatted());
-        nutritionFacts.setTransFatValueFormatted(transFat.getValueFormatted());
-        nutritionFacts.setCholesterolValueFormatted(cholesterol.getValueFormatted());
+        nutritionFacts.setTransFatValueFormatted(transFat.getValueFormattedWithoutSpaces());
+        nutritionFacts.setCholesterolValueFormatted(cholesterol.getValueFormattedWithoutSpaces());
         nutritionFacts.setCholesterolPercentDailyValueFormatted(cholesterol.getPercentDailyValueFormatted());
-        nutritionFacts.setSodiumValueFormatted(sodium.getValueFormatted());
+        nutritionFacts.setSodiumValueFormatted(sodium.getValueFormattedWithoutSpaces());
         nutritionFacts.setSodiumPercentDailyValueFormatted(sodium.getPercentDailyValueFormatted());
-        nutritionFacts.setTotalCarbohydrateValueFormatted(totalCarbohydrate.getValueFormatted());
+        nutritionFacts.setTotalCarbohydrateValueFormatted(totalCarbohydrate.getValueFormattedWithoutSpaces());
         nutritionFacts.setTotalCarbohydratePercentDailyValueFormatted(totalCarbohydrate.getPercentDailyValueFormatted());
-        nutritionFacts.setDietaryFiberValueFormatted(dietaryFiber.getValueFormatted());
+        nutritionFacts.setDietaryFiberValueFormatted(dietaryFiber.getValueFormattedWithoutSpaces());
         nutritionFacts.setDietaryFiberPercentDailyValueFormatted(dietaryFiber.getPercentDailyValueFormatted());
-        nutritionFacts.setSugarValueFormatted(sugar.getValueFormatted());
-        nutritionFacts.setProteinValueFormatted(protein.getValueFormatted());
+        nutritionFacts.setSugarValueFormatted(sugar.getValueFormattedWithoutSpaces());
+        nutritionFacts.setProteinValueFormatted(protein.getValueFormattedWithoutSpaces());
 
         return nutritionFacts;
     }

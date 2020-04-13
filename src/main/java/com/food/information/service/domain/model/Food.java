@@ -19,6 +19,7 @@ public class Food {
     private String name;
     private String description;
     private String calories;
+    private List<NutritionalStatement> nutritionalStatements;
     private NutritionFacts nutritionFacts;
     private CaloricPyramid caloricPyramid;
     private List<NutrientGroup> nutrientGroups;
