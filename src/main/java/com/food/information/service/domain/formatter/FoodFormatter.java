@@ -29,12 +29,12 @@ public class FoodFormatter {
     }
 
     public Food formatFood(Food food, Integer selectedServingSizeIndex) {
-        food.setNutrients(nutrientsFormatter.formatNutrients(food.getNutrients(), food.getServingSizes(), selectedServingSizeIndex));
+        food.setNutrientsPerServingSize(nutrientsFormatter.formatNutrients(food.getNutrients(), food.getServingSizes(), selectedServingSizeIndex));
         food.setDescription(descriptionFormatter.formatDescription(food.getName()));
-        food.setCalories(calorieFormatter.format(food.getNutrients()));
-        food.setNutritionFacts(nutritionFactsBuilder.buildNutritionFacts(food.getNutrients()));
-        food.setCaloricPyramid(caloricPyramidCalculator.calculateCaloricPyramid(food.getNutrients()));
-        food.setNutrientGroups(nutrientGroupBuilder.buildNutrientGroups(food.getNutrients()));
+        food.setCalories(calorieFormatter.format(food.getNutrientsPerServingSize()));
+        food.setNutritionFacts(nutritionFactsBuilder.buildNutritionFacts(food.getNutrientsPerServingSize()));
+        food.setCaloricPyramid(caloricPyramidCalculator.calculateCaloricPyramid(food.getNutrientsPerServingSize()));
+        food.setNutrientGroups(nutrientGroupBuilder.buildNutrientGroups(food.getNutrientsPerServingSize()));
         food.setServingSizes(food.getServingSizes());
 
         return food;

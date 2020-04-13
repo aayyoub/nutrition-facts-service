@@ -17,6 +17,7 @@ public class Nutrient {
     private Double value;
     private String valueRounded;
     private String valueFormatted;
+    private String valueFormattedWithoutSpaces;
     private String unit;
     private Integer roundedToDecimal;
     private String description;

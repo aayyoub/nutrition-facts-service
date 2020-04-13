@@ -17,6 +17,14 @@ public class NutrientExtractor {
         }
     }
 
+    public boolean containsNutrient(String nutrientId, Map<String, Nutrient> nutrients) {
+        if (validateNutrientId(nutrientId) && validateNutrients(nutrients)) {
+            return nutrients.containsKey(nutrientId);
+        }
+
+        return false;
+    }
+
     private boolean validateNutrientId(String nutrientId) {
         return nutrientId != null && nutrientId.matches(NUTRIENT_ID_REGEX);
     }

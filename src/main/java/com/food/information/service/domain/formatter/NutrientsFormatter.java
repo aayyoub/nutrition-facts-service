@@ -35,6 +35,7 @@ public class NutrientsFormatter {
             nutrient.setValue(servingSizeCalculator.calculateValue(nutrient, selectedServingSize));
             nutrient.setValueRounded(decimalFormatter.formatDecimals(nutrient.getValue(), nutrient.getRoundedToDecimal()));
             nutrient.setValueFormatted(valueFormatter.formatValue(nutrient.getValue(), nutrient.getUnit()));
+            nutrient.setValueFormattedWithoutSpaces(valueFormatter.formatValueWithoutSpace(nutrient.getValue(), nutrient.getUnit()));
             nutrient.setPercentDailyValue(percentDailyValueCalculator.calculatePercentDailyValue(nutrient.getValue(), nutrient.getDailyValue()));
             nutrient.setPercentDailyValueFormatted(percentDailyValueCalculator.calculatePercentDailyValueFormatted(nutrient.getValue(), nutrient.getDailyValue()));
         });

@@ -25,4 +25,6 @@ public class Food {
     private Set<ServingSize> servingSizes;
     @JsonIgnore
     private Map<String, Nutrient> nutrients;
+    @JsonIgnore
+    private Map<String, Nutrient> nutrientsPerServingSize;
 }
