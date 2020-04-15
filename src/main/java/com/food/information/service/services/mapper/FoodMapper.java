@@ -1,5 +1,6 @@
 package com.food.information.service.services.mapper;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.food.information.service.dataaccess.jpa.entity.FoodDescriptionEntity;
 import com.food.information.service.dataaccess.jpa.entity.NutrientDataEntity;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
 import java.util.LinkedHashSet;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -53,8 +55,14 @@ public class FoodMapper {
         try {
             nutrient.setGoodFor(mapper.readTree(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getGoodFor()));
             nutrient.setBadFor(mapper.readTree(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getBadFor()));
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
+
+        nutrient.setIsBeneficial(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getBeneficial());
+        nutrient.setTargetLessThanValue(Optional.ofNullable(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetLessThanValue()));
+        nutrient.setTargetMoreThanValue(Optional.ofNullable(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetMoreThanValue()));
+        nutrient.setTargetLessThanDailyValue(Optional.ofNullable(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetLessThanDailyValue()));
+        nutrient.setTargetMoreThanDailyValue(Optional.ofNullable(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetMoreThanDailyValue()));
 
         return nutrient;
     }

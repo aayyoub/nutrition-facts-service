@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class NutritionalStatement {
+public class NutritionStatement {
     boolean isBeneficial;
-    String analysisStatement;
+    String statement;
 }

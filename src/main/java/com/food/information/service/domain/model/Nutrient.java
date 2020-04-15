@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Optional;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -32,8 +34,28 @@ public class Nutrient {
     private JsonNode badFor;
     private Boolean macronutrient;
     private Boolean subcomponent;
+    private Boolean isBeneficial;
+    private Optional<Double> targetLessThanValue;
+    private Optional<Double> targetMoreThanValue;
+    private Optional<Double> targetLessThanDailyValue;
+    private Optional<Double> targetMoreThanDailyValue;
 
     public static Nutrient empty() {
-        return Nutrient.builder().id("00000").value(0.0).valueRounded("").valueFormatted("").unit("").roundedToDecimal(0).description("").tagname("").dailyValue(0.0).percentDailyValue(0.0).percentDailyValueFormatted("").sortOrder(0).macronutrient(false).subcomponent(false).build();
+        return Nutrient.builder()
+                       .id("00000")
+                       .value(0.0)
+                       .valueRounded("")
+                       .valueFormatted("")
+                       .unit("")
+                       .roundedToDecimal(0)
+                       .description("")
+                       .tagname("")
+                       .dailyValue(0.0)
+                       .percentDailyValue(0.0)
+                       .percentDailyValueFormatted("")
+                       .sortOrder(0)
+                       .macronutrient(false)
+                       .subcomponent(false)
+                       .build();
     }
 }

@@ -1,7 +1,5 @@
 package com.food.information.service.dataaccess.jpa.entity;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,6 +17,11 @@ public class NutrientExtraInformationEntity {
     private String badFor;
     private Boolean isMacronutrient;
     private Boolean isSubcomponent;
+    private Boolean isBeneficial;
+    private Double targetLessThanValue;
+    private Double targetMoreThanValue;
+    private Double targetLessThanDailyValue;
+    private Double targetMoreThanDailyValue;
 
     @Id
     @Column(name = "nutrient_number", nullable = false, length = 3)
@@ -98,5 +101,55 @@ public class NutrientExtraInformationEntity {
 
     public void setSubcomponent(Boolean subcomponent) {
         isSubcomponent = subcomponent;
+    }
+
+    @Basic
+    @Column(name = "is_beneficial", length = 1)
+    public Boolean getBeneficial() {
+        return isBeneficial;
+    }
+
+    public void setBeneficial(Boolean beneficial) {
+        isBeneficial = beneficial;
+    }
+
+    @Basic
+    @Column(name = "target_less_than_value", precision = 3)
+    public Double getTargetLessThanValue() {
+        return targetLessThanValue;
+    }
+
+    public void setTargetLessThanValue(Double targetLessThanValue) {
+        this.targetLessThanValue = targetLessThanValue;
+    }
+
+    @Basic
+    @Column(name = "target_more_than_value", precision = 3)
+    public Double getTargetMoreThanValue() {
+        return targetMoreThanValue;
+    }
+
+    public void setTargetMoreThanValue(Double targetGreaterThanValue) {
+        this.targetMoreThanValue = targetGreaterThanValue;
+    }
+
+    @Basic
+    @Column(name = "target_less_than_daily_value", precision = 3)
+    public Double getTargetLessThanDailyValue() {
+        return targetLessThanDailyValue;
+    }
+
+    public void setTargetLessThanDailyValue(Double targetLessThanDailyValue) {
+        this.targetLessThanDailyValue = targetLessThanDailyValue;
+    }
+
+    @Basic
+    @Column(name = "target_more_than_daily_value", precision = 3)
+    public Double getTargetMoreThanDailyValue() {
+        return targetMoreThanDailyValue;
+    }
+
+    public void setTargetMoreThanDailyValue(Double targetMoreThanDailyValue) {
+        this.targetMoreThanDailyValue = targetMoreThanDailyValue;
     }
 }
