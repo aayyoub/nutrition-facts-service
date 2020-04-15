@@ -2,7 +2,6 @@ package com.food.information.service.api.controller;
 
 import com.food.information.service.api.model.GetFoodRequest;
 import com.food.information.service.domain.model.Food;
-import com.food.information.service.domain.model.FoodNutritionalDetails;
 import com.food.information.service.orchestration.FoodOrchestrator;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.CrossOrigin;
