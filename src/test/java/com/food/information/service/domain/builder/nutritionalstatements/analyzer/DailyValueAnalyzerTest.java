@@ -22,11 +22,11 @@ public class DailyValueAnalyzerTest extends AbstractTestNGSpringContextTests {
     public Object[][] dailyValueAnalyzerDataProvider() {
         return new Object[][]{
                 {
-                        Nutrient.builder().commonName("Vitamin D").dailyValue(25.0).percentDailyValueFormatted("25%").isBeneficial(true).targetLessThanDailyValue(Optional.empty()).targetMoreThanDailyValue(Optional.of(20.0)).build(),
+                        Nutrient.builder().commonName("Vitamin D").dailyValue(25.0).percentDailyValueFormatted("25%").isBeneficial(true).targetLessThanDailyValue(null).targetMoreThanDailyValue(20.0).build(),
                         NutritionStatement.builder().isBeneficial(true).statement("Contains 25% daily value of Vitamin D").build()
                 },
                 {
-                        Nutrient.builder().commonName("Vitamin D").dailyValue(0.0).percentDailyValueFormatted("0%").isBeneficial(true).targetLessThanDailyValue(Optional.of(1.0)).targetMoreThanDailyValue(Optional.of(20.0)).build(),
+                        Nutrient.builder().commonName("Vitamin D").dailyValue(0.0).percentDailyValueFormatted("0%").isBeneficial(true).targetLessThanDailyValue(1.0).targetMoreThanDailyValue(20.0).build(),
                         NutritionStatement.builder().isBeneficial(false).statement("Contains 0% daily value of Vitamin D").build()
                 },
         };

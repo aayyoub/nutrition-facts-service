@@ -59,10 +59,10 @@ public class FoodMapper {
         }
 
         nutrient.setIsBeneficial(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getBeneficial());
-        nutrient.setTargetLessThanValue(Optional.ofNullable(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetLessThanValue()));
-        nutrient.setTargetMoreThanValue(Optional.ofNullable(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetMoreThanValue()));
-        nutrient.setTargetLessThanDailyValue(Optional.ofNullable(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetLessThanDailyValue()));
-        nutrient.setTargetMoreThanDailyValue(Optional.ofNullable(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetMoreThanDailyValue()));
+        nutrient.setTargetLessThanValue(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetLessThanValue());
+        nutrient.setTargetMoreThanValue(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetMoreThanValue());
+        nutrient.setTargetLessThanDailyValue(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetLessThanDailyValue());
+        nutrient.setTargetMoreThanDailyValue(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetMoreThanDailyValue());
 
         return nutrient;
     }

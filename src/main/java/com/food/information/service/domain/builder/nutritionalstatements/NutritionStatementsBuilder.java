@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
@@ -33,9 +34,9 @@ public class NutritionStatementsBuilder {
     }
 
     private Optional<NutritionStatement> getNutritionStatement(Nutrient nutrient) {
-        if (nutrient.getTargetLessThanValue().isPresent() || nutrient.getTargetMoreThanValue().isPresent()) {
+        if (Objects.nonNull(nutrient.getTargetLessThanValue()) || Objects.nonNull(nutrient.getTargetMoreThanValue())) {
             return valueAnalyzer.getNutritionStatement(nutrient);
-        } else if (nutrient.getTargetLessThanDailyValue().isPresent() || nutrient.getTargetMoreThanDailyValue().isPresent()) {
+        } else if (Objects.nonNull(nutrient.getTargetLessThanDailyValue()) || Objects.nonNull(nutrient.getTargetMoreThanDailyValue())) {
             //return dailyValueAnalyzer.getNutritionStatement(nutrient);
         }
 

@@ -35,10 +35,10 @@ public class Nutrient {
     private Boolean macronutrient;
     private Boolean subcomponent;
     private Boolean isBeneficial;
-    private Optional<Double> targetLessThanValue;
-    private Optional<Double> targetMoreThanValue;
-    private Optional<Double> targetLessThanDailyValue;
-    private Optional<Double> targetMoreThanDailyValue;
+    private Double targetLessThanValue;
+    private Double targetMoreThanValue;
+    private Double targetLessThanDailyValue;
+    private Double targetMoreThanDailyValue;
 
     public static Nutrient empty() {
         return Nutrient.builder()

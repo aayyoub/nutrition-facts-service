@@ -22,23 +22,23 @@ public class ValueAnalyzerTest extends AbstractTestNGSpringContextTests {
     public Object[][] valueAnalyzerDataProvider() {
         return new Object[][]{
                 {
-                        Nutrient.builder().commonName("Sugar").value(0.0).valueFormattedWithoutSpaces("0g").isBeneficial(false).targetLessThanValue(Optional.of(5.0)).targetMoreThanValue(Optional.of(22.5)).build(),
+                        Nutrient.builder().commonName("Sugar").value(0.0).valueFormattedWithoutSpaces("0g").isBeneficial(false).targetLessThanValue(5.0).targetMoreThanValue(22.5).build(),
                         NutritionStatement.builder().isBeneficial(true).statement("Low in sugar (contains 0g of sugar)").build()
                 },
                 {
-                        Nutrient.builder().commonName("Sugar").value(23.0).valueFormattedWithoutSpaces("23g").isBeneficial(false).targetLessThanValue(Optional.of(5.0)).targetMoreThanValue(Optional.of(22.5)).build(),
+                        Nutrient.builder().commonName("Sugar").value(23.0).valueFormattedWithoutSpaces("23g").isBeneficial(false).targetLessThanValue(5.0).targetMoreThanValue(22.5).build(),
                         NutritionStatement.builder().isBeneficial(false).statement("High in sugar (contains 23g of sugar)").build()
                 },
                 {
-                        Nutrient.builder().commonName("Fiber").value(5.0).valueFormattedWithoutSpaces("5g").isBeneficial(true).targetLessThanValue(Optional.empty()).targetMoreThanValue(Optional.of(3.0)).build(),
+                        Nutrient.builder().commonName("Fiber").value(5.0).valueFormattedWithoutSpaces("5g").isBeneficial(true).targetLessThanValue(null).targetMoreThanValue(3.0).build(),
                         NutritionStatement.builder().isBeneficial(true).statement("High in fiber (contains 5g of fiber)").build()
                 },
                 {
-                        Nutrient.builder().commonName("Total fat").value(2.0).valueFormattedWithoutSpaces("2g").isBeneficial(false).targetLessThanValue(Optional.of(3.0)).targetMoreThanValue(Optional.of(17.5)).build(),
+                        Nutrient.builder().commonName("Total fat").value(2.0).valueFormattedWithoutSpaces("2g").isBeneficial(false).targetLessThanValue(3.0).targetMoreThanValue(17.5).build(),
                         NutritionStatement.builder().isBeneficial(true).statement("Low in total fat (contains 2g of total fat)").build()
                 },
                 {
-                        Nutrient.builder().commonName("Total fat").value(30.0).valueFormattedWithoutSpaces("30g").isBeneficial(false).targetLessThanValue(Optional.of(3.0)).targetMoreThanValue(Optional.of(17.5)).build(),
+                        Nutrient.builder().commonName("Total fat").value(30.0).valueFormattedWithoutSpaces("30g").isBeneficial(false).targetLessThanValue(3.0).targetMoreThanValue(17.5).build(),
                         NutritionStatement.builder().isBeneficial(false).statement("High in total fat (contains 30g of total fat)").build()
                 }
         };

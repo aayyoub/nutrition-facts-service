@@ -6,6 +6,7 @@ import com.food.information.service.util.Translator;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Component
@@ -18,11 +19,11 @@ public class ValueAnalyzer implements Analyzer {
 
     @Override
     public Optional<NutritionStatement> getNutritionStatement(Nutrient nutrient) {
-        if (nutrient.getTargetLessThanValue().isPresent() && nutrient.getValue() < nutrient.getTargetLessThanValue().get()) {
+        if (Objects.nonNull(nutrient.getTargetLessThanValue()) && nutrient.getValue() < nutrient.getTargetLessThanValue()) {
             String statement = translator.getMessage("nutritional.statements.low.value", List.of(nutrient.getCommonName().toLowerCase(), nutrient.getValueFormattedWithoutSpaces()));
 
             return Optional.ofNullable(NutritionStatement.builder().isBeneficial(!nutrient.getIsBeneficial()).statement(statement).build());
-        } else if (nutrient.getTargetMoreThanValue().isPresent() && nutrient.getValue() > nutrient.getTargetMoreThanValue().get()) {
+        } else if (Objects.nonNull(nutrient.getTargetMoreThanValue()) && nutrient.getValue() > nutrient.getTargetMoreThanValue()) {
             String statement = translator.getMessage("nutritional.statements.high.value", List.of(nutrient.getCommonName().toLowerCase(), nutrient.getValueFormattedWithoutSpaces()));
 
             return Optional.ofNullable(NutritionStatement.builder().isBeneficial(nutrient.getIsBeneficial()).statement(statement).build());
