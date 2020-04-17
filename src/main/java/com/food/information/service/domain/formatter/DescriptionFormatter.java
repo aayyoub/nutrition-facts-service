@@ -1,16 +1,16 @@
 package com.food.information.service.domain.formatter;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.WordUtils;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DescriptionFormatter {
-    private static final String FORMATTED_DESCRIPTION = "Nutrition facts for %s";
-
     public String formatDescription(String description) {
-        if (description == null || description.length() == 0) {
-            return "";
+        if (description != null && description.length() > 0) {
+            return WordUtils.capitalize(description);
         }
 
-        return String.format(FORMATTED_DESCRIPTION, description.toLowerCase());
+        return "";
     }
 }

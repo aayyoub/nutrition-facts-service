@@ -17,7 +17,7 @@ public class ExploreFoodFormatter {
 
     public List<ExploreFood> formatFood(List<ExploreFood> exploreFoods) {
         exploreFoods.forEach(exploreFood -> {
-                    exploreFood.setUrl(seoUrlBuilder.buildUrl(exploreFood.getFoodId(), exploreFood.getFoodDescription()));
+                    exploreFood.setUrl(seoUrlBuilder.buildUrl(exploreFood.getFoodDescription()));
                     exploreFood.setFoodDescription(WordUtils.capitalizeFully(exploreFood.getFoodDescription()));
                 }
         );

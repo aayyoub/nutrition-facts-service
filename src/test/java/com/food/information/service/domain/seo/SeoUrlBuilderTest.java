@@ -10,7 +10,8 @@ public class SeoUrlBuilderTest {
     public Object[][] seoUrlBuilderDataProvider() {
         return new Object[][]{
                 {"01007", "Cheese, camembert", "https://www.nutritionfacts.io/cheese-camembert"},
-                {"03808", "Infant formula, MEAD JOHNSON, ENFAMIL, LIPIL, with iron, powder, with ARA and DHA", "https://www.nutritionfacts.io/infant-formula-mead-johnson-enfamil-lipil-with" +
+                {"03808", "Infant formula, MEAD JOHNSON, ENFAMIL, LIPIL, with iron, powder, with ARA and DHA", "https://www.nutritionfacts" +
+                        ".io/infant-formula-mead-johnson-enfamil-lipil-with" +
                         "-iron-powder-with-ara-and-dha"},
                 {"12345", "   This foOoOd iz! wild   --- ~`!@#$%^&*()_-[]{}\\|+='\";:?/.>,<", "https://www.nutritionfacts.io/this-fooood-iz-wild-percent-and-"}
         };
@@ -20,7 +21,7 @@ public class SeoUrlBuilderTest {
     public void testSeoUrlBuilder(String foodId, String description, String expectedResult) {
         String domain = "https://www.nutritionfacts.io";
         SeoUrlBuilder seoUrlBuilder = new SeoUrlBuilder(domain);
-        String actualResult = seoUrlBuilder.buildUrl(foodId, description);
+        String actualResult = seoUrlBuilder.buildUrl(description);
 
         assertThat(actualResult).isEqualTo(expectedResult);
     }

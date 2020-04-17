@@ -5,20 +5,29 @@ import com.food.information.service.dataaccess.elasticsearch.repository.SearchTe
 import com.food.information.service.dataaccess.jpa.entity.FoodNameMappingEntity;
 import com.food.information.service.dataaccess.jpa.repository.FoodRepository;
 import com.food.information.service.domain.seo.SeoUrlBuilder;
+import com.food.information.service.util.dev.SitemapBuilder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class DevController {
+    private final SitemapBuilder sitemapBuilder;
     private final FoodRepository foodRepository;
     private final SearchTermRepository searchTermRepository;
     private final SeoUrlBuilder seoUrlBuilder;
 
-    public DevController(FoodRepository foodRepository, SearchTermRepository searchTermRepository, SeoUrlBuilder seoUrlBuilder) {
+    public DevController(SitemapBuilder sitemapBuilder, FoodRepository foodRepository, SearchTermRepository searchTermRepository, SeoUrlBuilder seoUrlBuilder) {
+        this.sitemapBuilder = sitemapBuilder;
         this.foodRepository = foodRepository;
         this.searchTermRepository = searchTermRepository;
         this.seoUrlBuilder = seoUrlBuilder;
+    }
+
+    @CrossOrigin
+    @GetMapping("/buildSitemap")
+    public void buildSitemap() throws Exception {
+        sitemapBuilder.buildSitemap();
     }
 
     @CrossOrigin

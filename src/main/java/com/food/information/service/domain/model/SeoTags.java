@@ -13,12 +13,7 @@ import lombok.Setter;
 @Setter
 @Builder
 @EqualsAndHashCode
-public class ServingSize {
-    private Integer order;
-    private String description;
-    private Double gramWeight;
-
-    public static ServingSize empty() {
-        return new ServingSize(0, "", 1.0);
-    }
+public class SeoTags {
+    String title;
+    String description;
 }

@@ -12,7 +12,7 @@ public class SeoUrlBuilder {
         this.domain = domain;
     }
 
-    public String buildUrl(String foodId, String description) {
+    public String buildUrl(String description) {
         return String.format(PATTERN, domain, formatDescription(description));
     }
 
