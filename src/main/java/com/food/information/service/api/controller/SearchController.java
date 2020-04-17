@@ -1,10 +1,10 @@
 package com.food.information.service.api.controller;
 
+import com.food.information.service.api.model.SearchTermRequest;
 import com.food.information.service.domain.model.SuggestedSearchTerm;
 import com.food.information.service.orchestration.SearchOrchestrator;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,8 +18,8 @@ public class SearchController {
     }
 
     @CrossOrigin
-    @GetMapping("/search")
-    public List<SuggestedSearchTerm> searchFood(@RequestParam String searchTerm) {
-        return searchOrchestrator.getSearchTerms(searchTerm);
+    @GetMapping("/search/{searchTerm}")
+    public List<SuggestedSearchTerm> searchFood(SearchTermRequest searchTermRequest) {
+        return searchOrchestrator.getSearchTerms(searchTermRequest);
     }
 }

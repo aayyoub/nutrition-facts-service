@@ -1,3 +1,4 @@
+domain: https://www.nutritionfacts.io
 spring:
   datasource:
     username: root

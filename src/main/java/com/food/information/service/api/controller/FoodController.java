@@ -18,9 +18,16 @@ public class FoodController {
     }
 
     @CrossOrigin
-    @GetMapping("/food")
-    @Cacheable(value = "food", key = "{#getFoodRequest.foodId,#getFoodRequest.servingSize}")
+    @GetMapping("/food/{foodName}")
+    @Cacheable(value = "food", key = "{#getFoodRequest.foodName,#getFoodRequest.servingSize}")
     public Food getFood(GetFoodRequest getFoodRequest) {
+        return foodOrchestrator.getFood(getFoodRequest);
+    }
+
+    @CrossOrigin
+    @GetMapping("/food/{foodName}/{servingSize}")
+    @Cacheable(value = "food", key = "{#getFoodRequest.foodName,#getFoodRequest.servingSize}")
+    public Food getFoodForServingSize(GetFoodRequest getFoodRequest) {
         return foodOrchestrator.getFood(getFoodRequest);
     }
 }

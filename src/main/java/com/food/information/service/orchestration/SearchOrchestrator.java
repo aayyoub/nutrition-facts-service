@@ -1,5 +1,6 @@
 package com.food.information.service.orchestration;
 
+import com.food.information.service.api.model.SearchTermRequest;
 import com.food.information.service.domain.SearchTermsFinder;
 import com.food.information.service.domain.model.SuggestedSearchTerm;
 import org.springframework.stereotype.Component;
@@ -14,7 +15,9 @@ public class SearchOrchestrator {
         this.searchTermsFinder = searchTermsFinder;
     }
 
-    public List<SuggestedSearchTerm> getSearchTerms(String searchTerm) {
+    public List<SuggestedSearchTerm> getSearchTerms(SearchTermRequest searchTermRequest) {
+        String searchTerm = searchTermRequest.getSearchTerm();
+
         return searchTermsFinder.findSearchTerms(searchTerm);
     }
 }

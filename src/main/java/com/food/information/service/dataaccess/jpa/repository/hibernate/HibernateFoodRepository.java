@@ -2,6 +2,7 @@ package com.food.information.service.dataaccess.jpa.repository.hibernate;
 
 import com.food.information.service.dataaccess.jpa.entity.ExploreFoodEntity;
 import com.food.information.service.dataaccess.jpa.entity.FoodDescriptionEntity;
+import com.food.information.service.dataaccess.jpa.entity.FoodNameMappingEntity;
 import com.food.information.service.dataaccess.jpa.entity.SearchTermEntity;
 import com.food.information.service.dataaccess.jpa.repository.FoodRepository;
 import org.springframework.stereotype.Repository;
@@ -28,22 +29,6 @@ public class HibernateFoodRepository implements FoodRepository {
                 .getSingleResult();
     }
 
-    public List<SearchTermEntity> getSearchTerms(String searchTerm) {
-        return (List<SearchTermEntity>) entityManager
-                .createNativeQuery(
-                        "SELECT * FROM food_description " +
-                                "WHERE food_description.long_description LIKE :foodNameBeginsWith OR food_description" +
-                                ".long_description LIKE :foodNameAnyMatch " +
-                                "ORDER BY CASE WHEN food_description.long_description LIKE :foodNameBeginsWith THEN 1" +
-                                " ELSE 2 END " +
-                                "LIMIT 0, 20",
-                        SearchTermEntity.class
-                )
-                .setParameter("foodNameBeginsWith", searchTerm + '%')
-                .setParameter("foodNameAnyMatch", '%' + searchTerm + '%')
-                .getResultList();
-    }
-
     public List<ExploreFoodEntity> getExploreFood() {
         return (List<ExploreFoodEntity>) entityManager
                 .createNativeQuery(
@@ -63,6 +48,22 @@ public class HibernateFoodRepository implements FoodRepository {
                         SearchTermEntity.class
                 )
                 .getResultList();
+    }
+
+    @Override
+    public void save(FoodNameMappingEntity foodNameMappingEntity) {
+        entityManager.persist(foodNameMappingEntity);
+    }
+
+    @Override
+    public FoodNameMappingEntity getFoodByName(String foodName) {
+        return (FoodNameMappingEntity) entityManager
+                .createNativeQuery(
+                        "SELECT * FROM food_name_mapping WHERE food_name = :foodName",
+                        FoodNameMappingEntity.class
+                )
+                .setParameter("foodName", foodName)
+                .getSingleResult();
     }
 }
 

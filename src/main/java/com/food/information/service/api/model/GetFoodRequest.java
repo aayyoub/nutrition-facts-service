@@ -10,8 +10,8 @@ import javax.validation.constraints.Size;
 @Data
 public class GetFoodRequest {
     @NotNull
-    @Size(min = 5, max = 5)
-    private String foodId;
+    @Size(min = 1, max = 200)
+    private String foodName;
 
     @PositiveOrZero
     @Digits(integer = 2, fraction = 0)
