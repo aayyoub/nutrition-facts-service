@@ -23,12 +23,11 @@ public class Food {
     private String name;
     private String description;
     private String calories;
-    private ServingSize servingSize;
-    private List<NutritionStatement> nutritionStatements;
+    private ServingSize selectedServingSize;
+    private Set<ServingSize> servingSizes;
     private NutritionFacts nutritionFacts;
     private CaloricPyramid caloricPyramid;
     private List<NutrientGroup> nutrientGroups;
-    private Set<ServingSize> servingSizes;
     private SeoTags seoTags;
     @JsonIgnore
     private Map<String, Nutrient> nutrients;

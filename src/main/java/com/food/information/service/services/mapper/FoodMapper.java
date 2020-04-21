@@ -1,6 +1,5 @@
 package com.food.information.service.services.mapper;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.food.information.service.dataaccess.jpa.entity.FoodDescriptionEntity;
 import com.food.information.service.dataaccess.jpa.entity.NutrientDataEntity;
@@ -12,27 +11,24 @@ import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
 import java.util.LinkedHashSet;
-import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Component
 public class FoodMapper {
-    private final ObjectMapper mapper = new ObjectMapper();
-
     public Food mapFood(FoodDescriptionEntity foodDescriptionEntity) {
         Food food = new Food();
         food.setId(foodDescriptionEntity.getFoodDescriptionId());
         food.setName(foodDescriptionEntity.getLongDescription());
         food.setServingSizes(foodDescriptionEntity.getWeightEntities()
-                .stream()
-                .map(this::buildServingSize)
-                .sorted(Comparator.comparing(ServingSize::getOrder))
-                .collect(Collectors.toCollection(LinkedHashSet::new)));
+                                                  .stream()
+                                                  .map(this::buildServingSize)
+                                                  .sorted(Comparator.comparing(ServingSize::getOrder))
+                                                  .collect(Collectors.toCollection(LinkedHashSet::new)));
         food.setNutrients(foodDescriptionEntity.getNutrientDataEntities()
-                .stream()
-                .map(this::buildNutrient)
-                .collect(Collectors.toMap(Nutrient::getId, Function.identity())));
+                                               .stream()
+                                               .map(this::buildNutrient)
+                                               .collect(Collectors.toMap(Nutrient::getId, Function.identity())));
 
         return food;
     }
@@ -48,22 +44,8 @@ public class FoodMapper {
         nutrient.setTagname(nutrientDataEntity.getNutrientDefinitionEntity().getTagname());
         nutrient.setDailyValue(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getNutrientDailyValue());
         nutrient.setSortOrder(nutrientDataEntity.getNutrientDefinitionEntity().getSortOrder());
-        nutrient.setExternalLink(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getExternalLink());
         nutrient.setMacronutrient(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getMacronutrient());
         nutrient.setSubcomponent(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getSubcomponent());
-
-        try {
-            nutrient.setGoodFor(mapper.readTree(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getGoodFor()));
-            nutrient.setBadFor(mapper.readTree(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getBadFor()));
-        } catch (Exception ignored) {
-        }
-
-        nutrient.setIsBeneficial(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getBeneficial());
-        nutrient.setTargetLessThanValue(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetLessThanValue());
-        nutrient.setTargetMoreThanValue(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetMoreThanValue());
-        nutrient.setTargetLessThanDailyValue(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetLessThanDailyValue());
-        nutrient.setTargetMoreThanDailyValue(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getTargetMoreThanDailyValue());
-
         return nutrient;
     }
 

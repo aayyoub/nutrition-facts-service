@@ -17,10 +17,10 @@ public abstract class AbstractNutrientGrouper implements NutrientGrouper {
 
     public NutrientGroup buildNutrients(Map<String, Nutrient> nutrients) {
         List<Nutrient> filteredNutrients = nutrients.values()
-                .stream()
-                .filter(nutrient -> this.getRequiredNutrients().contains(nutrient.getId()))
-                .sorted(Comparator.comparingInt(Nutrient::getSortOrder))
-                .collect(Collectors.toList());
+                                                    .stream()
+                                                    .filter(nutrient -> this.getRequiredNutrients().contains(nutrient.getId()))
+                                                    .sorted(Comparator.comparingInt(Nutrient::getSortOrder))
+                                                    .collect(Collectors.toList());
 
         return new NutrientGroup(this.getRank(), this.getGroupName(), filteredNutrients);
     }

@@ -16,6 +16,7 @@ import lombok.Setter;
 public class NutritionFacts {
     String caloriesValueFormatted;
     String caloriesFromFatFormatted;
+    String selectedServingSize;
     String fatValueFormatted;
     String fatPercentDailyValueFormatted;
     String saturatedFatValueFormatted;

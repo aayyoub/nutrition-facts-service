@@ -2,6 +2,7 @@ package com.food.information.service.domain.builder.nutritionfacts;
 
 import com.food.information.service.domain.model.Nutrient;
 import com.food.information.service.domain.model.NutritionFacts;
+import com.food.information.service.domain.model.ServingSize;
 import com.food.information.service.domain.util.NutrientExtractor;
 import com.food.information.service.domain.util.NutrientId;
 import org.springframework.stereotype.Component;
@@ -16,7 +17,7 @@ public class NutritionFactsBuilder {
         this.nutrientExtractor = nutrientExtractor;
     }
 
-    public NutritionFacts buildNutritionFacts(Map<String, Nutrient> nutrients) {
+    public NutritionFacts buildNutritionFacts(Map<String, Nutrient> nutrients, ServingSize selectedServingSize) {
         Nutrient calories = nutrientExtractor.extractNutrient(NutrientId.ENERGY_KCAL, nutrients);
         Nutrient fat = nutrientExtractor.extractNutrient(NutrientId.TOTAL_FAT, nutrients);
         Nutrient saturatedFat = nutrientExtractor.extractNutrient(NutrientId.FATTY_ACIDS_TOTAL_SATURATED, nutrients);
@@ -29,6 +30,7 @@ public class NutritionFactsBuilder {
         Nutrient protein = nutrientExtractor.extractNutrient(NutrientId.TOTAL_PROTEIN, nutrients);
 
         NutritionFacts nutritionFacts = new NutritionFacts();
+        nutritionFacts.setSelectedServingSize(selectedServingSize.getDescription());
         nutritionFacts.setCaloriesValueFormatted(calories.getValueRounded());
         nutritionFacts.setFatValueFormatted(fat.getValueFormattedWithoutSpaces());
         nutritionFacts.setFatPercentDailyValueFormatted(fat.getPercentDailyValueFormatted());
