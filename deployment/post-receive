@@ -28,4 +28,3 @@ echo '✓ Started server script'
 #success messages
 figlet food-information-service
 echo '✓ SUCCESS'
-
