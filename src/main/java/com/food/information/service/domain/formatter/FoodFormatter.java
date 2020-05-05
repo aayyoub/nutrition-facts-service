@@ -54,7 +54,7 @@ public class FoodFormatter {
         NutritionFacts nutritionFacts = nutritionFactsBuilder.buildNutritionFacts(nutrientsPerServingSize, selectedServingSize);
         CaloricPyramid caloricPyramid = caloricPyramidCalculator.calculateCaloricPyramid(nutrientsPerServingSize);
         List<NutrientGroup> nutrientGroups = nutrientGroupBuilder.buildNutrientGroups(nutrientsPerServingSize);
-        SeoTags seoTags = seoTagsBuilder.buildSeoTags(food.getDescription());
+        SeoTags seoTags = seoTagsBuilder.buildSeoTags(description);
 
         food.setNutrientsPerServingSize(nutrientsPerServingSize);
         food.setDescription(description);
