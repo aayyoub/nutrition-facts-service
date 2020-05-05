@@ -1,8 +1,9 @@
 domain: https://www.nutritionfacts.io
 spring:
   datasource:
-    username: root
-    url: jdbc:mysql://localhost:3306/nutrient_database?serverTimezone=UTC
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driverClassName: com.mysql.cj.jdbc.Driver
     tomcat:
       initialSize: 15
