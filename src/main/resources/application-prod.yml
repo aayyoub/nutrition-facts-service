@@ -21,11 +21,6 @@ spring:
       ddlAuto: none
 server:
   port: 8443
-  ssl:
-    key-store: /certificates/fis-api-keystore.p12
-    key-store-password: foodisgood
-    keyStoreType: PKCS12
-    keyAlias: fis-api-alias
   compression:
     enabled: true
     mime-types: application/json,text/html,text/plain
