@@ -1,12 +1,8 @@
 domain: https://www.nutritionfacts.io
 spring:
-  data:
-    elasticsearch:
-      repositories:
-        enabled: true
   datasource:
     username: root
-    url: jdbc:mysql://localhost:3306/nutrient_database?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/nutritionfacts?serverTimezone=UTC
     driverClassName: com.mysql.cj.jdbc.Driver
     tomcat:
       initialSize: 15
