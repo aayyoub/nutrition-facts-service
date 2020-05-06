@@ -1,0 +1,57 @@
+package io.nutritionfacts.api.domain.util;
+
+import io.nutritionfacts.api.domain.model.ServingSize;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import java.util.Set;
+
+import static java.util.Collections.emptySet;
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class ServingSizeSelectorTest {
+    @DataProvider
+    public Object[][] servingSizeSelectorDataProvider() {
+        return new Object[][]{
+                {
+                        Set.of(
+                                ServingSize.builder().order(1).description("1.0 cup").build(),
+                                ServingSize.builder().order(2).description("2.0 cups").build(),
+                                ServingSize.builder().order(3).description("3.0 cups").build()
+                        ), 1, "1.0 cup"
+                },
+                {
+                        Set.of(
+                                ServingSize.builder().order(1).description("1.0 cup").build(),
+                                ServingSize.builder().order(2).description("2.0 cups").build(),
+                                ServingSize.builder().order(3).description("3.0 cups").build()
+                        ), 3, "3.0 cups"
+                },
+                {
+                        Set.of(
+                                ServingSize.builder().order(1).description("1.0 cup").build(),
+                                ServingSize.builder().order(2).description("2.0 cups").build(),
+                                ServingSize.builder().order(3).description("3.0 cups").build()
+                        ), 0, "100 grams"
+                },
+                {
+                        Set.of(
+                                ServingSize.builder().order(1).description("1.0 cup").build(),
+                                ServingSize.builder().order(2).description("2.0 cups").build(),
+                                ServingSize.builder().order(3).description("3.0 cups").build()
+                        ), 4, ""
+                },
+                {
+                        emptySet(), 4, ""
+                }
+        };
+    }
+
+    @Test(dataProvider = "servingSizeSelectorDataProvider")
+    public void testServingSizeSelector(Set<ServingSize> servingSizes, Integer selectedServingSize, String expected) {
+        ServingSizeSelector servingSizeSelector = new ServingSizeSelector();
+        ServingSize actual = servingSizeSelector.getSelectedServingSize(servingSizes, selectedServingSize);
+
+        assertThat(actual.getDescription()).isEqualTo(expected);
+    }
+}
