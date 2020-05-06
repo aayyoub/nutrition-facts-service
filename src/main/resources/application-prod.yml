@@ -19,9 +19,4 @@ spring:
     databasePlatform: org.hibernate.dialect.MySQL5Dialect
     hibernate:
       ddlAuto: none
-server:
-  port: 8443
-  compression:
-    enabled: true
-    mime-types: application/json,text/html,text/plain
 elasticsearch.host: localhost:9200
