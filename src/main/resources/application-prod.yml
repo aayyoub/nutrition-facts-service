@@ -19,4 +19,14 @@ spring:
     databasePlatform: org.hibernate.dialect.MySQL5Dialect
     hibernate:
       ddlAuto: none
+server:
+  port: 8080
+  ssl:
+    key-store: /certificates/fis-api-keystore.p12
+    key-store-password: foodisgood
+    keyStoreType: PKCS12
+    keyAlias: fis-api-alias
+  compression:
+    enabled: true
+    mime-types: application/json,text/html,text/plain
 elasticsearch.host: localhost:9200
