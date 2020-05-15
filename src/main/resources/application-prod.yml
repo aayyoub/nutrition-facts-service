@@ -20,7 +20,7 @@ spring:
     hibernate:
       ddlAuto: none
 server:
-  port: 8080
+  port: 443
   ssl:
     key-store: /certificates/fis-api-keystore.p12
     key-store-password: foodisgood
