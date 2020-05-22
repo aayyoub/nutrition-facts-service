@@ -48,7 +48,7 @@ public class DevController {
         foodRepository.getAllLinks().forEach((searchTerm) -> {
                     try {
                         FoodNameMappingEntity foodNameMappingEntity = new FoodNameMappingEntity();
-                        foodNameMappingEntity.setFoodName(seoUrlBuilder.formatDescription(searchTerm.getLongDescription()));
+                        foodNameMappingEntity.setFoodName(seoUrlBuilder.getFoodName(searchTerm.getLongDescription()));
                         foodNameMappingEntity.setFoodId(searchTerm.getFoodDescriptionId());
                         foodRepository.save(foodNameMappingEntity);
                     } catch (Exception ignored) {

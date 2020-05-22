@@ -15,7 +15,10 @@ public class SearchTermsFormatter {
     }
 
     public List<SuggestedSearchTerm> format(List<SuggestedSearchTerm> suggestedSearchTerms) {
-        suggestedSearchTerms.forEach((searchTerm) -> searchTerm.setUrl(seoUrlBuilder.buildUrl(searchTerm.getSearchTerm())));
+        suggestedSearchTerms.forEach((searchTerm) -> {
+            searchTerm.setUrl(seoUrlBuilder.buildUrl(searchTerm.getSearchTerm()));
+            searchTerm.setFoodName(seoUrlBuilder.getFoodName(searchTerm.getSearchTerm()));
+        });
 
         return suggestedSearchTerms;
     }

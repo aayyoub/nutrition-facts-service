@@ -13,10 +13,10 @@ public class SeoUrlBuilder {
     }
 
     public String buildUrl(String description) {
-        return String.format(PATTERN, domain, formatDescription(description));
+        return String.format(PATTERN, domain, getFoodName(description));
     }
 
-    public String formatDescription(String description) {
+    public String getFoodName(String description) {
         return description
                 .toLowerCase()
                 .strip()
