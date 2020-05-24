@@ -36,7 +36,7 @@ public class NutritionFactsBuilder {
 
         NutritionFacts nutritionFacts = new NutritionFacts();
         nutritionFacts.setSelectedServingSize(selectedServingSize.getDescription());
-        nutritionFacts.setCalories(calories.isPresent() ? calories.get().getValueGaussianRoundedWithUnit() : ZERO);
+        nutritionFacts.setCalories(calories.isPresent() ? calories.get().getValueRounded() : ZERO);
         nutritionFacts.setTotalFat(fat.isPresent() ? fat.get().getValueGaussianRoundedWithUnit() : ZERO_G);
         nutritionFacts.setTotalFatPercentDailyValue(fat.isPresent() ? fat.get().getPercentDailyValueFormatted() : ZERO_PERCENT);
         nutritionFacts.setSaturatedFat(saturatedFat.isPresent() ? saturatedFat.get().getValueGaussianRoundedWithUnit() : ZERO_G);
