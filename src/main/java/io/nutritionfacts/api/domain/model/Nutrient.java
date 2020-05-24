@@ -1,6 +1,6 @@
 package io.nutritionfacts.api.domain.model;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -16,36 +16,34 @@ import lombok.Setter;
 @EqualsAndHashCode
 public class Nutrient {
     private String id;
+    @JsonIgnore
     private Double value;
     private String valueRounded;
-    private String valueFormatted;
-    private String valueFormattedWithoutSpaces;
+    private String valueRoundedWithUnit;
+    private String valueGaussianRoundedWithUnit;
     private String unit;
+    @JsonIgnore
     private Integer roundedToDecimal;
     private String description;
     private String commonName;
+    @JsonIgnore
     private String tagname;
+    @JsonIgnore
     private Double dailyValue;
+    @JsonIgnore
     private Double percentDailyValue;
     private String percentDailyValueFormatted;
+    @JsonIgnore
     private Integer sortOrder;
-    private String externalLink;
-    private JsonNode goodFor;
-    private JsonNode badFor;
     private Boolean macronutrient;
     private Boolean subcomponent;
-    private Boolean isBeneficial;
-    private Double targetLessThanValue;
-    private Double targetMoreThanValue;
-    private Double targetLessThanDailyValue;
-    private Double targetMoreThanDailyValue;
 
     public static Nutrient empty() {
         return Nutrient.builder()
                        .id("00000")
                        .value(0.0)
                        .valueRounded("")
-                       .valueFormatted("")
+                       .valueRoundedWithUnit("")
                        .unit("")
                        .roundedToDecimal(0)
                        .description("")

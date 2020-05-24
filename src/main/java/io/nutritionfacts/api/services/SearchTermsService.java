@@ -33,7 +33,6 @@ public class SearchTermsService {
     private SuggestedSearchTerm buildSuggestedSearchTerm(SearchTermEntity searchTermEntity) {
         SuggestedSearchTerm suggestedSearchTerm = new SuggestedSearchTerm();
         suggestedSearchTerm.setSearchTerm(searchTermEntity.getSearchTerm().toLowerCase());
-        suggestedSearchTerm.setValue(searchTermEntity.getId());
 
         return suggestedSearchTerm;
     }

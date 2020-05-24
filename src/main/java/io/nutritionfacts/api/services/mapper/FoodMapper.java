@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
 import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -19,11 +20,7 @@ public class FoodMapper {
         Food food = new Food();
         food.setId(foodDescriptionEntity.getFoodDescriptionId());
         food.setName(foodDescriptionEntity.getLongDescription());
-        food.setServingSizes(foodDescriptionEntity.getWeightEntities()
-                                                  .stream()
-                                                  .map(this::buildServingSize)
-                                                  .sorted(Comparator.comparing(ServingSize::getOrder))
-                                                  .collect(Collectors.toCollection(LinkedHashSet::new)));
+        food.setServingSizes(buildServingSizes(foodDescriptionEntity.getWeightEntities()));
         food.setNutrients(foodDescriptionEntity.getNutrientDataEntities()
                                                .stream()
                                                .map(this::buildNutrient)
@@ -45,7 +42,24 @@ public class FoodMapper {
         nutrient.setSortOrder(nutrientDataEntity.getNutrientDefinitionEntity().getSortOrder());
         nutrient.setMacronutrient(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getMacronutrient());
         nutrient.setSubcomponent(nutrientDataEntity.getNutrientDefinitionEntity().getNutrientExtraInformationEntity().getSubcomponent());
+
         return nutrient;
+    }
+
+    private Set<ServingSize> buildServingSizes(Set<WeightEntity> weightEntities) {
+        //default serving size is 100 grams for each food - not provided in weight table, so we add it manually
+        WeightEntity oneHundredGramsWeightEntity = new WeightEntity();
+        oneHundredGramsWeightEntity.setSequenceNumber("0");
+        oneHundredGramsWeightEntity.setAmount(100.0);
+        oneHundredGramsWeightEntity.setMeasurementDescription("grams");
+        oneHundredGramsWeightEntity.setGramWeight(100.0);
+
+        weightEntities.add(oneHundredGramsWeightEntity);
+
+        return weightEntities.stream()
+                             .map(this::buildServingSize)
+                             .sorted(Comparator.comparing(ServingSize::getOrder))
+                             .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
     private ServingSize buildServingSize(WeightEntity weightEntity) {

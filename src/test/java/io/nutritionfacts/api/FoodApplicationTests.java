@@ -1,4 +1,4 @@
-package com.food.information.service;
+package io.nutritionfacts.api;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

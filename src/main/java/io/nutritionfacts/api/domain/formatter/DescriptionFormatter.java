@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class DescriptionFormatter {
     public String formatDescription(String description) {
         if (description != null && description.length() > 0) {
-            return WordUtils.capitalize(description);
+            return WordUtils.capitalizeFully(description);
         }
 
         return "";

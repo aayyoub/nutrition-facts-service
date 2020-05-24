@@ -45,20 +45,10 @@ public class CaloricPyramidCalculator {
         double proteinPercentage = (double) Math.round(caloriesFromProtein / totalCalories * 100);
 
         CaloricPyramid caloricPyramid = new CaloricPyramid();
-        caloricPyramid.setAlcoholPercentage(alcoholPercentage);
-        caloricPyramid.setCarbohydratePercentage(carbohydratePercentage);
-        caloricPyramid.setFatPercentage(fatPercentage);
-        caloricPyramid.setProteinPercentage(proteinPercentage);
-
-        caloricPyramid.setAlcoholPercentageFormatted(String.format(FORMATTED_PERCENTAGE, alcoholPercentage));
-        caloricPyramid.setCarbohydratePercentageFormatted(String.format(FORMATTED_PERCENTAGE, carbohydratePercentage));
-        caloricPyramid.setFatPercentageFormatted(String.format(FORMATTED_PERCENTAGE, fatPercentage));
-        caloricPyramid.setProteinPercentageFormatted(String.format(FORMATTED_PERCENTAGE, proteinPercentage));
-
-        caloricPyramid.setCaloriesFromAlcohol(caloriesFromAlcohol);
-        caloricPyramid.setCaloriesFromCarbohydrates(caloriesFromCarbohydrate);
-        caloricPyramid.setCaloriesFromFat(caloriesFromFat);
-        caloricPyramid.setCaloriesFromProtein(caloriesFromProtein);
+        caloricPyramid.setAlcoholPercentage(String.format(FORMATTED_PERCENTAGE, alcoholPercentage));
+        caloricPyramid.setCarbohydratePercentage(String.format(FORMATTED_PERCENTAGE, carbohydratePercentage));
+        caloricPyramid.setFatPercentage(String.format(FORMATTED_PERCENTAGE, fatPercentage));
+        caloricPyramid.setProteinPercentage(String.format(FORMATTED_PERCENTAGE, proteinPercentage));
 
         return caloricPyramid;
     }

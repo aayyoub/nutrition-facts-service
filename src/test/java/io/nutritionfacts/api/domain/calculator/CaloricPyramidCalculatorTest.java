@@ -19,27 +19,27 @@ public class CaloricPyramidCalculatorTest {
                         Map.entry("205", Nutrient.builder().id("205").value(10.0).tagname("CHOCDF").build()),
                         Map.entry("204", Nutrient.builder().id("204").value(10.0).tagname("FAT").build()),
                         Map.entry("203", Nutrient.builder().id("203").value(10.0).tagname("PROCNT").build())),
-                        0.0, 24.0, 53.0, 24.0
+                        "0%", "24%", "53%", "24%"
                 },
                 {Map.ofEntries(
                         Map.entry("221", Nutrient.builder().id("221").value(1.0).tagname("ALC").build()),
                         Map.entry("205", Nutrient.builder().id("205").value(0.0).tagname("CHOCDF").build()),
                         Map.entry("204", Nutrient.builder().id("204").value(0.0).tagname("FAT").build()),
                         Map.entry("203", Nutrient.builder().id("203").value(0.0).tagname("PROCNT").build())),
-                        100.0, 0.0, 0.0, 0.0
+                        "100%", "0%", "0%", "0%"
                 },
                 {Map.ofEntries(
                         Map.entry("221", Nutrient.builder().id("221").value(1.0).tagname("ALC").build())),
-                        100.0, 0.0, 0.0, 0.0
+                        "100%", "0%", "0%", "0%"
                 },
-                {null, 0.0, 0.0, 0.0, 0.0
+                {null, "0%", "0%", "0%", "0%"
                 },
         };
     }
 
     @Test(dataProvider = "caloricPyramidDataProvider")
-    public void testCaloricPyramidCalculator(Map<String, Nutrient> nutrients, double expectedAlcoholPercentage, double expectedCarbohydratePercentage,
-                                             double expectedFatPercentage, double expectedProteinPercentage) {
+    public void testCaloricPyramidCalculator(Map<String, Nutrient> nutrients, String expectedAlcoholPercentage, String expectedCarbohydratePercentage,
+                                             String expectedFatPercentage, String expectedProteinPercentage) {
         CaloricPyramidCalculator caloricPyramidCalculator = new CaloricPyramidCalculator(new NutrientExtractor());
         CaloricPyramid actualResult = caloricPyramidCalculator.calculateCaloricPyramid(nutrients);
 

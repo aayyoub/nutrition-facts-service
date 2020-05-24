@@ -14,22 +14,21 @@ import lombok.Setter;
 @Builder
 @EqualsAndHashCode
 public class NutritionFacts {
-    String caloriesValueFormatted;
-    String caloriesFromFatFormatted;
+    String calories;
     String selectedServingSize;
-    String fatValueFormatted;
-    String fatPercentDailyValueFormatted;
-    String saturatedFatValueFormatted;
-    String saturatedFatPercentDailyValueFormatted;
-    String transFatValueFormatted;
-    String cholesterolValueFormatted;
-    String cholesterolPercentDailyValueFormatted;
-    String sodiumValueFormatted;
-    String sodiumPercentDailyValueFormatted;
-    String totalCarbohydrateValueFormatted;
-    String totalCarbohydratePercentDailyValueFormatted;
-    String dietaryFiberValueFormatted;
-    String dietaryFiberPercentDailyValueFormatted;
-    String sugarValueFormatted;
-    String proteinValueFormatted;
+    String totalFat;
+    String totalFatPercentDailyValue;
+    String saturatedFat;
+    String saturatedFatPercentDailyValue;
+    String transFat;
+    String cholesterol;
+    String cholesterolPercentDailyValue;
+    String sodium;
+    String sodiumPercentDailyValue;
+    String totalCarbohydrate;
+    String totalCarbohydratePercentDailyValue;
+    String dietaryFiber;
+    String dietaryFiberPercentDailyValue;
+    String sugar;
+    String protein;
 }

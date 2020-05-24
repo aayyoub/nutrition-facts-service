@@ -14,16 +14,8 @@ import lombok.Setter;
 @Builder
 @EqualsAndHashCode
 public class CaloricPyramid {
-    private Double alcoholPercentage;
-    private Double carbohydratePercentage;
-    private Double fatPercentage;
-    private Double proteinPercentage;
-    private String alcoholPercentageFormatted;
-    private String carbohydratePercentageFormatted;
-    private String fatPercentageFormatted;
-    private String proteinPercentageFormatted;
-    private Double caloriesFromAlcohol;
-    private Double caloriesFromCarbohydrates;
-    private Double caloriesFromFat;
-    private Double caloriesFromProtein;
+    private String alcoholPercentage;
+    private String carbohydratePercentage;
+    private String fatPercentage;
+    private String proteinPercentage;
 }

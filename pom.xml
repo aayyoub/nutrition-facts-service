@@ -106,10 +106,10 @@
 				<configuration>
 					<excludes>
 						<exclude>**/*Application.*</exclude>
-						<exclude>com/food/information/service/api/**/*</exclude>
-						<exclude>com/food/information/service/configuration/**/*</exclude>
-						<exclude>com/food/information/service/dataaccess/**/*</exclude>
-						<exclude>com/food/information/service/**/model/*</exclude>
+						<exclude>io/nutritionfacts/api/api/**/*</exclude>
+						<exclude>io/nutritionfacts/api/configuration/**/*</exclude>
+						<exclude>io/nutritionfacts/api/dataaccess/**/*</exclude>
+						<exclude>io/nutritionfacts/api/service/**/model/*</exclude>
 					</excludes>
 				</configuration>
 				<executions>

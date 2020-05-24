@@ -31,22 +31,22 @@ public class NutritionFactsBuilder {
 
         NutritionFacts nutritionFacts = new NutritionFacts();
         nutritionFacts.setSelectedServingSize(selectedServingSize.getDescription());
-        nutritionFacts.setCaloriesValueFormatted(calories.getValueRounded());
-        nutritionFacts.setFatValueFormatted(fat.getValueFormattedWithoutSpaces());
-        nutritionFacts.setFatPercentDailyValueFormatted(fat.getPercentDailyValueFormatted());
-        nutritionFacts.setSaturatedFatValueFormatted(saturatedFat.getValueFormattedWithoutSpaces());
-        nutritionFacts.setSaturatedFatPercentDailyValueFormatted(saturatedFat.getPercentDailyValueFormatted());
-        nutritionFacts.setTransFatValueFormatted(transFat.getValueFormattedWithoutSpaces());
-        nutritionFacts.setCholesterolValueFormatted(cholesterol.getValueFormattedWithoutSpaces());
-        nutritionFacts.setCholesterolPercentDailyValueFormatted(cholesterol.getPercentDailyValueFormatted());
-        nutritionFacts.setSodiumValueFormatted(sodium.getValueFormattedWithoutSpaces());
-        nutritionFacts.setSodiumPercentDailyValueFormatted(sodium.getPercentDailyValueFormatted());
-        nutritionFacts.setTotalCarbohydrateValueFormatted(totalCarbohydrate.getValueFormattedWithoutSpaces());
-        nutritionFacts.setTotalCarbohydratePercentDailyValueFormatted(totalCarbohydrate.getPercentDailyValueFormatted());
-        nutritionFacts.setDietaryFiberValueFormatted(dietaryFiber.getValueFormattedWithoutSpaces());
-        nutritionFacts.setDietaryFiberPercentDailyValueFormatted(dietaryFiber.getPercentDailyValueFormatted());
-        nutritionFacts.setSugarValueFormatted(sugar.getValueFormattedWithoutSpaces());
-        nutritionFacts.setProteinValueFormatted(protein.getValueFormattedWithoutSpaces());
+        nutritionFacts.setCalories(calories.getValueRounded());
+        nutritionFacts.setTotalFat(fat.getValueGaussianRoundedWithUnit());
+        nutritionFacts.setTotalFatPercentDailyValue(fat.getPercentDailyValueFormatted());
+        nutritionFacts.setSaturatedFat(saturatedFat.getValueGaussianRoundedWithUnit());
+        nutritionFacts.setSaturatedFatPercentDailyValue(saturatedFat.getPercentDailyValueFormatted());
+        nutritionFacts.setTransFat(transFat.getValueGaussianRoundedWithUnit());
+        nutritionFacts.setCholesterol(cholesterol.getValueGaussianRoundedWithUnit());
+        nutritionFacts.setCholesterolPercentDailyValue(cholesterol.getPercentDailyValueFormatted());
+        nutritionFacts.setSodium(sodium.getValueGaussianRoundedWithUnit());
+        nutritionFacts.setSodiumPercentDailyValue(sodium.getPercentDailyValueFormatted());
+        nutritionFacts.setTotalCarbohydrate(totalCarbohydrate.getValueGaussianRoundedWithUnit());
+        nutritionFacts.setTotalCarbohydratePercentDailyValue(totalCarbohydrate.getPercentDailyValueFormatted());
+        nutritionFacts.setDietaryFiber(dietaryFiber.getValueGaussianRoundedWithUnit());
+        nutritionFacts.setDietaryFiberPercentDailyValue(dietaryFiber.getPercentDailyValueFormatted());
+        nutritionFacts.setSugar(sugar.getValueGaussianRoundedWithUnit());
+        nutritionFacts.setProtein(protein.getValueGaussianRoundedWithUnit());
 
         return nutritionFacts;
     }

@@ -10,7 +10,7 @@ public class DescriptionFormatterTest {
     public Object[][] descriptionsFormatterDataProvider() {
         return new Object[][]{
                 {"Orange juice", "Orange Juice"},
-                {"aPPLE", "APPLE"},
+                {"aPPLE", "Apple"},
                 {"", ""},
                 {null, ""},
         };

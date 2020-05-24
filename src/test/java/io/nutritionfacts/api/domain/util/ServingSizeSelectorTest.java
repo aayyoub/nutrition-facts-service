@@ -29,6 +29,7 @@ public class ServingSizeSelectorTest {
                 },
                 {
                         Set.of(
+                                ServingSize.builder().order(0).description("100 grams").build(),
                                 ServingSize.builder().order(1).description("1.0 cup").build(),
                                 ServingSize.builder().order(2).description("2.0 cups").build(),
                                 ServingSize.builder().order(3).description("3.0 cups").build()
