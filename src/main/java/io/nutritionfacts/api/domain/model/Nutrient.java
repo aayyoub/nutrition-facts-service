@@ -37,23 +37,4 @@ public class Nutrient {
     private Integer sortOrder;
     private Boolean macronutrient;
     private Boolean subcomponent;
-
-    public static Nutrient empty() {
-        return Nutrient.builder()
-                       .id("00000")
-                       .value(0.0)
-                       .valueRounded("")
-                       .valueRoundedWithUnit("")
-                       .unit("")
-                       .roundedToDecimal(0)
-                       .description("")
-                       .tagname("")
-                       .dailyValue(0.0)
-                       .percentDailyValue(0.0)
-                       .percentDailyValueFormatted("")
-                       .sortOrder(0)
-                       .macronutrient(false)
-                       .subcomponent(false)
-                       .build();
-    }
 }

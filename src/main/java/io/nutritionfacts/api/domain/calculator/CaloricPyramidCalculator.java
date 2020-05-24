@@ -7,6 +7,7 @@ import io.nutritionfacts.api.domain.util.NutrientId;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
+import java.util.Optional;
 
 @Component
 public class CaloricPyramidCalculator {
@@ -22,15 +23,15 @@ public class CaloricPyramidCalculator {
     }
 
     public CaloricPyramid calculateCaloricPyramid(Map<String, Nutrient> nutrients) {
-        Nutrient alcohol = nutrientExtractor.extractNutrient(NutrientId.ALCOHOL, nutrients);
-        Nutrient carbohydrate = nutrientExtractor.extractNutrient(NutrientId.CARBOHYDRATE, nutrients);
-        Nutrient fat = nutrientExtractor.extractNutrient(NutrientId.TOTAL_FAT, nutrients);
-        Nutrient protein = nutrientExtractor.extractNutrient(NutrientId.TOTAL_PROTEIN, nutrients);
+        Optional<Nutrient> alcohol = nutrientExtractor.extractNutrient(NutrientId.ALCOHOL, nutrients);
+        Optional<Nutrient> carbohydrate = nutrientExtractor.extractNutrient(NutrientId.CARBOHYDRATE, nutrients);
+        Optional<Nutrient> fat = nutrientExtractor.extractNutrient(NutrientId.TOTAL_FAT, nutrients);
+        Optional<Nutrient> protein = nutrientExtractor.extractNutrient(NutrientId.TOTAL_PROTEIN, nutrients);
 
-        double gramsOfAlcohol = alcohol.getValue();
-        double gramsOfCarbohydrate = carbohydrate.getValue();
-        double gramsOfFat = fat.getValue();
-        double gramsOfProtein = protein.getValue();
+        double gramsOfAlcohol = alcohol.isPresent() ? alcohol.get().getValue() : 0.0;
+        double gramsOfCarbohydrate = carbohydrate.isPresent() ? carbohydrate.get().getValue() : 0.0;
+        double gramsOfFat = fat.isPresent() ? fat.get().getValue() : 0.0;
+        double gramsOfProtein = protein.isPresent() ? protein.get().getValue() : 0.0;
 
         double caloriesFromAlcohol = gramsOfAlcohol * CALORIES_PER_GRAM_OF_ALCOHOL;
         double caloriesFromCarbohydrate = gramsOfCarbohydrate * CALORIES_PER_GRAM_OF_CARBOHYDRATE;

@@ -4,25 +4,18 @@ import io.nutritionfacts.api.domain.model.Nutrient;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
+import java.util.Optional;
 
 @Component
 public class NutrientExtractor {
     private static final String NUTRIENT_ID_REGEX = "^[0-9]{3}$";
 
-    public Nutrient extractNutrient(String nutrientId, Map<String, Nutrient> nutrients) {
+    public Optional<Nutrient> extractNutrient(String nutrientId, Map<String, Nutrient> nutrients) {
         if (validateNutrientId(nutrientId) && validateNutrients(nutrients)) {
-            return nutrients.getOrDefault(nutrientId, Nutrient.empty());
-        } else {
-            return Nutrient.empty();
-        }
-    }
-
-    public boolean containsNutrient(String nutrientId, Map<String, Nutrient> nutrients) {
-        if (validateNutrientId(nutrientId) && validateNutrients(nutrients)) {
-            return nutrients.containsKey(nutrientId);
+            return Optional.ofNullable(nutrients.get(nutrientId));
         }
 
-        return false;
+        return Optional.empty();
     }
 
     private boolean validateNutrientId(String nutrientId) {
