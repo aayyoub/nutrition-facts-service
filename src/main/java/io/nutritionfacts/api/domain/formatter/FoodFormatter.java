@@ -1,5 +1,6 @@
 package io.nutritionfacts.api.domain.formatter;
 
+import io.nutritionfacts.api.domain.builder.footnote.FootnoteBuilder;
 import io.nutritionfacts.api.domain.builder.nutrientgroup.NutrientGroupBuilder;
 import io.nutritionfacts.api.domain.builder.nutritionfacts.NutritionFactsBuilder;
 import io.nutritionfacts.api.domain.builder.seo.SeoTagsBuilder;
@@ -29,12 +30,13 @@ public class FoodFormatter {
     private final CaloricPyramidCalculator caloricPyramidCalculator;
     private final NutrientGroupBuilder nutrientGroupBuilder;
     private final SeoTagsBuilder seoTagsBuilder;
+    private final FootnoteBuilder footnoteBuilder;
 
     @Autowired
     public FoodFormatter(NutrientsFormatter nutrientsFormatter, DescriptionFormatter descriptionFormatter,
                          CalorieFormatter calorieFormatter, ServingSizeSelector servingSizeSelector,
                          NutritionFactsBuilder nutritionFactsBuilder, CaloricPyramidCalculator caloricPyramidCalculator,
-                         NutrientGroupBuilder nutrientGroupBuilder, SeoTagsBuilder seoTagsBuilder) {
+                         NutrientGroupBuilder nutrientGroupBuilder, SeoTagsBuilder seoTagsBuilder, FootnoteBuilder footnoteBuilder) {
         this.nutrientsFormatter = nutrientsFormatter;
         this.descriptionFormatter = descriptionFormatter;
         this.calorieFormatter = calorieFormatter;
@@ -43,6 +45,7 @@ public class FoodFormatter {
         this.caloricPyramidCalculator = caloricPyramidCalculator;
         this.nutrientGroupBuilder = nutrientGroupBuilder;
         this.seoTagsBuilder = seoTagsBuilder;
+        this.footnoteBuilder = footnoteBuilder;
     }
 
     public Food formatFood(Food food, Integer selectedServingSizeIndex) {
@@ -55,6 +58,7 @@ public class FoodFormatter {
         CaloricPyramid caloricPyramid = caloricPyramidCalculator.calculateCaloricPyramid(nutrientsPerServingSize);
         List<NutrientGroup> nutrientGroups = nutrientGroupBuilder.buildNutrientGroups(nutrientsPerServingSize);
         SeoTags seoTags = seoTagsBuilder.buildSeoTags(description);
+        String footnote = footnoteBuilder.getFootnote();
 
         food.setNutrientsPerServingSize(nutrientsPerServingSize);
         food.setDescription(description);
@@ -65,6 +69,7 @@ public class FoodFormatter {
         food.setCaloricPyramid(caloricPyramid);
         food.setNutrientGroups(nutrientGroups);
         food.setSeoTags(seoTags);
+        food.setFootnote(footnote);
 
         return food;
     }
