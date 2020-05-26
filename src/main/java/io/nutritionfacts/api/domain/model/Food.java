@@ -33,5 +33,5 @@ public class Food {
     private Map<String, Nutrient> nutrients;
     @JsonIgnore
     private Map<String, Nutrient> nutrientsPerServingSize;
-    private String footnote;
+    private String disclaimer;
 }
