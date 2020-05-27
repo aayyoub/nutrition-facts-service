@@ -14,6 +14,7 @@ import lombok.Setter;
 @Builder
 @EqualsAndHashCode
 public class SuggestedSearchTerm {
+    private String id;
     private String searchTerm;
     private String foodName;
     private String url;
