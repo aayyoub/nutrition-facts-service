@@ -10,14 +10,15 @@ import org.springframework.http.HttpStatus;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Response {
-    private HttpStatus httpStatus;
-    private Integer responseCode;
-    private String responseMessage;
-    private Object result;
 
-    public void setHttpStatus(HttpStatus httpStatus) {
-        this.httpStatus = httpStatus;
-        this.responseCode = httpStatus.value();
+public class Response<T> {
+    private String requestId;
+    private Integer statusCode;
+    private String responseMessage;
+    private T result;
+
+    public void setStatusCode(HttpStatus statusCode) {
+        this.statusCode = statusCode.value();
+        this.responseMessage = statusCode.getReasonPhrase();
     }
 }
