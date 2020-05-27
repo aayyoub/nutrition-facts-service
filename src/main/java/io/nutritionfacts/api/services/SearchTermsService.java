@@ -20,7 +20,7 @@ public class SearchTermsService {
     }
 
     public List<SuggestedSearchTerm> getSearchTerms(String foodName) {
-        Page<SearchTermEntity> searchTermEntityList = searchTermRepository.findTop25BySearchTerm(foodName, PageRequest.of(0, 25));
+        Page<SearchTermEntity> searchTermEntityList = searchTermRepository.findTop35BySearchTerm(foodName, PageRequest.of(0, 35));
 
         return searchTermEntityList
                 .getContent()
