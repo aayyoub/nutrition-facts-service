@@ -29,7 +29,7 @@ public class FoodController {
         Food food = foodOrchestrator.getFood(getFoodRequest);
 
         Response<Food> response = new Response<>();
-        response.setStatusCode(HttpStatus.OK);
+        response.setHttpStatus(HttpStatus.OK);
         response.setRequestId(requestContext.getRequestId());
         response.setResult(food);
 

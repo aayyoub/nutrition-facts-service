@@ -1,27 +1,43 @@
 package io.nutritionfacts.api.api.exceptionhandler;
 
-import io.nutritionfacts.api.api.model.Response;
-import io.nutritionfacts.api.api.filter.RequestContext;
+import io.nutritionfacts.api.exception.ErrorMessageCode;
+import io.nutritionfacts.api.exception.ExceptionResponseBuilder;
+import io.nutritionfacts.api.exception.FoodNotFoundException;
+import io.nutritionfacts.api.exception.InvalidServingSizeException;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-@ControllerAdvice
+@ControllerAdvice(annotations = RestController.class)
 public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
-    private final RequestContext requestContext;
+    private final ExceptionResponseBuilder exceptionResponseBuilder;
 
-    public ControllerExceptionHandler(RequestContext requestContext) {
-        this.requestContext = requestContext;
+    public ControllerExceptionHandler(ExceptionResponseBuilder exceptionResponseBuilder) {
+        this.exceptionResponseBuilder = exceptionResponseBuilder;
     }
 
-    @ExceptionHandler(value = Exception.class)
-    public ResponseEntity<Response> exceptionHandler(Exception exception) {
-        Response response = new Response();
-        response.setRequestId(requestContext.getRequestId());
-        response.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
+    @ExceptionHandler(FoodNotFoundException.class)
+    public ResponseEntity<Object> handleFoodNotFoundException(FoodNotFoundException exception) {
+        return exceptionResponseBuilder.buildResponse(exception.getHttpStatus(), exception.getErrorMessageCode());
+    }
 
-        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    @ExceptionHandler(InvalidServingSizeException.class)
+    public ResponseEntity<Object> handleInvalidServingSizeException(InvalidServingSizeException exception) {
+        return exceptionResponseBuilder.buildResponse(exception.getHttpStatus(), exception.getErrorMessageCode());
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Object> handleException(Exception exception) {
+        return exceptionResponseBuilder.buildResponse(HttpStatus.INTERNAL_SERVER_ERROR, ErrorMessageCode.GENERAL_EXCEPTION);
+    }
+
+    @Override
+    public ResponseEntity<Object> handleExceptionInternal(Exception exception, Object body, HttpHeaders httpHeaders, HttpStatus httpStatus, WebRequest webRequest) {
+        return exceptionResponseBuilder.buildResponse(httpStatus, ErrorMessageCode.VALIDATION_EXCEPTION);
     }
 }

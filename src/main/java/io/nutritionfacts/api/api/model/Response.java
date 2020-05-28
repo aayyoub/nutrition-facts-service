@@ -1,5 +1,6 @@
 package io.nutritionfacts.api.api.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,14 +12,16 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 @NoArgsConstructor
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Response<T> {
     private String requestId;
     private Integer statusCode;
+    private String statusMessage;
     private String responseMessage;
     private T result;
 
-    public void setStatusCode(HttpStatus statusCode) {
+    public void setHttpStatus(HttpStatus statusCode) {
         this.statusCode = statusCode.value();
-        this.responseMessage = statusCode.getReasonPhrase();
+        this.statusMessage = statusCode.getReasonPhrase();
     }
 }

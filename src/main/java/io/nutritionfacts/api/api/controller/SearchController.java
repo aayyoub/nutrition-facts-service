@@ -2,7 +2,6 @@ package io.nutritionfacts.api.api.controller;
 
 import io.nutritionfacts.api.api.model.Response;
 import io.nutritionfacts.api.api.model.SearchTermRequest;
-import io.nutritionfacts.api.domain.model.Food;
 import io.nutritionfacts.api.domain.model.SuggestedSearchTerm;
 import io.nutritionfacts.api.orchestration.SearchOrchestrator;
 import org.springframework.http.HttpStatus;
@@ -27,7 +26,7 @@ public class SearchController {
         List<SuggestedSearchTerm> searchTerms = searchOrchestrator.getSearchTerms(searchTermRequest);
 
         Response<List<SuggestedSearchTerm>> response = new Response<>();
-        response.setStatusCode(HttpStatus.OK);
+        response.setHttpStatus(HttpStatus.OK);
         response.setRequestId(searchTermRequest.getRequestId());
         response.setResult(searchTerms);
 

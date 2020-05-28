@@ -1,10 +1,11 @@
 package io.nutritionfacts.api.dataaccess.jpa.repository.hibernate;
 
-import io.nutritionfacts.api.dataaccess.jpa.entity.ExploreFoodEntity;
 import io.nutritionfacts.api.dataaccess.jpa.entity.FoodDescriptionEntity;
 import io.nutritionfacts.api.dataaccess.jpa.entity.FoodNameMappingEntity;
 import io.nutritionfacts.api.dataaccess.jpa.entity.SearchTermEntity;
 import io.nutritionfacts.api.dataaccess.jpa.repository.FoodRepository;
+import io.nutritionfacts.api.exception.ErrorMessageCode;
+import io.nutritionfacts.api.exception.FoodNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -18,26 +19,34 @@ public class HibernateFoodRepository implements FoodRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public FoodDescriptionEntity getFood(String foodId) {
-        return (FoodDescriptionEntity) entityManager
-                .createNativeQuery(
-                        "SELECT * FROM food_description WHERE food_description.food_description_id = " +
-                                ":foodDescriptionId",
-                        FoodDescriptionEntity.class
-                )
-                .setParameter("foodDescriptionId", foodId)
-                .getSingleResult();
+    @Override
+    public FoodNameMappingEntity getFoodIdByName(String foodName) {
+        try {
+            return (FoodNameMappingEntity) entityManager
+                    .createNativeQuery(
+                            "SELECT * FROM food_name_mapping WHERE food_name = :foodName",
+                            FoodNameMappingEntity.class
+                    )
+                    .setParameter("foodName", foodName)
+                    .getSingleResult();
+        } catch (Exception e) {
+            throw new FoodNotFoundException("Error getting foodId from foodName " + foodName);
+        }
     }
 
-    public List<ExploreFoodEntity> getExploreFood() {
-        return (List<ExploreFoodEntity>) entityManager
-                .createNativeQuery(
-                        "SELECT * FROM food_description " +
-                                "ORDER BY RAND() " +
-                                "LIMIT 0, 35",
-                        ExploreFoodEntity.class
-                )
-                .getResultList();
+    public FoodDescriptionEntity getFood(String foodId) {
+        try {
+            return (FoodDescriptionEntity) entityManager
+                    .createNativeQuery(
+                            "SELECT * FROM food_description WHERE food_description.food_description_id = " +
+                                    ":foodDescriptionId",
+                            FoodDescriptionEntity.class
+                    )
+                    .setParameter("foodDescriptionId", foodId)
+                    .getSingleResult();
+        } catch (Exception e) {
+            throw new FoodNotFoundException("Error getting food by foodId " + foodId);
+        }
     }
 
     @Override
@@ -53,17 +62,6 @@ public class HibernateFoodRepository implements FoodRepository {
     @Override
     public void save(FoodNameMappingEntity foodNameMappingEntity) {
         entityManager.persist(foodNameMappingEntity);
-    }
-
-    @Override
-    public FoodNameMappingEntity getFoodByName(String foodName) {
-        return (FoodNameMappingEntity) entityManager
-                .createNativeQuery(
-                        "SELECT * FROM food_name_mapping WHERE food_name = :foodName",
-                        FoodNameMappingEntity.class
-                )
-                .setParameter("foodName", foodName)
-                .getSingleResult();
     }
 }
 

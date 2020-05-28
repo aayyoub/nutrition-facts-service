@@ -1,6 +1,7 @@
 package io.nutritionfacts.api.domain.util;
 
 import io.nutritionfacts.api.domain.model.ServingSize;
+import io.nutritionfacts.api.exception.InvalidServingSizeException;
 import org.springframework.stereotype.Component;
 
 import java.util.Set;
@@ -11,6 +12,6 @@ public class ServingSizeSelector {
         return servingSizes.stream()
                            .filter(servingSize -> servingSize.getOrder().equals(selectedServingSize))
                            .findAny()
-                           .orElse(ServingSize.empty());
+                           .orElseThrow(() -> new InvalidServingSizeException("Invalid serving size: " + selectedServingSize));
     }
 }

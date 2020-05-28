@@ -13,7 +13,7 @@ public class FoodResolverService {
     }
 
     public String resolveFood(String foodName) {
-        FoodNameMappingEntity foodNameMappingEntity = foodRepository.getFoodByName(foodName);
+        FoodNameMappingEntity foodNameMappingEntity = foodRepository.getFoodIdByName(foodName);
 
         return foodNameMappingEntity.getFoodId();
     }
