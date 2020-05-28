@@ -1,6 +1,7 @@
 package io.nutritionfacts.api.domain.util;
 
 import io.nutritionfacts.api.domain.model.ServingSize;
+import io.nutritionfacts.api.exception.InvalidServingSizeException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -34,7 +35,21 @@ public class ServingSizeSelectorTest {
                                 ServingSize.builder().order(2).description("2.0 cups").build(),
                                 ServingSize.builder().order(3).description("3.0 cups").build()
                         ), 0, "100 grams"
-                },
+                }
+        };
+    }
+
+    @Test(dataProvider = "servingSizeSelectorDataProvider")
+    public void testServingSizeSelector(Set<ServingSize> servingSizes, Integer selectedServingSize, String expected) {
+        ServingSizeSelector servingSizeSelector = new ServingSizeSelector();
+        ServingSize actual = servingSizeSelector.getSelectedServingSize(servingSizes, selectedServingSize);
+
+        assertThat(actual.getDescription()).isEqualTo(expected);
+    }
+
+    @DataProvider
+    public Object[][] invalidServingSizeSelectorDataProvider() {
+        return new Object[][]{
                 {
                         Set.of(
                                 ServingSize.builder().order(1).description("1.0 cup").build(),
@@ -48,11 +63,9 @@ public class ServingSizeSelectorTest {
         };
     }
 
-    @Test(dataProvider = "servingSizeSelectorDataProvider")
-    public void testServingSizeSelector(Set<ServingSize> servingSizes, Integer selectedServingSize, String expected) {
+    @Test(dataProvider = "invalidServingSizeSelectorDataProvider", expectedExceptions = InvalidServingSizeException.class)
+    public void testInvalidServingSize(Set<ServingSize> servingSizes, Integer selectedServingSize, String expected) {
         ServingSizeSelector servingSizeSelector = new ServingSizeSelector();
         ServingSize actual = servingSizeSelector.getSelectedServingSize(servingSizes, selectedServingSize);
-
-        assertThat(actual.getDescription()).isEqualTo(expected);
     }
 }
