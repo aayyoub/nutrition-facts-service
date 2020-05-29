@@ -64,8 +64,8 @@ public class ServingSizeSelectorTest {
     }
 
     @Test(dataProvider = "invalidServingSizeSelectorDataProvider", expectedExceptions = InvalidServingSizeException.class)
-    public void testInvalidServingSize(Set<ServingSize> servingSizes, Integer selectedServingSize, String expected) {
+    public void testInvalidServingSize(Set<ServingSize> servingSizes, Integer selectedServingSize) {
         ServingSizeSelector servingSizeSelector = new ServingSizeSelector();
-        ServingSize actual = servingSizeSelector.getSelectedServingSize(servingSizes, selectedServingSize);
+        servingSizeSelector.getSelectedServingSize(servingSizes, selectedServingSize);
     }
 }
