@@ -9,8 +9,8 @@ import java.util.List;
 
 @Component
 public class CarbohydrateGrouper extends AbstractNutrientGrouper {
-    private static final Integer RANK = 4;
-    private static final String GROUP_NAME = "carbohydrates";
+    private static final Integer RANK = 2;
+    private static final String GROUP_NAME = "Carbohydrates";
 
     @Override
     protected List<String> getRequiredNutrients() {

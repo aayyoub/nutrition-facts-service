@@ -9,8 +9,8 @@ import java.util.List;
 
 @Component
 public class VitaminGrouper extends AbstractNutrientGrouper {
-    private static final Integer RANK = 1;
-    private static final String GROUP_NAME = "vitamins";
+    private static final Integer RANK = 4;
+    private static final String GROUP_NAME = "Vitamins";
 
     @Override
     protected List<String> getRequiredNutrients() {

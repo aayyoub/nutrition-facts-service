@@ -9,8 +9,8 @@ import java.util.List;
 
 @Component
 public class ProteinGrouper extends AbstractNutrientGrouper {
-    private static final Integer RANK = 3;
-    private static final String GROUP_NAME = "protein";
+    private static final Integer RANK = 1;
+    private static final String GROUP_NAME = "Protein and Amino Acids";
 
     @Override
     protected List<String> getRequiredNutrients() {

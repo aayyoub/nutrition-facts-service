@@ -1,6 +1,7 @@
 package io.nutritionfacts.api.domain.builder.nutrientgroup;
 
 import io.nutritionfacts.api.domain.builder.nutrientgroup.grouper.CarbohydrateGrouper;
+import io.nutritionfacts.api.domain.builder.nutrientgroup.grouper.EnergyGrouper;
 import io.nutritionfacts.api.domain.builder.nutrientgroup.grouper.FatGrouper;
 import io.nutritionfacts.api.domain.builder.nutrientgroup.grouper.MineralGrouper;
 import io.nutritionfacts.api.domain.builder.nutrientgroup.grouper.OtherGrouper;
@@ -53,16 +54,19 @@ public class NutrientGroupBuilderTest {
                 Map.entry("636", Nutrient.builder().id("636").sortOrder(15800).description("Phytosterols").build()),
                 Map.entry("638", Nutrient.builder().id("638").sortOrder(15900).description("Stigmasterol").build()),
                 Map.entry("255", Nutrient.builder().id("255").sortOrder(100).description("Water").build()),
-                Map.entry("207", Nutrient.builder().id("207").sortOrder(1000).tagname("Ash").build()));
+                Map.entry("207", Nutrient.builder().id("207").sortOrder(1000).tagname("Ash").build()),
+                Map.entry("208", Nutrient.builder().id("208").sortOrder(300).tagname("Energy").build()),
+                Map.entry("268", Nutrient.builder().id("268").sortOrder(400).tagname("Energy").build()));
     }
 
     private void givenNutrientBuilder() {
         List<NutrientGrouper> nutrientGroupers = Arrays.asList(
-                new VitaminGrouper(),
-                new MineralGrouper(),
+                new EnergyGrouper(),
                 new ProteinGrouper(),
                 new CarbohydrateGrouper(),
                 new FatGrouper(),
+                new VitaminGrouper(),
+                new MineralGrouper(),
                 new SterolGrouper(),
                 new OtherGrouper());
 
@@ -74,44 +78,49 @@ public class NutrientGroupBuilderTest {
     }
 
     private void verifyResults() {
-        assertThat(results.get(0).getRank()).isEqualTo(1);
-        assertThat(results.get(0).getGroupName()).isEqualTo("vitamins");
-        assertThat(results.get(0).getNutrients().get(0).getId()).isEqualTo("401");
-        assertThat(results.get(0).getNutrients().get(1).getId()).isEqualTo("318");
-        assertThat(results.get(0).getNutrients().get(2).getId()).isEqualTo("324");
+        assertThat(results.get(0).getRank()).isEqualTo(0);
+        assertThat(results.get(0).getGroupName()).isEqualTo("Energy");
+        assertThat(results.get(0).getNutrients().get(0).getId()).isEqualTo("208");
+        assertThat(results.get(0).getNutrients().get(1).getId()).isEqualTo("268");
 
-        assertThat(results.get(1).getRank()).isEqualTo(2);
-        assertThat(results.get(1).getGroupName()).isEqualTo("minerals");
-        assertThat(results.get(1).getNutrients().get(0).getId()).isEqualTo("301");
-        assertThat(results.get(1).getNutrients().get(1).getId()).isEqualTo("303");
-        assertThat(results.get(1).getNutrients().get(2).getId()).isEqualTo("304");
+        assertThat(results.get(1).getRank()).isEqualTo(1);
+        assertThat(results.get(1).getGroupName()).isEqualTo("Protein and Amino Acids");
+        assertThat(results.get(1).getNutrients().get(0).getId()).isEqualTo("203");
+        assertThat(results.get(1).getNutrients().get(1).getId()).isEqualTo("504");
+        assertThat(results.get(1).getNutrients().get(2).getId()).isEqualTo("515");
 
-        assertThat(results.get(2).getRank()).isEqualTo(3);
-        assertThat(results.get(2).getGroupName()).isEqualTo("protein");
-        assertThat(results.get(2).getNutrients().get(0).getId()).isEqualTo("203");
-        assertThat(results.get(2).getNutrients().get(1).getId()).isEqualTo("504");
-        assertThat(results.get(2).getNutrients().get(2).getId()).isEqualTo("515");
+        assertThat(results.get(2).getRank()).isEqualTo(2);
+        assertThat(results.get(2).getGroupName()).isEqualTo("Carbohydrates");
+        assertThat(results.get(2).getNutrients().get(0).getId()).isEqualTo("205");
+        assertThat(results.get(2).getNutrients().get(1).getId()).isEqualTo("210");
+        assertThat(results.get(2).getNutrients().get(2).getId()).isEqualTo("209");
 
-        assertThat(results.get(3).getRank()).isEqualTo(4);
-        assertThat(results.get(3).getGroupName()).isEqualTo("carbohydrates");
-        assertThat(results.get(3).getNutrients().get(0).getId()).isEqualTo("205");
-        assertThat(results.get(3).getNutrients().get(1).getId()).isEqualTo("210");
-        assertThat(results.get(3).getNutrients().get(2).getId()).isEqualTo("209");
+        assertThat(results.get(3).getRank()).isEqualTo(3);
+        assertThat(results.get(3).getGroupName()).isEqualTo("Fats and Fatty Acids");
+        assertThat(results.get(3).getNutrients().get(0).getId()).isEqualTo("652");
+        assertThat(results.get(3).getNutrients().get(1).getId()).isEqualTo("645");
+        assertThat(results.get(3).getNutrients().get(2).getId()).isEqualTo("646");
 
-        assertThat(results.get(4).getRank()).isEqualTo(5);
-        assertThat(results.get(4).getGroupName()).isEqualTo("fat");
-        assertThat(results.get(4).getNutrients().get(0).getId()).isEqualTo("652");
-        assertThat(results.get(4).getNutrients().get(1).getId()).isEqualTo("645");
-        assertThat(results.get(4).getNutrients().get(2).getId()).isEqualTo("646");
+        assertThat(results.get(4).getRank()).isEqualTo(4);
+        assertThat(results.get(4).getGroupName()).isEqualTo("Vitamins");
+        assertThat(results.get(4).getNutrients().get(0).getId()).isEqualTo("401");
+        assertThat(results.get(4).getNutrients().get(1).getId()).isEqualTo("318");
+        assertThat(results.get(4).getNutrients().get(2).getId()).isEqualTo("324");
 
-        assertThat(results.get(5).getRank()).isEqualTo(6);
-        assertThat(results.get(5).getGroupName()).isEqualTo("sterols");
-        assertThat(results.get(5).getNutrients().get(0).getId()).isEqualTo("636");
-        assertThat(results.get(5).getNutrients().get(1).getId()).isEqualTo("638");
+        assertThat(results.get(5).getRank()).isEqualTo(5);
+        assertThat(results.get(5).getGroupName()).isEqualTo("Minerals");
+        assertThat(results.get(5).getNutrients().get(0).getId()).isEqualTo("301");
+        assertThat(results.get(5).getNutrients().get(1).getId()).isEqualTo("303");
+        assertThat(results.get(5).getNutrients().get(2).getId()).isEqualTo("304");
 
-        assertThat(results.get(6).getRank()).isEqualTo(7);
-        assertThat(results.get(6).getGroupName()).isEqualTo("other");
-        assertThat(results.get(6).getNutrients().get(0).getId()).isEqualTo("255");
-        assertThat(results.get(6).getNutrients().get(1).getId()).isEqualTo("207");
+        assertThat(results.get(6).getRank()).isEqualTo(6);
+        assertThat(results.get(6).getGroupName()).isEqualTo("Sterols");
+        assertThat(results.get(6).getNutrients().get(0).getId()).isEqualTo("636");
+        assertThat(results.get(6).getNutrients().get(1).getId()).isEqualTo("638");
+
+        assertThat(results.get(7).getRank()).isEqualTo(7);
+        assertThat(results.get(7).getGroupName()).isEqualTo("Other");
+        assertThat(results.get(7).getNutrients().get(0).getId()).isEqualTo("255");
+        assertThat(results.get(7).getNutrients().get(1).getId()).isEqualTo("207");
     }
 }

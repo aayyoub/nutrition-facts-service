@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class SterolGrouper extends AbstractNutrientGrouper {
     private static final Integer RANK = 6;
-    private static final String GROUP_NAME = "sterols";
+    private static final String GROUP_NAME = "Sterols";
 
     @Override
     protected List<String> getRequiredNutrients() {

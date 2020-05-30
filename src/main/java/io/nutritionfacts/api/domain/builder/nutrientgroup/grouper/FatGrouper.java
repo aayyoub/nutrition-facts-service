@@ -9,8 +9,8 @@ import java.util.List;
 
 @Component
 public class FatGrouper extends AbstractNutrientGrouper {
-    private static final Integer RANK = 5;
-    private static final String GROUP_NAME = "fat";
+    private static final Integer RANK = 3;
+    private static final String GROUP_NAME = "Fats and Fatty Acids";
 
     @Override
     protected List<String> getRequiredNutrients() {
