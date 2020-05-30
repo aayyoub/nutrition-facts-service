@@ -1,12 +1,12 @@
 [Unit]
-Description=Running food-information-service
+Description=Running nutrition-facts-service
 After=network-online.target
 Requires=network-online.target
 
 [Service]
 User=root
 Type=simple
-ExecStart=/deployment/food-information-service/server.sh
+ExecStart=/deployment/nutrition-facts-service/server.sh
 RestartSec=10
 Restart=always
 

@@ -3,28 +3,28 @@
 #clone into applications
 cd /applications/
 unset GIT_DIR
-rm -rf food-information-service
-git clone /applications/food-information-service.git
+rm -rf nutrition-facts-service
+git clone /applications/nutrition-facts-service.git
 echo '✓ Cloned repository'
 
 #install dependencies
-cd /applications/food-information-service
+cd /applications/nutrition-facts-service
 mvn clean package
 echo '✓ Installed maven dependencies'
 
 #move server deployment scrips and make executable
-cp /applications/food-information-service/deployment/server.sh /deployment/food-information-service/server.sh
-chmod 744 /deployment/food-information-service/server.sh
+cp /applications/nutrition-facts-service/deployment/server.sh /deployment/nutrition-facts-service/server.sh
+chmod 744 /deployment/nutrition-facts-service/server.sh
 echo '✓ Moved deployment scripts to deployment directory'
 
 #create and start server script
-cp /applications/food-information-service/deployment/food-information-service.service /etc/systemd/system/food-information-service.service
+cp /applications/nutrition-facts-service/deployment/nutrition-facts-service.service /etc/systemd/system/nutrition-facts-service.service
 systemctl daemon-reload
-systemctl stop food-information-service
-systemctl start food-information-service
-systemctl enable food-information-service
+systemctl stop nutrition-facts-service
+systemctl start nutrition-facts-service
+systemctl enable nutrition-facts-service
 echo '✓ Started server script'
 
 #success messages
-figlet food-information-service
+figlet nutrition-facts-service
 echo '✓ SUCCESS'

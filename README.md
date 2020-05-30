@@ -17,5 +17,5 @@ Redis must be running locally.
 ## Building this project
 `mvn clean install`
 
-`java -jar -Dspring.profiles.active=prod food-information-service.jar`
+`java -jar -Dspring.profiles.active=prod nutrition-facts-service.jar`
 
