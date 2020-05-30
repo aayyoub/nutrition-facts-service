@@ -1,5 +1,5 @@
 # nutrition-facts-service
-This project is a Spring Boot API that searches for and retrieves nutritional data for foods. The relational data is provided by the USDA. Redis is used for caching. ElasticSearch is used for API search.
+This project is a Spring Boot API that searches for and retrieves nutritional data for foods. Data is sourced from the USDA. Redis is used for caching. ElasticSearch is used for API search.
 
 ## Rest API endpoints
 Search API
