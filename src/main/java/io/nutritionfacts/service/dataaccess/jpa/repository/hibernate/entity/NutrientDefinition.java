@@ -1,4 +1,4 @@
-package io.nutritionfacts.service.dataaccess.jpa.entity;
+package io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.entity;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -11,14 +11,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "nutrient_definition", schema = "nutritionfacts")
-public class NutrientDefinitionEntity {
+public class NutrientDefinition {
     private String nutrientNumber;
     private String units;
     private String tagname;
     private String nutrientDescription;
     private String roundedToDecimal;
     private Integer sortOrder;
-    private NutrientExtraInformationEntity nutrientExtraInformationEntity;
+    private NutrientExtraInformation nutrientExtraInformation;
 
     @Id
     @Column(name = "nutrient_number", nullable = false, length = 3)
@@ -82,11 +82,11 @@ public class NutrientDefinitionEntity {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "nutrient_number", insertable = false, updatable = false)
-    public NutrientExtraInformationEntity getNutrientExtraInformationEntity() {
-        return nutrientExtraInformationEntity;
+    public NutrientExtraInformation getNutrientExtraInformationEntity() {
+        return nutrientExtraInformation;
     }
 
-    public void setNutrientExtraInformationEntity(NutrientExtraInformationEntity nutrientExtraInformationEntity) {
-        this.nutrientExtraInformationEntity = nutrientExtraInformationEntity;
+    public void setNutrientExtraInformationEntity(NutrientExtraInformation nutrientExtraInformation) {
+        this.nutrientExtraInformation = nutrientExtraInformation;
     }
 }

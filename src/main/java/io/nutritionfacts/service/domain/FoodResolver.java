@@ -1,17 +1,17 @@
 package io.nutritionfacts.service.domain;
 
-import io.nutritionfacts.service.services.FoodResolverService;
+import io.nutritionfacts.service.services.food.impl.FoodService;
 import org.springframework.stereotype.Component;
 
 @Component
 public class FoodResolver {
-    private final FoodResolverService foodResolverService;
+    private final FoodService foodResolverService;
 
-    public FoodResolver(FoodResolverService foodResolverService) {
+    public FoodResolver(FoodService foodResolverService) {
         this.foodResolverService = foodResolverService;
     }
 
     public String resolveFood(String foodId) {
-        return foodResolverService.resolveFood(foodId);
+        return foodResolverService.getFoodId(foodId);
     }
 }

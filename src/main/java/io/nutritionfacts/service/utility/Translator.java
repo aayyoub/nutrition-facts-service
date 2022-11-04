@@ -1,4 +1,4 @@
-package io.nutritionfacts.service.util;
+package io.nutritionfacts.service.utility;
 
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.stereotype.Component;

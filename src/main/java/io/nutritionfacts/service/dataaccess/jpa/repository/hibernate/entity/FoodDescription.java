@@ -1,4 +1,4 @@
-package io.nutritionfacts.service.dataaccess.jpa.entity;
+package io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.entity;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "food_description", schema = "nutritionfacts")
-public class FoodDescriptionEntity {
+public class FoodDescription {
     private String foodDescriptionId;
     private String foodGroupCode;
     private String longDescription;
@@ -27,8 +27,8 @@ public class FoodDescriptionEntity {
     private Double proFactor;
     private Double fatFactor;
     private Double choFactor;
-    private Set<WeightEntity> weightEntities;
-    private Set<NutrientDataEntity> nutrientDataEntities;
+    private Set<Weight> weightEntities;
+    private Set<NutrientData> nutrientDataEntities;
 
     @Id
     @Column(name = "food_description_id", nullable = false, length = 5)
@@ -172,21 +172,21 @@ public class FoodDescriptionEntity {
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "weight_id")
-    public Set<WeightEntity> getWeightEntities() {
+    public Set<Weight> getWeightEntities() {
         return weightEntities;
     }
 
-    public void setWeightEntities(Set<WeightEntity> weightEntities) {
+    public void setWeightEntities(Set<Weight> weightEntities) {
         this.weightEntities = weightEntities;
     }
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "nutrient_data_id")
-    public Set<NutrientDataEntity> getNutrientDataEntities() {
+    public Set<NutrientData> getNutrientDataEntities() {
         return nutrientDataEntities;
     }
 
-    public void setNutrientDataEntities(Set<NutrientDataEntity> nutrientDataEntities) {
+    public void setNutrientDataEntities(Set<NutrientData> nutrientDataEntities) {
         this.nutrientDataEntities = nutrientDataEntities;
     }
 }

@@ -1,4 +1,4 @@
-package io.nutritionfacts.service.dataaccess.jpa.entity;
+package io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "food_name_mapping", schema = "nutritionfacts")
-public class FoodNameMappingEntity {
+public class FoodNameMapping {
     private String foodName;
     private String foodId;
 

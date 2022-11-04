@@ -28,7 +28,7 @@ public class DatabaseConfiguration {
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactory.setDataSource(dataSource);
         entityManagerFactory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManagerFactory.setPackagesToScan("io.nutritionfacts.service.dataaccess.jpa.entity");
+        entityManagerFactory.setPackagesToScan("io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.entity");
 
         Properties additionalProperties = new Properties();
         additionalProperties.put("hibernate.dialect", environment.getProperty("spring.jpa.databasePlatform"));

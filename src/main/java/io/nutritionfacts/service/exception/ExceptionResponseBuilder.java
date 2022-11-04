@@ -1,7 +1,7 @@
 package io.nutritionfacts.service.exception;
 
 import io.nutritionfacts.service.api.model.Response;
-import io.nutritionfacts.service.util.Translator;
+import io.nutritionfacts.service.utility.Translator;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package io.nutritionfacts.service.dataaccess.jpa.entity;
+package io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.entity;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "nutrient_extra_information", schema = "nutritionfacts")
-public class NutrientExtraInformationEntity {
+public class NutrientExtraInformation {
     private String nutrientNumber;
     private String commonName;
     private Double nutrientDailyValue;

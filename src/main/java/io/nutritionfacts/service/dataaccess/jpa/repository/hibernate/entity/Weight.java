@@ -1,4 +1,4 @@
-package io.nutritionfacts.service.dataaccess.jpa.entity;
+package io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "weight", schema = "nutritionfacts")
-public class WeightEntity implements Serializable {
+public class Weight implements Serializable {
     private String weightId;
     private String sequenceNumber;
     private Double amount;

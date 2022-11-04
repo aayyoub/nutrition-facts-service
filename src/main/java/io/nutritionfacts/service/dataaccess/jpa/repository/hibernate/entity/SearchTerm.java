@@ -1,4 +1,4 @@
-package io.nutritionfacts.service.dataaccess.jpa.entity;
+package io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.entity;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "food_description", schema = "nutritionfacts")
-public class SearchTermEntity {
+public class SearchTerm {
     private String foodDescriptionId;
     private String longDescription;
 

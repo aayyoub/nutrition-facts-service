@@ -1,6 +1,6 @@
 package io.nutritionfacts.service.domain.builder.footnote;
 
-import io.nutritionfacts.service.util.Translator;
+import io.nutritionfacts.service.utility.Translator;
 import org.springframework.stereotype.Component;
 
 @Component

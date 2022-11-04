@@ -1,4 +1,4 @@
-package io.nutritionfacts.service.dataaccess.jpa.entity;
+package io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "nutrient_data", schema = "nutritionfacts")
-public class NutrientDataEntity implements Serializable {
+public class NutrientData implements Serializable {
     private String nutrientDataId;
     private String nutrientNumber;
     private Double nutrientValue;
@@ -30,7 +30,7 @@ public class NutrientDataEntity implements Serializable {
     private String statisticalComments;
     private String addedModifiedDate;
     private String confidenceCode;
-    private NutrientDefinitionEntity nutrientDefinitionEntity;
+    private NutrientDefinition nutrientDefinition;
 
     @Id
     @Column(name = "nutrient_data_id", length = 5)
@@ -198,11 +198,11 @@ public class NutrientDataEntity implements Serializable {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "nutrient_number", insertable = false, updatable = false)
-    public NutrientDefinitionEntity getNutrientDefinitionEntity() {
-        return nutrientDefinitionEntity;
+    public NutrientDefinition getNutrientDefinitionEntity() {
+        return nutrientDefinition;
     }
 
-    public void setNutrientDefinitionEntity(NutrientDefinitionEntity nutrientDefinitionEntity) {
-        this.nutrientDefinitionEntity = nutrientDefinitionEntity;
+    public void setNutrientDefinitionEntity(NutrientDefinition nutrientDefinition) {
+        this.nutrientDefinition = nutrientDefinition;
     }
 }
