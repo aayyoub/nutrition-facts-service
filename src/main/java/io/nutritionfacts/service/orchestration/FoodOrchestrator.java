@@ -14,9 +14,9 @@ public class FoodOrchestrator {
     }
 
     public Food getFood(GetFoodRequest request) {
-        return foodFinder.findFood(
-                request.getFoodName(),
-                request.getServingSize()
-        );
+        var foodName = request.getFoodName();
+        var servingSize = request.getServingSize();
+
+        return foodFinder.findFood(foodName, servingSize);
     }
 }

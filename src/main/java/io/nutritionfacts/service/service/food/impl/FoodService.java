@@ -1,12 +1,12 @@
-package io.nutritionfacts.service.services.food.impl;
+package io.nutritionfacts.service.service.food.impl;
 
 import io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.entity.FoodDescription;
 import io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.FoodRepository;
 import io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.entity.FoodNameMapping;
 import io.nutritionfacts.service.domain.model.Food;
 import io.nutritionfacts.service.domain.model.FoodId;
-import io.nutritionfacts.service.services.food.IFoodService;
-import io.nutritionfacts.service.services.food.impl.mapper.FoodMapper;
+import io.nutritionfacts.service.service.food.IFoodService;
+import io.nutritionfacts.service.service.food.impl.mapper.FoodMapper;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -25,8 +25,8 @@ public class FoodService implements IFoodService {
         return new FoodId(foodNameMapping.getFoodId());
     }
 
-    public Food getFood(String foodId) {
-        FoodDescription foodDescription = foodRepository.getFood(foodId);
+    public Food getFood(FoodId foodId) {
+        FoodDescription foodDescription = foodRepository.getFood(foodId.getId());
 
         return foodMapper.mapFood(foodDescription);
     }

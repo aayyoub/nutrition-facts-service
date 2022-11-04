@@ -1,4 +1,4 @@
-package io.nutritionfacts.service.services.food.impl.mapper;
+package io.nutritionfacts.service.service.food.impl.mapper;
 
 import io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.entity.FoodDescription;
 import io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.entity.NutrientData;

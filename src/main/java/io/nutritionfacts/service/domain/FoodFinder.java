@@ -2,7 +2,8 @@ package io.nutritionfacts.service.domain;
 
 import io.nutritionfacts.service.domain.formatter.FoodFormatter;
 import io.nutritionfacts.service.domain.model.Food;
-import io.nutritionfacts.service.services.food.IFoodService;
+import io.nutritionfacts.service.domain.model.FoodId;
+import io.nutritionfacts.service.service.food.IFoodService;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,8 +16,8 @@ public class FoodFinder {
         this.foodFormatter = foodFormatter;
     }
 
-    public Food findFood(String name, Integer servingSize) {
-        String foodId = foodService.getFoodId(name);
+    public Food findFood(String foodName, Integer servingSize) {
+        FoodId foodId = foodService.getFoodId(foodName);
 
         Food food = foodService.getFood(foodId);
 
