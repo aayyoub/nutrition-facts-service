@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "weight", schema = "nutrient_database")
+@Table(name = "weight", schema = "nutritionfacts")
 public class WeightEntity implements Serializable {
     private String weightId;
     private String sequenceNumber;

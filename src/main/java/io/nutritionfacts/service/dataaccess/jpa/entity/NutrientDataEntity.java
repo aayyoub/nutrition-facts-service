@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "nutrient_data", schema = "nutrient_database")
+@Table(name = "nutrient_data", schema = "nutritionfacts")
 public class NutrientDataEntity implements Serializable {
     private String nutrientDataId;
     private String nutrientNumber;

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "nutrient_extra_information", schema = "nutrient_database")
+@Table(name = "nutrient_extra_information", schema = "nutritionfacts")
 public class NutrientExtraInformationEntity {
     private String nutrientNumber;
     private String commonName;

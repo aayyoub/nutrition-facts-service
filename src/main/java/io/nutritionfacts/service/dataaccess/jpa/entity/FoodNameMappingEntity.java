@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "food_name_mapping", schema = "nutrient_database")
+@Table(name = "food_name_mapping", schema = "nutritionfacts")
 public class FoodNameMappingEntity {
     private String foodName;
     private String foodId;

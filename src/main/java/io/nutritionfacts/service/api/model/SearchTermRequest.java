@@ -6,7 +6,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Data
-public class SearchTermRequest extends Request {
+public class SearchTermRequest {
     @NotEmpty
     @Size(min = 1, max = 200)
     private String searchTerm;

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import java.util.Set;
 
 @Entity
-@Table(name = "food_description", schema = "nutrient_database")
+@Table(name = "food_description", schema = "nutritionfacts")
 public class FoodDescriptionEntity {
     private String foodDescriptionId;
     private String foodGroupCode;

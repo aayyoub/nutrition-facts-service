@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "nutrient_definition", schema = "nutrient_database")
+@Table(name = "nutrient_definition", schema = "nutritionfacts")
 public class NutrientDefinitionEntity {
     private String nutrientNumber;
     private String units;

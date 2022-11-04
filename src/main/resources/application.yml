@@ -15,12 +15,10 @@ logging:
           descriptor:
             sql:
               BasicBinder: TRACE
-        web: ERROR
+        web: TRACE
       springframework:
         boot:
-          autoconfigure: ERROR
-      elasticsearch:
-        client: TRACE
+          autoconfigure: TRACE
   pattern:
     file: '%d{yyyy-MM-dd HH:mm:ss} %-5level - %msg%n%n'
 server:

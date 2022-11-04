@@ -4,7 +4,6 @@ import io.nutritionfacts.service.domain.FoodFinder;
 import io.nutritionfacts.service.domain.FoodResolver;
 import io.nutritionfacts.service.domain.model.Food;
 import io.nutritionfacts.service.api.controller.GetFoodRequest;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,7 +16,6 @@ public class FoodOrchestrator {
         this.foodFinder = foodFinder;
     }
 
-    @Cacheable(value = "food", key = "{#getFoodRequest.foodName,#getFoodRequest.servingSize}")
     public Food getFood(GetFoodRequest getFoodRequest) {
         String foodId = foodResolver.resolveFood(getFoodRequest.getFoodName());
 

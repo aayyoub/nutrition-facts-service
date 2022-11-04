@@ -16,7 +16,6 @@ spring:
       validationQuery: SELECT 1
   jpa:
     database: MYSQL
-    databasePlatform: org.hibernate.dialect.MySQL5Dialect
+    databasePlatform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddlAuto: none
-elasticsearch.host: localhost:9200

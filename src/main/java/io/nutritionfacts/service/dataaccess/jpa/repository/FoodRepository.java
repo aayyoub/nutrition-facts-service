@@ -12,6 +12,4 @@ public interface FoodRepository {
     FoodDescriptionEntity getFood(String foodId);
 
     List<SearchTermEntity> getAllLinks();
-
-    void save(FoodNameMappingEntity foodNameMappingEntity);
 }

@@ -24,7 +24,7 @@ public class HibernateFoodRepository implements FoodRepository {
         try {
             return (FoodNameMappingEntity) entityManager
                     .createNativeQuery(
-                            "SELECT * FROM food_name_mapping WHERE food_name = :foodName",
+                            "SELECT * FROM nutritionfacts.food_name_mapping WHERE food_name = :foodName",
                             FoodNameMappingEntity.class
                     )
                     .setParameter("foodName", foodName)
@@ -57,11 +57,6 @@ public class HibernateFoodRepository implements FoodRepository {
                         SearchTermEntity.class
                 )
                 .getResultList();
-    }
-
-    @Override
-    public void save(FoodNameMappingEntity foodNameMappingEntity) {
-        entityManager.persist(foodNameMappingEntity);
     }
 }
 

@@ -19,4 +19,3 @@ spring:
     databasePlatform: org.hibernate.dialect.MySQL5Dialect
     hibernate:
       ddlAuto: none
-elasticsearch.host: localhost:9200
