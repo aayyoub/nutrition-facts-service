@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.domain.calculator;
+package io.nutritionfacts.service.domain.calculator;
 
 import org.springframework.stereotype.Component;
 

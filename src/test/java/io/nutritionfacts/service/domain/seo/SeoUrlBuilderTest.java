@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.domain.seo;
+package io.nutritionfacts.service.domain.seo;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

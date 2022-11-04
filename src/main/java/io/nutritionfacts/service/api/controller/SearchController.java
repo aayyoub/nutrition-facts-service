@@ -1,9 +1,9 @@
-package io.nutritionfacts.api.api.controller;
+package io.nutritionfacts.service.api.controller;
 
-import io.nutritionfacts.api.api.model.Response;
-import io.nutritionfacts.api.api.model.SearchTermRequest;
-import io.nutritionfacts.api.domain.model.SuggestedSearchTerm;
-import io.nutritionfacts.api.orchestration.SearchOrchestrator;
+import io.nutritionfacts.service.domain.model.SuggestedSearchTerm;
+import io.nutritionfacts.service.orchestration.SearchOrchestrator;
+import io.nutritionfacts.service.api.model.Response;
+import io.nutritionfacts.service.api.model.SearchTermRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

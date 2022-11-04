@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.dataaccess.jpa.entity;
+package io.nutritionfacts.service.dataaccess.jpa.entity;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;

@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.api.filter;
+package io.nutritionfacts.service.api.filter;
 
 import lombok.Data;
 import org.springframework.context.annotation.Scope;

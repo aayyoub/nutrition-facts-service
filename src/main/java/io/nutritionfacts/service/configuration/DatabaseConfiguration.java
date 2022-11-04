@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.configuration;
+package io.nutritionfacts.service.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

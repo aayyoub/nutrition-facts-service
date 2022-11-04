@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.api.filter;
+package io.nutritionfacts.service.api.filter;
 
 import org.springframework.stereotype.Component;
 

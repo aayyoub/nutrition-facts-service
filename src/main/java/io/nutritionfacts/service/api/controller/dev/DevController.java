@@ -1,11 +1,11 @@
-package io.nutritionfacts.api.api.controller.dev;
+package io.nutritionfacts.service.api.controller.dev;
 
-import io.nutritionfacts.api.dataaccess.elasticsearch.entity.SearchTermEntity;
-import io.nutritionfacts.api.dataaccess.elasticsearch.repository.SearchTermRepository;
-import io.nutritionfacts.api.dataaccess.jpa.entity.FoodNameMappingEntity;
-import io.nutritionfacts.api.dataaccess.jpa.repository.FoodRepository;
-import io.nutritionfacts.api.domain.seo.SeoUrlBuilder;
-import io.nutritionfacts.api.util.dev.SitemapBuilder;
+import io.nutritionfacts.service.dataaccess.elasticsearch.entity.SearchTermEntity;
+import io.nutritionfacts.service.dataaccess.elasticsearch.repository.SearchTermRepository;
+import io.nutritionfacts.service.dataaccess.jpa.entity.FoodNameMappingEntity;
+import io.nutritionfacts.service.dataaccess.jpa.repository.FoodRepository;
+import io.nutritionfacts.service.domain.seo.SeoUrlBuilder;
+import io.nutritionfacts.service.util.dev.SitemapBuilder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

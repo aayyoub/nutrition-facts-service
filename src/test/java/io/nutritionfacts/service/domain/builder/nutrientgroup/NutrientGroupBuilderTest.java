@@ -1,15 +1,15 @@
-package io.nutritionfacts.api.domain.builder.nutrientgroup;
+package io.nutritionfacts.service.domain.builder.nutrientgroup;
 
-import io.nutritionfacts.api.domain.builder.nutrientgroup.grouper.CarbohydrateGrouper;
-import io.nutritionfacts.api.domain.builder.nutrientgroup.grouper.EnergyGrouper;
-import io.nutritionfacts.api.domain.builder.nutrientgroup.grouper.FatGrouper;
-import io.nutritionfacts.api.domain.builder.nutrientgroup.grouper.MineralGrouper;
-import io.nutritionfacts.api.domain.builder.nutrientgroup.grouper.OtherGrouper;
-import io.nutritionfacts.api.domain.builder.nutrientgroup.grouper.ProteinGrouper;
-import io.nutritionfacts.api.domain.builder.nutrientgroup.grouper.SterolGrouper;
-import io.nutritionfacts.api.domain.builder.nutrientgroup.grouper.VitaminGrouper;
-import io.nutritionfacts.api.domain.model.Nutrient;
-import io.nutritionfacts.api.domain.model.NutrientGroup;
+import io.nutritionfacts.service.domain.builder.nutrientgroup.grouper.CarbohydrateGrouper;
+import io.nutritionfacts.service.domain.builder.nutrientgroup.grouper.EnergyGrouper;
+import io.nutritionfacts.service.domain.builder.nutrientgroup.grouper.FatGrouper;
+import io.nutritionfacts.service.domain.builder.nutrientgroup.grouper.MineralGrouper;
+import io.nutritionfacts.service.domain.builder.nutrientgroup.grouper.OtherGrouper;
+import io.nutritionfacts.service.domain.builder.nutrientgroup.grouper.ProteinGrouper;
+import io.nutritionfacts.service.domain.builder.nutrientgroup.grouper.SterolGrouper;
+import io.nutritionfacts.service.domain.builder.nutrientgroup.grouper.VitaminGrouper;
+import io.nutritionfacts.service.domain.model.Nutrient;
+import io.nutritionfacts.service.domain.model.NutrientGroup;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;

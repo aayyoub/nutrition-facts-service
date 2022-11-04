@@ -1,9 +1,9 @@
-package io.nutritionfacts.api.api.exceptionhandler;
+package io.nutritionfacts.service.api.exceptionhandler;
 
-import io.nutritionfacts.api.exception.ErrorMessageCode;
-import io.nutritionfacts.api.exception.ExceptionResponseBuilder;
-import io.nutritionfacts.api.exception.FoodNotFoundException;
-import io.nutritionfacts.api.exception.InvalidServingSizeException;
+import io.nutritionfacts.service.exception.ErrorMessageCode;
+import io.nutritionfacts.service.exception.ExceptionResponseBuilder;
+import io.nutritionfacts.service.exception.FoodNotFoundException;
+import io.nutritionfacts.service.exception.InvalidServingSizeException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

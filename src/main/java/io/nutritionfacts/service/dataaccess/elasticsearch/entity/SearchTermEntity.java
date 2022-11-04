@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.dataaccess.elasticsearch.entity;
+package io.nutritionfacts.service.dataaccess.elasticsearch.entity;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;

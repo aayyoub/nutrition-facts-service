@@ -1,9 +1,9 @@
-package io.nutritionfacts.api.services;
+package io.nutritionfacts.service.services;
 
-import io.nutritionfacts.api.dataaccess.jpa.entity.FoodDescriptionEntity;
-import io.nutritionfacts.api.dataaccess.jpa.repository.FoodRepository;
-import io.nutritionfacts.api.domain.model.Food;
-import io.nutritionfacts.api.services.mapper.FoodMapper;
+import io.nutritionfacts.service.dataaccess.jpa.entity.FoodDescriptionEntity;
+import io.nutritionfacts.service.dataaccess.jpa.repository.FoodRepository;
+import io.nutritionfacts.service.domain.model.Food;
+import io.nutritionfacts.service.services.mapper.FoodMapper;
 import org.springframework.stereotype.Component;
 
 @Component

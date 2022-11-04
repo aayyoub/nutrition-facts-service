@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.domain.seo;
+package io.nutritionfacts.service.domain.seo;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

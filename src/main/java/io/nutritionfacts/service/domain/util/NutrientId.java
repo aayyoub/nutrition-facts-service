@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.domain.util;
+package io.nutritionfacts.service.domain.util;
 
 public class NutrientId {
     public final static String ADJUSTED_PROTEIN = "257";

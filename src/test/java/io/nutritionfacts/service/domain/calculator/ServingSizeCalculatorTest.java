@@ -1,7 +1,7 @@
-package io.nutritionfacts.api.domain.calculator;
+package io.nutritionfacts.service.domain.calculator;
 
-import io.nutritionfacts.api.domain.model.Nutrient;
-import io.nutritionfacts.api.domain.model.ServingSize;
+import io.nutritionfacts.service.domain.model.Nutrient;
+import io.nutritionfacts.service.domain.model.ServingSize;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

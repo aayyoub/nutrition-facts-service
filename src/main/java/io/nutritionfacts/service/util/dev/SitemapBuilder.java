@@ -1,7 +1,7 @@
-package io.nutritionfacts.api.util.dev;
+package io.nutritionfacts.service.util.dev;
 
-import io.nutritionfacts.api.dataaccess.jpa.repository.FoodRepository;
-import io.nutritionfacts.api.domain.seo.SeoUrlBuilder;
+import io.nutritionfacts.service.dataaccess.jpa.repository.FoodRepository;
+import io.nutritionfacts.service.domain.seo.SeoUrlBuilder;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

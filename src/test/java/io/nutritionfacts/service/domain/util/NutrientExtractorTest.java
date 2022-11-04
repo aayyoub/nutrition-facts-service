@@ -1,6 +1,6 @@
-package io.nutritionfacts.api.domain.util;
+package io.nutritionfacts.service.domain.util;
 
-import io.nutritionfacts.api.domain.model.Nutrient;
+import io.nutritionfacts.service.domain.model.Nutrient;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

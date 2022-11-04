@@ -2,6 +2,7 @@ domain: https://www.nutritionfacts.io
 spring:
   datasource:
     username: root
+    password: password
     url: jdbc:mysql://localhost:3306/nutritionfacts?serverTimezone=UTC
     driverClassName: com.mysql.cj.jdbc.Driver
     tomcat:

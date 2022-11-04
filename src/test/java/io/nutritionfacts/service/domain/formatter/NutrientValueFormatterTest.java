@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.domain.formatter;
+package io.nutritionfacts.service.domain.formatter;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

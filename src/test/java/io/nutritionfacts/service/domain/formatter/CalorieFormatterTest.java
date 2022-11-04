@@ -1,7 +1,7 @@
-package io.nutritionfacts.api.domain.formatter;
+package io.nutritionfacts.service.domain.formatter;
 
-import io.nutritionfacts.api.domain.model.Nutrient;
-import io.nutritionfacts.api.domain.util.NutrientExtractor;
+import io.nutritionfacts.service.domain.model.Nutrient;
+import io.nutritionfacts.service.domain.util.NutrientExtractor;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

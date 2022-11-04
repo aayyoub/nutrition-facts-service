@@ -1,11 +1,11 @@
-package io.nutritionfacts.api.services.mapper;
+package io.nutritionfacts.service.services.mapper;
 
-import io.nutritionfacts.api.dataaccess.jpa.entity.FoodDescriptionEntity;
-import io.nutritionfacts.api.dataaccess.jpa.entity.NutrientDataEntity;
-import io.nutritionfacts.api.dataaccess.jpa.entity.WeightEntity;
-import io.nutritionfacts.api.domain.model.Food;
-import io.nutritionfacts.api.domain.model.Nutrient;
-import io.nutritionfacts.api.domain.model.ServingSize;
+import io.nutritionfacts.service.dataaccess.jpa.entity.FoodDescriptionEntity;
+import io.nutritionfacts.service.dataaccess.jpa.entity.NutrientDataEntity;
+import io.nutritionfacts.service.dataaccess.jpa.entity.WeightEntity;
+import io.nutritionfacts.service.domain.model.Food;
+import io.nutritionfacts.service.domain.model.Nutrient;
+import io.nutritionfacts.service.domain.model.ServingSize;
 import org.springframework.stereotype.Component;
 
 import java.util.Comparator;

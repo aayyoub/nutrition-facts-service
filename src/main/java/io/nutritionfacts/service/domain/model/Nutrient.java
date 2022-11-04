@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.domain.model;
+package io.nutritionfacts.service.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;

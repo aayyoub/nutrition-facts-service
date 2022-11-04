@@ -1,11 +1,11 @@
-package io.nutritionfacts.api.dataaccess.jpa.repository.hibernate;
+package io.nutritionfacts.service.dataaccess.jpa.repository.hibernate;
 
-import io.nutritionfacts.api.dataaccess.jpa.entity.FoodDescriptionEntity;
-import io.nutritionfacts.api.dataaccess.jpa.entity.FoodNameMappingEntity;
-import io.nutritionfacts.api.dataaccess.jpa.entity.SearchTermEntity;
-import io.nutritionfacts.api.dataaccess.jpa.repository.FoodRepository;
-import io.nutritionfacts.api.exception.ErrorMessageCode;
-import io.nutritionfacts.api.exception.FoodNotFoundException;
+import io.nutritionfacts.service.dataaccess.jpa.entity.FoodDescriptionEntity;
+import io.nutritionfacts.service.dataaccess.jpa.entity.FoodNameMappingEntity;
+import io.nutritionfacts.service.dataaccess.jpa.entity.SearchTermEntity;
+import io.nutritionfacts.service.dataaccess.jpa.repository.FoodRepository;
+import io.nutritionfacts.service.exception.ErrorMessageCode;
+import io.nutritionfacts.service.exception.FoodNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

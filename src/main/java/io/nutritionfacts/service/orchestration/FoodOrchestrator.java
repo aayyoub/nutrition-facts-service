@@ -1,9 +1,9 @@
-package io.nutritionfacts.api.orchestration;
+package io.nutritionfacts.service.orchestration;
 
-import io.nutritionfacts.api.api.model.GetFoodRequest;
-import io.nutritionfacts.api.domain.FoodFinder;
-import io.nutritionfacts.api.domain.FoodResolver;
-import io.nutritionfacts.api.domain.model.Food;
+import io.nutritionfacts.service.domain.FoodFinder;
+import io.nutritionfacts.service.domain.FoodResolver;
+import io.nutritionfacts.service.domain.model.Food;
+import io.nutritionfacts.service.api.controller.GetFoodRequest;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 

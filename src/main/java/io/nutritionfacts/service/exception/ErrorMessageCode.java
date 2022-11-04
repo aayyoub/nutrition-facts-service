@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.exception;
+package io.nutritionfacts.service.exception;
 
 /*
  * This is an important enum class for custom error message handling.

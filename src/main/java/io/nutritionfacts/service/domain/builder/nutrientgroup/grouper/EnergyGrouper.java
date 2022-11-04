@@ -1,7 +1,7 @@
-package io.nutritionfacts.api.domain.builder.nutrientgroup.grouper;
+package io.nutritionfacts.service.domain.builder.nutrientgroup.grouper;
 
-import io.nutritionfacts.api.domain.builder.nutrientgroup.AbstractNutrientGrouper;
-import io.nutritionfacts.api.domain.util.NutrientId;
+import io.nutritionfacts.service.domain.builder.nutrientgroup.AbstractNutrientGrouper;
+import io.nutritionfacts.service.domain.util.NutrientId;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;

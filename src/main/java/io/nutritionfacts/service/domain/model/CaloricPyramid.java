@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.domain.model;
+package io.nutritionfacts.service.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

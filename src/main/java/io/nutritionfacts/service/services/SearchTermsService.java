@@ -1,8 +1,8 @@
-package io.nutritionfacts.api.services;
+package io.nutritionfacts.service.services;
 
-import io.nutritionfacts.api.dataaccess.elasticsearch.entity.SearchTermEntity;
-import io.nutritionfacts.api.dataaccess.elasticsearch.repository.SearchTermRepository;
-import io.nutritionfacts.api.domain.model.SuggestedSearchTerm;
+import io.nutritionfacts.service.dataaccess.elasticsearch.entity.SearchTermEntity;
+import io.nutritionfacts.service.dataaccess.elasticsearch.repository.SearchTermRepository;
+import io.nutritionfacts.service.domain.model.SuggestedSearchTerm;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.exception;
+package io.nutritionfacts.service.exception;
 
 import org.springframework.http.HttpStatus;
 

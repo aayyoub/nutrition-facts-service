@@ -1,9 +1,9 @@
-package io.nutritionfacts.api.domain.formatter;
+package io.nutritionfacts.service.domain.formatter;
 
-import io.nutritionfacts.api.domain.calculator.PercentDailyValueCalculator;
-import io.nutritionfacts.api.domain.calculator.ServingSizeCalculator;
-import io.nutritionfacts.api.domain.model.Nutrient;
-import io.nutritionfacts.api.domain.model.ServingSize;
+import io.nutritionfacts.service.domain.calculator.PercentDailyValueCalculator;
+import io.nutritionfacts.service.domain.calculator.ServingSizeCalculator;
+import io.nutritionfacts.service.domain.model.Nutrient;
+import io.nutritionfacts.service.domain.model.ServingSize;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;

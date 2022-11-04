@@ -1,10 +1,9 @@
-package io.nutritionfacts.api.api.controller;
+package io.nutritionfacts.service.api.controller;
 
-import io.nutritionfacts.api.api.model.GetFoodRequest;
-import io.nutritionfacts.api.api.model.Response;
-import io.nutritionfacts.api.api.filter.RequestContext;
-import io.nutritionfacts.api.domain.model.Food;
-import io.nutritionfacts.api.orchestration.FoodOrchestrator;
+import io.nutritionfacts.service.api.filter.RequestContext;
+import io.nutritionfacts.service.domain.model.Food;
+import io.nutritionfacts.service.orchestration.FoodOrchestrator;
+import io.nutritionfacts.service.api.model.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

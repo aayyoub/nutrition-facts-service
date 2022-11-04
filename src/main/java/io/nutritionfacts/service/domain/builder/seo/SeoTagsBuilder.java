@@ -1,6 +1,6 @@
-package io.nutritionfacts.api.domain.builder.seo;
+package io.nutritionfacts.service.domain.builder.seo;
 
-import io.nutritionfacts.api.domain.model.SeoTags;
+import io.nutritionfacts.service.domain.model.SeoTags;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 import org.springframework.stereotype.Component;

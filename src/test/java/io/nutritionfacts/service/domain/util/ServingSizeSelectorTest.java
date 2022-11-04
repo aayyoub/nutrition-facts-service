@@ -1,7 +1,7 @@
-package io.nutritionfacts.api.domain.util;
+package io.nutritionfacts.service.domain.util;
 
-import io.nutritionfacts.api.domain.model.ServingSize;
-import io.nutritionfacts.api.exception.InvalidServingSizeException;
+import io.nutritionfacts.service.domain.model.ServingSize;
+import io.nutritionfacts.service.exception.InvalidServingSizeException;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

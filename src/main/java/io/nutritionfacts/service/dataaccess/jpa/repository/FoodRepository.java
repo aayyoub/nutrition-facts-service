@@ -1,8 +1,8 @@
-package io.nutritionfacts.api.dataaccess.jpa.repository;
+package io.nutritionfacts.service.dataaccess.jpa.repository;
 
-import io.nutritionfacts.api.dataaccess.jpa.entity.FoodDescriptionEntity;
-import io.nutritionfacts.api.dataaccess.jpa.entity.FoodNameMappingEntity;
-import io.nutritionfacts.api.dataaccess.jpa.entity.SearchTermEntity;
+import io.nutritionfacts.service.dataaccess.jpa.entity.FoodDescriptionEntity;
+import io.nutritionfacts.service.dataaccess.jpa.entity.FoodNameMappingEntity;
+import io.nutritionfacts.service.dataaccess.jpa.entity.SearchTermEntity;
 
 import java.util.List;
 

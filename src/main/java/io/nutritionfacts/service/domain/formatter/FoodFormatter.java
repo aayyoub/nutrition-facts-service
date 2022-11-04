@@ -1,18 +1,18 @@
-package io.nutritionfacts.api.domain.formatter;
+package io.nutritionfacts.service.domain.formatter;
 
-import io.nutritionfacts.api.domain.builder.footnote.DisclaimerBuilder;
-import io.nutritionfacts.api.domain.builder.nutrientgroup.NutrientGroupBuilder;
-import io.nutritionfacts.api.domain.builder.nutritionfacts.NutritionFactsBuilder;
-import io.nutritionfacts.api.domain.builder.seo.SeoTagsBuilder;
-import io.nutritionfacts.api.domain.calculator.CaloricPyramidCalculator;
-import io.nutritionfacts.api.domain.model.CaloricPyramid;
-import io.nutritionfacts.api.domain.model.Food;
-import io.nutritionfacts.api.domain.model.Nutrient;
-import io.nutritionfacts.api.domain.model.NutrientGroup;
-import io.nutritionfacts.api.domain.model.NutritionFacts;
-import io.nutritionfacts.api.domain.model.SeoTags;
-import io.nutritionfacts.api.domain.model.ServingSize;
-import io.nutritionfacts.api.domain.util.ServingSizeSelector;
+import io.nutritionfacts.service.domain.builder.footnote.DisclaimerBuilder;
+import io.nutritionfacts.service.domain.builder.nutrientgroup.NutrientGroupBuilder;
+import io.nutritionfacts.service.domain.builder.nutritionfacts.NutritionFactsBuilder;
+import io.nutritionfacts.service.domain.builder.seo.SeoTagsBuilder;
+import io.nutritionfacts.service.domain.calculator.CaloricPyramidCalculator;
+import io.nutritionfacts.service.domain.model.CaloricPyramid;
+import io.nutritionfacts.service.domain.model.Food;
+import io.nutritionfacts.service.domain.model.Nutrient;
+import io.nutritionfacts.service.domain.model.NutrientGroup;
+import io.nutritionfacts.service.domain.model.NutritionFacts;
+import io.nutritionfacts.service.domain.model.SeoTags;
+import io.nutritionfacts.service.domain.model.ServingSize;
+import io.nutritionfacts.service.domain.util.ServingSizeSelector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

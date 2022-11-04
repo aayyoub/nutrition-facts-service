@@ -1,8 +1,8 @@
-package io.nutritionfacts.api.orchestration;
+package io.nutritionfacts.service.orchestration;
 
-import io.nutritionfacts.api.api.model.SearchTermRequest;
-import io.nutritionfacts.api.domain.SearchTermsFinder;
-import io.nutritionfacts.api.domain.model.SuggestedSearchTerm;
+import io.nutritionfacts.service.domain.SearchTermsFinder;
+import io.nutritionfacts.service.domain.model.SuggestedSearchTerm;
+import io.nutritionfacts.service.api.model.SearchTermRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

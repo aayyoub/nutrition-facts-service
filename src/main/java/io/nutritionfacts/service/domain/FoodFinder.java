@@ -1,8 +1,8 @@
-package io.nutritionfacts.api.domain;
+package io.nutritionfacts.service.domain;
 
-import io.nutritionfacts.api.domain.formatter.FoodFormatter;
-import io.nutritionfacts.api.domain.model.Food;
-import io.nutritionfacts.api.services.FoodService;
+import io.nutritionfacts.service.domain.formatter.FoodFormatter;
+import io.nutritionfacts.service.domain.model.Food;
+import io.nutritionfacts.service.services.FoodService;
 import org.springframework.stereotype.Component;
 
 @Component

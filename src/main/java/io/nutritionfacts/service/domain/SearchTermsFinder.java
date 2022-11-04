@@ -1,8 +1,8 @@
-package io.nutritionfacts.api.domain;
+package io.nutritionfacts.service.domain;
 
-import io.nutritionfacts.api.domain.formatter.SearchTermsFormatter;
-import io.nutritionfacts.api.domain.model.SuggestedSearchTerm;
-import io.nutritionfacts.api.services.SearchTermsService;
+import io.nutritionfacts.service.domain.formatter.SearchTermsFormatter;
+import io.nutritionfacts.service.domain.model.SuggestedSearchTerm;
+import io.nutritionfacts.service.services.SearchTermsService;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

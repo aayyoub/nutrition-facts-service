@@ -1,10 +1,10 @@
-package io.nutritionfacts.api.domain.builder.nutritionfacts;
+package io.nutritionfacts.service.domain.builder.nutritionfacts;
 
-import io.nutritionfacts.api.domain.model.Nutrient;
-import io.nutritionfacts.api.domain.model.NutritionFacts;
-import io.nutritionfacts.api.domain.model.ServingSize;
-import io.nutritionfacts.api.domain.util.NutrientExtractor;
-import io.nutritionfacts.api.domain.util.NutrientId;
+import io.nutritionfacts.service.domain.model.Nutrient;
+import io.nutritionfacts.service.domain.model.NutritionFacts;
+import io.nutritionfacts.service.domain.model.ServingSize;
+import io.nutritionfacts.service.domain.util.NutrientExtractor;
+import io.nutritionfacts.service.domain.util.NutrientId;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;

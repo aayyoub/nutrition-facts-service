@@ -1,4 +1,4 @@
-package io.nutritionfacts.api.configuration;
+package io.nutritionfacts.service.configuration;
 
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Value;

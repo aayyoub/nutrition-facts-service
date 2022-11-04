@@ -1,6 +1,6 @@
-package io.nutritionfacts.api.dataaccess.elasticsearch.repository;
+package io.nutritionfacts.service.dataaccess.elasticsearch.repository;
 
-import io.nutritionfacts.api.dataaccess.elasticsearch.entity.SearchTermEntity;
+import io.nutritionfacts.service.dataaccess.elasticsearch.entity.SearchTermEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
