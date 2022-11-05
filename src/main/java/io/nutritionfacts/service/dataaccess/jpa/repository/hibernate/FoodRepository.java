@@ -12,40 +12,22 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public class FoodRepository {
-    @PersistenceContext
-    private final EntityManager entityManager;
+  @PersistenceContext
+  private final EntityManager entityManager;
 
-    public FoodRepository(EntityManager entityManager) {
-        this.entityManager = entityManager;
+  public FoodRepository(EntityManager entityManager) {
+    this.entityManager = entityManager;
+  }
+
+  public FoodDescription getFood(String foodId) {
+    try {
+      return (FoodDescription) entityManager
+          .createNativeQuery("SELECT * FROM food_description WHERE food_description_id = :foodId", FoodDescription.class)
+          .setParameter("foodId", foodId)
+          .getSingleResult();
+    } catch (Exception e) {
+      throw new FoodNotFoundException("Error getting food by foodId " + foodId);
     }
-
-    public FoodNameMapping getFoodId(String foodName) {
-        try {
-            var result = entityManager.createNativeQuery(
-                            "SELECT * FROM food_name_mapping WHERE food_name = :foodName", FoodNameMapping.class
-                    )
-                    .setParameter("foodName", foodName)
-                    .getSingleResult();
-
-            return (FoodNameMapping) result;
-        } catch (Exception e) {
-            throw new FoodNotFoundException("Error getting food by foodName: " + foodName);
-        }
-    }
-
-    public FoodDescription getFood(String foodId) {
-        try {
-            var result = entityManager.createNativeQuery(
-                            "SELECT * FROM food_description WHERE food_description.food_description_id = :foodDescriptionId",
-                            FoodDescription.class
-                    )
-                    .setParameter("foodDescriptionId", foodId)
-                    .getSingleResult();
-
-            return (FoodDescription) result;
-        } catch (Exception e) {
-            throw new FoodNotFoundException("Error getting food by foodId " + foodId);
-        }
-    }
+  }
 }
 

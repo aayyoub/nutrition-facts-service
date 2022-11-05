@@ -28,10 +28,6 @@ public class Food {
     private NutritionFacts nutritionFacts;
     private CaloricPyramid caloricPyramid;
     private List<NutrientGroup> nutrientGroups;
-    private SeoTags seoTags;
-    @JsonIgnore
     private Map<String, Nutrient> nutrients;
-    @JsonIgnore
-    private Map<String, Nutrient> nutrientsPerServingSize;
     private String disclaimer;
 }

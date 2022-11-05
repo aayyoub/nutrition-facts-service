@@ -2,7 +2,6 @@ package io.nutritionfacts.service.service.food.impl;
 
 import io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.entity.FoodDescription;
 import io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.FoodRepository;
-import io.nutritionfacts.service.dataaccess.jpa.repository.hibernate.entity.FoodNameMapping;
 import io.nutritionfacts.service.domain.model.Food;
 import io.nutritionfacts.service.domain.model.FoodId;
 import io.nutritionfacts.service.service.food.IFoodService;
@@ -17,12 +16,6 @@ public class FoodService implements IFoodService {
     public FoodService(FoodRepository foodRepository, FoodMapper foodMapper) {
         this.foodRepository = foodRepository;
         this.foodMapper = foodMapper;
-    }
-
-    public FoodId getFoodId(String name) {
-        FoodNameMapping foodNameMapping = foodRepository.getFoodId(name);
-
-        return new FoodId(foodNameMapping.getFoodId());
     }
 
     public Food getFood(FoodId foodId) {

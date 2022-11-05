@@ -1,5 +1,6 @@
 package io.nutritionfacts.service.domain.util;
 
+import io.nutritionfacts.service.domain.food.formatter.components.ServingSizeSelector;
 import io.nutritionfacts.service.domain.model.ServingSize;
 import io.nutritionfacts.service.exception.InvalidServingSizeException;
 import org.testng.annotations.DataProvider;

@@ -1,5 +1,6 @@
 package io.nutritionfacts.service.domain.formatter;
 
+import io.nutritionfacts.service.domain.food.formatter.components.DescriptionFormatter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
