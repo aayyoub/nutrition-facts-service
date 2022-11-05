@@ -1,6 +1,6 @@
 package io.nutritionfacts.service.orchestration;
 
-import io.nutritionfacts.service.api.controller.GetFoodRequest;
+import io.nutritionfacts.service.api.model.GetFoodRequest;
 import io.nutritionfacts.service.domain.FoodFinder;
 import io.nutritionfacts.service.domain.model.Food;
 import org.springframework.stereotype.Component;
