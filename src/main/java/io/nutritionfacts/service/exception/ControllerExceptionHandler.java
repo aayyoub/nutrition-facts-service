@@ -1,4 +1,4 @@
-package io.nutritionfacts.service.api.exceptionhandler;
+package io.nutritionfacts.service.exception;
 
 import io.nutritionfacts.service.exception.ErrorMessageCode;
 import io.nutritionfacts.service.exception.ExceptionResponseBuilder;
