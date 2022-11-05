@@ -1,7 +1,7 @@
 package io.nutritionfacts.service.domain.food.formatter;
 
 import io.nutritionfacts.service.domain.food.formatter.component.DisclaimerFormatter;
-import io.nutritionfacts.service.domain.food.formatter.component.grouper.Grouper;
+import io.nutritionfacts.service.domain.food.formatter.component.grouper.NutrientGrouper;
 import io.nutritionfacts.service.domain.food.formatter.component.NutritionFactsBuilder;
 import io.nutritionfacts.service.domain.food.formatter.component.CaloricPyramidCalculator;
 import io.nutritionfacts.service.domain.food.formatter.component.CalorieFormatter;
@@ -9,12 +9,13 @@ import io.nutritionfacts.service.domain.food.formatter.component.DescriptionForm
 import io.nutritionfacts.service.domain.food.formatter.component.NutrientsFormatter;
 import io.nutritionfacts.service.domain.model.CaloricPyramid;
 import io.nutritionfacts.service.domain.model.Food;
-import io.nutritionfacts.service.domain.model.Nutrient;
+import io.nutritionfacts.service.domain.model.FoodId;
+import io.nutritionfacts.service.domain.model.FoodSummary;
 import io.nutritionfacts.service.domain.model.NutrientGroup;
+import io.nutritionfacts.service.domain.model.Nutrients;
 import io.nutritionfacts.service.domain.model.NutritionFacts;
 import io.nutritionfacts.service.domain.model.ServingSize;
 import io.nutritionfacts.service.domain.food.formatter.component.ServingSizeSelector;
-import java.util.Map;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class FoodFormatter {
   private final ServingSizeSelector servingSizeSelector;
   private final NutritionFactsBuilder nutritionFactsBuilder;
   private final CaloricPyramidCalculator caloricPyramidCalculator;
-  private final Grouper grouper;
+  private final NutrientGrouper nutrientGrouper;
   private final DisclaimerFormatter disclaimerFormatter;
 
   public FoodFormatter(
@@ -38,7 +39,7 @@ public class FoodFormatter {
       ServingSizeSelector servingSizeSelector,
       NutritionFactsBuilder nutritionFactsBuilder,
       CaloricPyramidCalculator caloricPyramidCalculator,
-      Grouper grouper,
+      NutrientGrouper nutrientGrouper,
       DisclaimerFormatter disclaimerFormatter
   ) {
     this.nutrientsFormatter = nutrientsFormatter;
@@ -47,54 +48,64 @@ public class FoodFormatter {
     this.servingSizeSelector = servingSizeSelector;
     this.nutritionFactsBuilder = nutritionFactsBuilder;
     this.caloricPyramidCalculator = caloricPyramidCalculator;
-    this.grouper = grouper;
+    this.nutrientGrouper = nutrientGrouper;
     this.disclaimerFormatter = disclaimerFormatter;
   }
 
-  public Food formatFood(Food food, Integer servingSize) {
-    food.setNutrients(formatNutrients(food, servingSize));
-    food.setSelectedServingSize(getSelectedServingSize(food, servingSize));
-    food.setServingSizes(getServingSizes(food));
-    food.setDescription(getDescription(food));
-    food.setCalories(getCalories(food));
-    food.setCaloricPyramid(getCaloricPyramid(food));
-    food.setNutritionFacts(getNutritionFacts(food));
-    food.setNutrientGroups(getNutrientGroups(food));
-    food.setDisclaimer(getDisclaimer());
-
-    return food;
+  public Food formatFood(FoodSummary foodSummary, Integer servingSize) {
+    return new Food(
+        getFoodId(foodSummary),
+        getName(foodSummary),
+        getDescription(foodSummary),
+        getServingSizes(foodSummary),
+        getNutrients(foodSummary, servingSize),
+        getSelectedServingSize(foodSummary, servingSize),
+        getCalories(foodSummary),
+        getNutritionFacts(foodSummary, servingSize),
+        getCaloricPyramid(foodSummary),
+        getNutrientGroups(foodSummary),
+        getDisclaimer()
+    );
   }
 
-  private Map<String, Nutrient> formatNutrients(Food food, Integer servingSizeIndex) {
-    return nutrientsFormatter.formatNutrients(food.getNutrients(), food.getServingSizes(), servingSizeIndex);
+  private FoodId getFoodId(FoodSummary foodSummary) {
+    return foodSummary.getId();
   }
 
-  private ServingSize getSelectedServingSize(Food food, Integer servingSize) {
-    return servingSizeSelector.getSelectedServingSize(food.getServingSizes(), servingSize);
+  private String getName(FoodSummary foodSummary) {
+    return foodSummary.getName();
   }
 
-  private Set<ServingSize> getServingSizes(Food food) {
-    return food.getServingSizes();
+  private String getDescription(FoodSummary foodSummary) {
+    return descriptionFormatter.formatDescription(foodSummary.getName());
   }
 
-  private String getDescription(Food food) {
-    return descriptionFormatter.formatDescription(food.getName());
+  private Nutrients getNutrients(FoodSummary foodSummary, Integer servingSizeIndex) {
+    return nutrientsFormatter.formatNutrients(foodSummary.getNutrients(), foodSummary.getServingSizes(), servingSizeIndex);
   }
 
-  private String getCalories(Food food) {
-    return calorieFormatter.format(food.getNutrients());
+  private Set<ServingSize> getServingSizes(FoodSummary foodSummary) {
+    return foodSummary.getServingSizes();
   }
 
-  private CaloricPyramid getCaloricPyramid(Food food) {
-    return caloricPyramidCalculator.calculateCaloricPyramid(food.getNutrients());
+  private ServingSize getSelectedServingSize(FoodSummary foodSummary, Integer servingSize) {
+    return servingSizeSelector.getSelectedServingSize(foodSummary.getServingSizes(), servingSize);
   }
 
-  private NutritionFacts getNutritionFacts(Food food) {
-    return nutritionFactsBuilder.buildNutritionFacts(food.getNutrients(), food.getSelectedServingSize());
+  private String getCalories(FoodSummary foodSummary) {
+    return calorieFormatter.format(foodSummary.getNutrients());
   }
 
-  private List<NutrientGroup> getNutrientGroups(Food food) {
-    return grouper.group(food.getNutrients());
+  private CaloricPyramid getCaloricPyramid(FoodSummary foodSummary) {
+    return caloricPyramidCalculator.calculateCaloricPyramid(foodSummary.getNutrients());
+  }
+
+  private NutritionFacts getNutritionFacts(FoodSummary foodSummary, Integer servingSize) {
+    return nutritionFactsBuilder.build(foodSummary.getNutrients(), getSelectedServingSize(foodSummary, servingSize));
+  }
+
+  private List<NutrientGroup> getNutrientGroups(FoodSummary foodSummary) {
+    return nutrientGrouper.group(foodSummary.getNutrients());
   }
 
   private String getDisclaimer() {

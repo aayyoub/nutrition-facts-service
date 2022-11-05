@@ -1,6 +1,5 @@
 package io.nutritionfacts.service.domain.util;
 
-import io.nutritionfacts.service.domain.food.formatter.component.NutrientExtractor;
 import io.nutritionfacts.service.domain.model.Nutrient;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

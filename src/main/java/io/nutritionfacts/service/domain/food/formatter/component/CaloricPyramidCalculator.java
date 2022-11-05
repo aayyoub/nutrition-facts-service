@@ -2,6 +2,8 @@ package io.nutritionfacts.service.domain.food.formatter.component;
 
 import io.nutritionfacts.service.domain.model.CaloricPyramid;
 import io.nutritionfacts.service.domain.model.Nutrient;
+import io.nutritionfacts.service.domain.model.NutrientId;
+import io.nutritionfacts.service.domain.model.Nutrients;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -14,17 +16,12 @@ public class CaloricPyramidCalculator {
     private static final Double CALORIES_PER_GRAM_OF_FAT = 9.0;
     private static final Double CALORIES_PER_GRAM_OF_PROTEIN = 4.0;
     private static final String FORMATTED_PERCENTAGE = "%.0f%%";
-    private final NutrientExtractor nutrientExtractor;
 
-    public CaloricPyramidCalculator(NutrientExtractor nutrientExtractor) {
-        this.nutrientExtractor = nutrientExtractor;
-    }
-
-    public CaloricPyramid calculateCaloricPyramid(Map<String, Nutrient> nutrients) {
-        Optional<Nutrient> alcohol = nutrientExtractor.extract(NutrientId.ALCOHOL, nutrients);
-        Optional<Nutrient> carbohydrate = nutrientExtractor.extract(NutrientId.CARBOHYDRATE, nutrients);
-        Optional<Nutrient> fat = nutrientExtractor.extract(NutrientId.TOTAL_FAT, nutrients);
-        Optional<Nutrient> protein = nutrientExtractor.extract(NutrientId.TOTAL_PROTEIN, nutrients);
+    public CaloricPyramid calculateCaloricPyramid(Nutrients nutrients) {
+        Optional<Nutrient> alcohol = nutrients.get(NutrientId.ALCOHOL);
+        Optional<Nutrient> carbohydrate = nutrients.get(NutrientId.CARBOHYDRATE);
+        Optional<Nutrient> fat = nutrients.get(NutrientId.TOTAL_FAT);
+        Optional<Nutrient> protein = nutrients.get(NutrientId.TOTAL_PROTEIN);
 
         double gramsOfAlcohol = alcohol.isPresent() ? alcohol.get().getValue() : 0.0;
         double gramsOfCarbohydrate = carbohydrate.isPresent() ? carbohydrate.get().getValue() : 0.0;

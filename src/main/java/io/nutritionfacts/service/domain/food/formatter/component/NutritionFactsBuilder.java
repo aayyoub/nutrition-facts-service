@@ -1,11 +1,12 @@
 package io.nutritionfacts.service.domain.food.formatter.component;
 
 import io.nutritionfacts.service.domain.model.Nutrient;
+import io.nutritionfacts.service.domain.model.NutrientId;
+import io.nutritionfacts.service.domain.model.Nutrients;
 import io.nutritionfacts.service.domain.model.NutritionFacts;
 import io.nutritionfacts.service.domain.model.ServingSize;
 import org.springframework.stereotype.Component;
 
-import java.util.Map;
 import java.util.Optional;
 
 @Component
@@ -14,26 +15,21 @@ public class NutritionFactsBuilder {
     private static final String ZERO_MG = "0mg";
     private static final String ZERO_G = "0g";
     private static final String ZERO_PERCENT = "0%";
-    private final NutrientExtractor nutrientExtractor;
 
-    public NutritionFactsBuilder(NutrientExtractor nutrientExtractor) {
-        this.nutrientExtractor = nutrientExtractor;
-    }
-
-    public NutritionFacts buildNutritionFacts(Map<String, Nutrient> nutrients, ServingSize selectedServingSize) {
-        Optional<Nutrient> calories = nutrientExtractor.extract(NutrientId.ENERGY_KCAL, nutrients);
-        Optional<Nutrient> fat = nutrientExtractor.extract(NutrientId.TOTAL_FAT, nutrients);
-        Optional<Nutrient> saturatedFat = nutrientExtractor.extract(NutrientId.FATTY_ACIDS_TOTAL_SATURATED, nutrients);
-        Optional<Nutrient> transFat = nutrientExtractor.extract(NutrientId.FATTY_ACIDS_TOTAL_TRANS, nutrients);
-        Optional<Nutrient> cholesterol = nutrientExtractor.extract(NutrientId.CHOLESTEROL, nutrients);
-        Optional<Nutrient> sodium = nutrientExtractor.extract(NutrientId.SODIUM, nutrients);
-        Optional<Nutrient> totalCarbohydrate = nutrientExtractor.extract(NutrientId.CARBOHYDRATE, nutrients);
-        Optional<Nutrient> dietaryFiber = nutrientExtractor.extract(NutrientId.FIBER, nutrients);
-        Optional<Nutrient> sugar = nutrientExtractor.extract(NutrientId.TOTAL_SUGAR, nutrients);
-        Optional<Nutrient> protein = nutrientExtractor.extract(NutrientId.TOTAL_PROTEIN, nutrients);
+    public NutritionFacts build(Nutrients nutrients, ServingSize servingSize) {
+        Optional<Nutrient> calories = nutrients.get(NutrientId.ENERGY_KCAL);
+        Optional<Nutrient> fat = nutrients.get(NutrientId.TOTAL_FAT);
+        Optional<Nutrient> saturatedFat = nutrients.get(NutrientId.FATTY_ACIDS_TOTAL_SATURATED);
+        Optional<Nutrient> transFat = nutrients.get(NutrientId.FATTY_ACIDS_TOTAL_TRANS);
+        Optional<Nutrient> cholesterol = nutrients.get(NutrientId.CHOLESTEROL);
+        Optional<Nutrient> sodium = nutrients.get(NutrientId.SODIUM);
+        Optional<Nutrient> totalCarbohydrate = nutrients.get(NutrientId.CARBOHYDRATE);
+        Optional<Nutrient> dietaryFiber = nutrients.get(NutrientId.FIBER);
+        Optional<Nutrient> sugar = nutrients.get(NutrientId.TOTAL_SUGAR);
+        Optional<Nutrient> protein = nutrients.get(NutrientId.TOTAL_PROTEIN);
 
         NutritionFacts nutritionFacts = new NutritionFacts();
-        nutritionFacts.setSelectedServingSize(selectedServingSize.getDescription());
+        nutritionFacts.setSelectedServingSize(servingSize.getDescription());
         nutritionFacts.setCalories(calories.isPresent() ? calories.get().getValueRounded() : ZERO);
         nutritionFacts.setTotalFat(fat.isPresent() ? fat.get().getValueGaussianRoundedWithUnit() : ZERO_G);
         nutritionFacts.setTotalFatPercentDailyValue(fat.isPresent() ? fat.get().getPercentDailyValueFormatted() : ZERO_PERCENT);

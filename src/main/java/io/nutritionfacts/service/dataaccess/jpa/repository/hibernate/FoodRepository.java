@@ -22,8 +22,8 @@ public class FoodRepository {
   public FoodDescription getFood(String foodId) {
     try {
       return (FoodDescription) entityManager
-          .createNativeQuery("SELECT * FROM food_description WHERE food_description_id = :foodId", FoodDescription.class)
-          .setParameter("foodId", foodId)
+          .createNativeQuery("SELECT * FROM food_description WHERE food_description.food_description_id = :food_description_id", FoodDescription.class)
+          .setParameter("food_description_id", foodId)
           .getSingleResult();
     } catch (Exception e) {
       throw new FoodNotFoundException("Error getting food by foodId " + foodId);

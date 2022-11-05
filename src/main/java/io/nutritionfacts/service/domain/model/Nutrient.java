@@ -15,7 +15,7 @@ import lombok.Setter;
 @Builder
 @EqualsAndHashCode
 public class Nutrient {
-    private String id;
+    private NutrientId id;
     @JsonIgnore
     private Double value;
     private String valueRounded;

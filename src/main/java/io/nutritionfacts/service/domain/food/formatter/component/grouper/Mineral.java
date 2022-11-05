@@ -1,6 +1,6 @@
 package io.nutritionfacts.service.domain.food.formatter.component.grouper;
 
-import io.nutritionfacts.service.domain.food.formatter.component.NutrientId;
+import io.nutritionfacts.service.domain.model.NutrientId;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -16,7 +16,7 @@ public class Mineral implements Group {
     return 5;
   }
 
-  public List<String> getNutrients() {
+  public List<NutrientId> getNutrients() {
     return Arrays.asList(
         NutrientId.CALCIUM,
         NutrientId.IRON,

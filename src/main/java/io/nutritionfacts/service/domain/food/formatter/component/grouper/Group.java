@@ -1,5 +1,6 @@
 package io.nutritionfacts.service.domain.food.formatter.component.grouper;
 
+import io.nutritionfacts.service.domain.model.NutrientId;
 import java.util.List;
 
 public interface Group {
@@ -7,5 +8,5 @@ public interface Group {
 
   Integer getRank();
 
-  List<String> getNutrients();
+  List<NutrientId> getNutrients();
 }

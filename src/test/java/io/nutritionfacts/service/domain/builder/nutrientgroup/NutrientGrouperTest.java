@@ -1,6 +1,6 @@
 package io.nutritionfacts.service.domain.builder.nutrientgroup;
 
-import io.nutritionfacts.service.domain.food.formatter.component.grouper.Grouper;
+import io.nutritionfacts.service.domain.food.formatter.component.grouper.NutrientGrouper;
 import io.nutritionfacts.service.domain.food.formatter.component.grouper.Group;
 import io.nutritionfacts.service.domain.food.formatter.component.grouper.CarbohydrateGroupI;
 import io.nutritionfacts.service.domain.food.formatter.component.grouper.nutrient.Energy;
@@ -19,9 +19,9 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GrouperTest {
+public class NutrientGrouperTest {
     private Map<String, Nutrient> nutrients;
-    private Grouper grouper;
+    private NutrientGrouper nutrientGrouper;
     private List<io.nutritionfacts.service.domain.model.NutrientGroup> results;
 
     @Test
@@ -71,11 +71,11 @@ public class GrouperTest {
                 new Sterol(),
                 new Other());
 
-        grouper = new Grouper(groups);
+        nutrientGrouper = new NutrientGrouper(groups);
     }
 
     private void buildNutrients() {
-        results = grouper.group(nutrients);
+        results = nutrientGrouper.group(nutrients);
     }
 
     private void verifyResults() {

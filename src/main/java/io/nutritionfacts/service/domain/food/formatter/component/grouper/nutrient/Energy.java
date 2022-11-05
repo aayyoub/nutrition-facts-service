@@ -1,6 +1,6 @@
 package io.nutritionfacts.service.domain.food.formatter.component.grouper.nutrient;
 
-import io.nutritionfacts.service.domain.food.formatter.component.NutrientId;
+import io.nutritionfacts.service.domain.model.NutrientId;
 import io.nutritionfacts.service.domain.food.formatter.component.grouper.Group;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +18,7 @@ public class Energy implements Group {
   }
 
   @Override
-  public List<String> getNutrients() {
+  public List<NutrientId> getNutrients() {
     return Arrays.asList(
         NutrientId.ENERGY_KCAL,
         NutrientId.ENERGY_KJ

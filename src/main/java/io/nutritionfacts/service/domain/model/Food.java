@@ -19,15 +19,15 @@ import java.util.Set;
 @Builder
 @EqualsAndHashCode
 public class Food {
-    private String id;
+    private FoodId id;
     private String name;
     private String description;
-    private String calories;
-    private ServingSize selectedServingSize;
     private Set<ServingSize> servingSizes;
+    private Nutrients nutrients;
+    private ServingSize selectedServingSize;
+    private String calories;
     private NutritionFacts nutritionFacts;
     private CaloricPyramid caloricPyramid;
     private List<NutrientGroup> nutrientGroups;
-    private Map<String, Nutrient> nutrients;
     private String disclaimer;
 }
