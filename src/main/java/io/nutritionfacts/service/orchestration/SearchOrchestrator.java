@@ -2,7 +2,7 @@
 //
 //import io.nutritionfacts.service.domain.SearchTermsFinder;
 //import io.nutritionfacts.service.domain.model.SuggestedSearchTerm;
-//import io.nutritionfacts.service.api.model.SearchTermRequest;
+//import io.nutritionfacts.service.api.model.request.SearchTermRequest;
 //import org.springframework.stereotype.Component;
 //
 //import java.util.List;

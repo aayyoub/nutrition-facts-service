@@ -1,6 +1,6 @@
 package io.nutritionfacts.service.orchestration;
 
-import io.nutritionfacts.service.api.model.GetFoodRequest;
+import io.nutritionfacts.service.api.model.request.FoodRequest;
 import io.nutritionfacts.service.domain.FoodFinder;
 import io.nutritionfacts.service.domain.model.Food;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ public class FoodOrchestrator {
         this.foodFinder = foodFinder;
     }
 
-    public Food getFood(GetFoodRequest request) {
+    public Food getFood(FoodRequest request) {
         var foodName = request.getFoodName();
         var servingSize = request.getServingSize();
 
