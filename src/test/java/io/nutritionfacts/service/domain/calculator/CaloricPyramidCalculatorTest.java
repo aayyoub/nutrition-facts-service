@@ -1,9 +1,9 @@
 package io.nutritionfacts.service.domain.calculator;
 
-import io.nutritionfacts.service.domain.food.formatter.components.CaloricPyramidCalculator;
+import io.nutritionfacts.service.domain.food.formatter.component.CaloricPyramidCalculator;
 import io.nutritionfacts.service.domain.model.CaloricPyramid;
 import io.nutritionfacts.service.domain.model.Nutrient;
-import io.nutritionfacts.service.domain.food.formatter.components.NutrientExtractor;
+import io.nutritionfacts.service.domain.food.formatter.component.NutrientExtractor;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

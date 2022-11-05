@@ -1,6 +1,6 @@
 package io.nutritionfacts.service.domain.calculator;
 
-import io.nutritionfacts.service.domain.food.formatter.components.PercentDailyValueCalculator;
+import io.nutritionfacts.service.domain.food.formatter.component.PercentDailyValueCalculator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 

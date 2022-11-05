@@ -1,17 +1,16 @@
 package io.nutritionfacts.service.domain.builder.nutrientgroup;
 
-import io.nutritionfacts.service.domain.food.formatter.components.NutrientGroupFormatter;
-import io.nutritionfacts.service.domain.food.formatter.components.NutrientGrouper;
-import io.nutritionfacts.service.domain.food.formatter.components.grouper.CarbohydrateGrouper;
-import io.nutritionfacts.service.domain.food.formatter.components.grouper.EnergyGrouper;
-import io.nutritionfacts.service.domain.food.formatter.components.grouper.FatGrouper;
-import io.nutritionfacts.service.domain.food.formatter.components.grouper.MineralGrouper;
-import io.nutritionfacts.service.domain.food.formatter.components.grouper.OtherGrouper;
-import io.nutritionfacts.service.domain.food.formatter.components.grouper.ProteinGrouper;
-import io.nutritionfacts.service.domain.food.formatter.components.grouper.SterolGrouper;
-import io.nutritionfacts.service.domain.food.formatter.components.grouper.VitaminGrouper;
+import io.nutritionfacts.service.domain.food.formatter.component.grouper.Grouper;
+import io.nutritionfacts.service.domain.food.formatter.component.grouper.Group;
+import io.nutritionfacts.service.domain.food.formatter.component.grouper.CarbohydrateGroupI;
+import io.nutritionfacts.service.domain.food.formatter.component.grouper.nutrient.Energy;
+import io.nutritionfacts.service.domain.food.formatter.component.grouper.nutrient.Fat;
+import io.nutritionfacts.service.domain.food.formatter.component.grouper.Mineral;
+import io.nutritionfacts.service.domain.food.formatter.component.grouper.nutrient.Other;
+import io.nutritionfacts.service.domain.food.formatter.component.grouper.nutrient.Protein;
+import io.nutritionfacts.service.domain.food.formatter.component.grouper.nutrient.Sterol;
+import io.nutritionfacts.service.domain.food.formatter.component.grouper.nutrient.Vitamin;
 import io.nutritionfacts.service.domain.model.Nutrient;
-import io.nutritionfacts.service.domain.model.NutrientGroup;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -20,10 +19,10 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class NutrientGroupFormatterTest {
+public class GrouperTest {
     private Map<String, Nutrient> nutrients;
-    private NutrientGroupFormatter nutrientGroupFormatter;
-    private List<NutrientGroup> results;
+    private Grouper grouper;
+    private List<io.nutritionfacts.service.domain.model.NutrientGroup> results;
 
     @Test
     public void testNutrientGroupBuilder() {
@@ -62,21 +61,21 @@ public class NutrientGroupFormatterTest {
     }
 
     private void givenNutrientBuilder() {
-        List<NutrientGrouper> nutrientGroupers = Arrays.asList(
-                new EnergyGrouper(),
-                new ProteinGrouper(),
-                new CarbohydrateGrouper(),
-                new FatGrouper(),
-                new VitaminGrouper(),
-                new MineralGrouper(),
-                new SterolGrouper(),
-                new OtherGrouper());
+        List<Group> groups = Arrays.asList(
+                new Energy(),
+                new Protein(),
+                new CarbohydrateGroupI(),
+                new Fat(),
+                new Vitamin(),
+                new Mineral(),
+                new Sterol(),
+                new Other());
 
-        nutrientGroupFormatter = new NutrientGroupFormatter(nutrientGroupers);
+        grouper = new Grouper(groups);
     }
 
     private void buildNutrients() {
-        results = nutrientGroupFormatter.buildNutrientGroups(nutrients);
+        results = grouper.group(nutrients);
     }
 
     private void verifyResults() {

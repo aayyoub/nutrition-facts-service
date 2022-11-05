@@ -1,4 +1,4 @@
-package io.nutritionfacts.service.domain.food.formatter.components;
+package io.nutritionfacts.service.domain.food.formatter.component;
 
 import org.apache.commons.text.WordUtils;
 import org.springframework.stereotype.Component;

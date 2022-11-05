@@ -1,4 +1,4 @@
-package io.nutritionfacts.service.domain.food.formatter.components;
+package io.nutritionfacts.service.domain.food.formatter.component;
 
 import io.nutritionfacts.service.domain.model.CaloricPyramid;
 import io.nutritionfacts.service.domain.model.Nutrient;

@@ -1,4 +1,4 @@
-package io.nutritionfacts.service.domain.food.formatter.components;
+package io.nutritionfacts.service.domain.food.formatter.component;
 
 import org.springframework.stereotype.Component;
 

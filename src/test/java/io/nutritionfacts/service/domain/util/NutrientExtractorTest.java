@@ -1,5 +1,6 @@
 package io.nutritionfacts.service.domain.util;
 
+import io.nutritionfacts.service.domain.food.formatter.component.NutrientExtractor;
 import io.nutritionfacts.service.domain.model.Nutrient;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -44,7 +45,7 @@ public class NutrientExtractorTest {
     @Test(dataProvider = "nutrientExtractorDataProvider")
     public void testNutrientExtractor(String nutrientId, Map<String, Nutrient> nutrients, Optional<Nutrient> expected) {
         NutrientExtractor nutrientExtractor = new NutrientExtractor();
-        Optional<Nutrient> actual = nutrientExtractor.extractNutrient(nutrientId, nutrients);
+        Optional<Nutrient> actual = nutrientExtractor.extract(nutrientId, nutrients);
 
         if (expected.isPresent()) {
             assertThat(actual.get().getId()).isEqualTo(expected.get().getId());

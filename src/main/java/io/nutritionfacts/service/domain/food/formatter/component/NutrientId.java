@@ -1,4 +1,4 @@
-package io.nutritionfacts.service.domain.food.formatter.components;
+package io.nutritionfacts.service.domain.food.formatter.component;
 
 public class NutrientId {
     public final static String ADJUSTED_PROTEIN = "257";

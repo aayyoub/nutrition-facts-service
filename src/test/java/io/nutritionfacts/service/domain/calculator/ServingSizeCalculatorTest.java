@@ -1,6 +1,6 @@
 package io.nutritionfacts.service.domain.calculator;
 
-import io.nutritionfacts.service.domain.food.formatter.components.ServingSizeCalculator;
+import io.nutritionfacts.service.domain.food.formatter.component.ServingSizeCalculator;
 import io.nutritionfacts.service.domain.model.Nutrient;
 import io.nutritionfacts.service.domain.model.ServingSize;
 import org.testng.annotations.DataProvider;
